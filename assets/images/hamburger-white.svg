@@ -1,0 +1,19 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 47 47" width="47" height="47">
+	<title>hamburger-svg</title>
+	<style>
+		.s0 { fill: none;stroke: #ffffff;stroke-linecap: round;stroke-linejoin: round;stroke-width: 2 } 
+	</style>
+	<g id="color">
+	</g>
+	<g id="hair">
+	</g>
+	<g id="skin">
+	</g>
+	<g id="skin-shadow">
+	</g>
+	<g id="line">
+		<path id="Layer" class="s0" d="m4 14h40"/>
+		<path id="Layer" class="s0" d="m4 24h40"/>
+		<path id="Layer" class="s0" d="m4 34h40"/>
+	</g>
+</svg>
