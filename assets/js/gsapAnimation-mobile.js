@@ -143,6 +143,19 @@ function animateSection1() {
 
   // position logo
   gsap.fromTo(
+    ".logo-div img",
+    {
+      // filter: 'invert(20%) sepia(73%) saturate(2432%) hue-rotate(345deg) brightness(109%) contrast(83%)'
+    },
+    {
+      // filter: 'invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(118%) contrast(119%)'
+      filter: 'invert(100%) sepia(0%) saturate(0%) hue-rotate(231deg) brightness(102%) contrast(1000%)',
+      duration: 0,
+    }
+  );
+
+  // position logo
+  gsap.fromTo(
     ".header-container",
     {
       top: "-50",
