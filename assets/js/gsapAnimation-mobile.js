@@ -77,19 +77,19 @@ $(document).ready(function () {
 
 function initAnimation(type = 'down') {
   if(type == 'up'){
-    if (animationSectionNumber == 1) {
-      animateSectionReverse1();
-    } else if (animationSectionNumber == 2) {
-      animateSectionReverse2();
-    } else if (animationSectionNumber == 3) {
-      animateSectionReverse3();
-    } else if (animationSectionNumber == 4) {
-      animateSectionReverse4();
-    } else if (animationSectionNumber == 5) {
-      animateSectionReverse5();
-    } else if (animationSectionNumber == 6) {
-      animateSectionReverse6();
-    }
+    // if (animationSectionNumber == 1) {
+    //   animateSectionReverse1();
+    // } else if (animationSectionNumber == 2) {
+    //   animateSectionReverse2();
+    // } else if (animationSectionNumber == 3) {
+    //   animateSectionReverse3();
+    // } else if (animationSectionNumber == 4) {
+    //   animateSectionReverse4();
+    // } else if (animationSectionNumber == 5) {
+    //   animateSectionReverse5();
+    // } else if (animationSectionNumber == 6) {
+    //   animateSectionReverse6();
+    // }
   } else {
     if (animationSectionNumber == 0) {
         animateSection1();
@@ -98,11 +98,11 @@ function initAnimation(type = 'down') {
       } else if (animationSectionNumber == 2) {
         animateSection3();
       } else if (animationSectionNumber == 3) {
-        animateSection4();
+        // animateSection4();
       } else if (animationSectionNumber == 4) {
-        animateSection5();
+        // animateSection5();
       } else if (animationSectionNumber == 5) {
-        animateSection6();
+        // animateSection6();
       }
   }
 }
@@ -160,7 +160,7 @@ function animateSection1() {
     },
     {
       top:'unset',
-      bottom:'10%',
+      bottom:'15%',
       duration: 1,
     }
   );
@@ -217,12 +217,14 @@ function animateSection2() {
   gsap.fromTo(
     ".brain-icon-container",
     {
+      scale: 1,
       bottom: "0%",
       right: "0%",
     },
     {
-      top: "0%",
-      right: "-45%",
+      scale: 0.8,
+      top: "-5%",
+      right: "-50%",
       duration: __duration,
     }
   );
@@ -276,15 +278,15 @@ function animateSection3() {
   gsap.fromTo(
     ".brain-icon-container",
     {
-      scale: 1,
+      scale: 0.8,
       // top: "0%",
       right: "-45%",
     },
     {
       scale: 0.7,
-      top: "-20%",
+      top: "-25%",
       right: "unset",
-      left: "-40%",
+      left: "-42%",
       duration: __duration,
     }
   );
@@ -292,12 +294,12 @@ function animateSection3() {
   gsap.fromTo(
     ".dollar-icon-container",
     {
-      left: "-24%",
-      bottom: "28%",
+      left: "-20%",
+      bottom: "0%",
     },
     {
-      left: "45%",
-      bottom: "37%",
+      left: "50%",
+      bottom: "8%",
       duration: __duration,
     }
   );
@@ -305,12 +307,10 @@ function animateSection3() {
   gsap.fromTo(
     ".nasscom-members-container",
     {
-      xPercent: 200,
-      yPercent: -40,
+      bottom: "-150%",
     },
     {
-      xPercent: 60,
-      yPercent: -160,
+      bottom: "25%",
       duration: __duration,
     }
   );

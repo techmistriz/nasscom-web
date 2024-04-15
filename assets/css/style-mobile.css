@@ -239,6 +239,7 @@ header {
 
 #fullpage {
   width: 100%;
+  overflow: hidden;
 }
 
 
@@ -1202,9 +1203,10 @@ header {
 .nsm_membership_slider_div {
   padding: 2vw 0vw;
   position: absolute;
-  height: 0vh;
+  height: 100vh;
   left: 0px;
   overflow: hidden;
+  bottom: -150%;
 }
 
 .nsm_membership_slider_div .image-block {
@@ -2895,6 +2897,7 @@ border:0px solid black;
   position: relative;
   height: 100vh;
   padding: 0;
+  overflow: hidden;
   /* border: 1px solid yellow; */
 /*  z-index: 100;*/
 }
@@ -3004,21 +3007,21 @@ border:0px solid black;
 }
 
 .nasscom-members-container {
-  padding: 5vw 2.5vw;
+  padding: 5vw 5.5vw;
   border-radius: 1.5vw;
-  background: url("../images/BG-Red.svg");
+  background: url(../images/BG-Red.svg);
   /* background-image: linear-gradient(to right, #781a19, #9d1f1a); */
   background-size: cover;
-  height: 22vw;
-  width: 22vw;
-  margin: 0;
-  position: relative;
-  /* bottom: -10%; */
-  /* right: 5%; */
-  /* left: 20%; */
-  /* transform: translate(40%, -10%); */
+  height: 85vw;
+  width: 85vw;
+  position: absolute;
+  bottom: -150%; 
+  right: 0;
+  left: 0;
   border-radius: 50%;
   display: flex;
+  margin: auto;
+  z-index: 1;
 }
 .nasscom-members-content {
   align-self: center;
@@ -6133,16 +6136,11 @@ font-size: 4.97vw;
     line-height: 10.35vw;
   }
 
-
-
-
-
-
   .nsm_membership_slider_div{
-    padding: 8vw 0vw;
+    /*padding: 8vw 0vw;
     position: static;
     height:100vh;
-    opacity: 1!important;
+    opacity: 1!important;*/
   }
 
   .nsm_membership_slider_div .container{
@@ -6347,27 +6345,11 @@ font-size: 4.97vw;
 }
 
 .nasscom-members-container {
-  padding: 5vw 5.5vw;
-  border-radius: 1.5vw;
-  background: url(../images/BG-Red.svg);
-  /* background-image: linear-gradient(to right, #781a19, #9d1f1a); */
-  background-size: cover;
-  height: 85vw;
-  width: 85vw;
-  margin: 0;
-  position: absolute;
-  bottom: -150%; 
-  right: 6%;
-  /* left: 20%; */
-  /* transform: translate(40%, -10%); */
-  border-radius: 50%;
-  display: flex;
-  margin: 35% 0;
-  z-index: 99;
+  
 }
 
 .nasscom-members-desc {
-  font-size: 6.8vw;
+  font-size: 5vw;
   line-height: 9.2vw;
   text-align: center;
   color: var(--white-primary);
