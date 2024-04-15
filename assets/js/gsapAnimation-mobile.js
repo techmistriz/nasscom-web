@@ -39,6 +39,22 @@ function detectTrackPad2(e) {
   console.log(isTrackpad ? "Trackpad detected" : "Mousewheel detected");
 }
 
+var start = {x:0, y:0};
+
+function touchStart(event) {
+  start.x = event.changedTouches[0].pageX;
+  start.y = event.changedTouches[0].pageY;
+}
+
+function touchEnd(event) {
+  offset = {};
+
+  offset.x = start.x - event.changedTouches[0].pageX;
+  offset.y = start.y - event.changedTouches[0].pageY;
+
+  return offset;  
+}
+
 $(document).ready(function () {
 
   $(".nsm_mobile_arrow_img").click(function () {
@@ -47,8 +63,10 @@ $(document).ready(function () {
 
   $("#fullpage").bind("mousewheel wheel touchmove", function (event) {
 
-    console.log("event.originalEvent");
-    
+    // console.log("event.originalEvent", event.originalEvent);
+    // touchStart(event);
+    // const { deltaX, deltaY, wheelDelta, detail} = touchEnd(event);
+
     const { deltaX, deltaY, wheelDelta, detail} = event.originalEvent;
     const __isTrackPad = isTrackPad(event.originalEvent);
 
@@ -58,16 +76,13 @@ $(document).ready(function () {
     if (isAnimating) return false;
 
     if (
-      event.originalEvent.deltaX === 0 &&
-      (event.originalEvent.wheelDelta > 0 ||
-      event.originalEvent.detail < 0)
+      deltaY === 0 &&
+      (wheelDelta > 0 || detail < 0)
     ) {
       console.log("scrolling up !");
       initAnimation('up');
       
-    } else if (
-      event.originalEvent.deltaX === 0
-    ) { 
+    } else if (deltaX === 0 ) {
 
       console.log("scrolling down !");
       initAnimation('down');
@@ -98,11 +113,13 @@ function initAnimation(type = 'down') {
       } else if (animationSectionNumber == 2) {
         animateSection3();
       } else if (animationSectionNumber == 3) {
-        // animateSection4();
+        animateSection4();
       } else if (animationSectionNumber == 4) {
-        // animateSection5();
+        animateSection5();
       } else if (animationSectionNumber == 5) {
-        // animateSection6();
+        animateSection6();
+      } else if (animationSectionNumber == 6) {
+        animateSection7();
       }
   }
 }
@@ -141,7 +158,7 @@ function animateSection1() {
     }
   );
 
-  // position logo
+  // change logo color og to white
   gsap.fromTo(
     ".logo-div img",
     {
@@ -173,8 +190,21 @@ function animateSection1() {
     },
     {
       top:'unset',
-      bottom:'15%',
+      bottom:'12%',
       duration: 1,
+    }
+  );
+
+  // change mobile arrow icon color og to white
+  gsap.fromTo(
+    ".nsm_mobile_arrow img",
+    {
+      opacity: 0,
+    },
+    {
+      opacity: 1,
+      filter: 'invert(100%) sepia(0%) saturate(0%) hue-rotate(231deg) brightness(102%) contrast(1000%)',
+      duration: __duration,
     }
   );
 
@@ -200,6 +230,18 @@ function animateSection1() {
     {
       bottom: '0%',
       duration: __duration,
+    }
+  );
+
+  // Show we-are-innovation-div from bottom
+  gsap.fromTo(
+    ".brain-icon-container",
+    {
+      opacity: 0,
+    },
+    {
+      opacity: 1,
+      duration: 2,
     }
   );
 
@@ -281,9 +323,11 @@ function animateSection3() {
     ".thought-leadership-div",
     {
       top: '5%',
+      bottom: '-150%',
     },
     {
       top: '-100%',
+      bottom: '0%',
       duration: __duration,
     }
   );
@@ -292,14 +336,17 @@ function animateSection3() {
     ".brain-icon-container",
     {
       scale: 0.8,
-      // top: "0%",
-      right: "-45%",
+      top: "-5%",
+      right: "-50%",
+      left:'unset',
+      textAlign: 'center'
     },
     {
       scale: 0.7,
-      top: "-25%",
-      right: "unset",
-      left: "-42%",
+      top: "-20%",
+      right: "0%",
+      left: "-40%",
+      textAlign: 'left',
       duration: __duration,
     }
   );
@@ -341,32 +388,32 @@ function animateSection4() {
   var __duration = GLOBLE_ANIMATION_DURATION;
   isAnimating = true;
 
-  setTimeout(function () {
-    $(".nsm_navbar").addClass("nsm_navbar_white");
-  }, 300);
-
   gsap.fromTo(
-    ".nasscom-members-container",
+    ".brain-icon-container",
     {
-      xPercent: 60,
-      yPercent: -160,
+      scale: 0.7,
+      top: "-20%",
+      right: "0%",
+      left: "-40%",
+      textAlign: 'left',
     },
     {
-      xPercent: 60,
-      yPercent: -300,
+      scale: 0.7,
+      top: "-100%",
+      right: "0%",
+      left: "-40%",
+      textAlign: 'left',
       duration: __duration,
     }
   );
 
   gsap.fromTo(
-    ".economic-rejuvenation-div",
+    ".nasscom-members-container",
     {
-      right: "5%",
-      top: "30%",
+      bottom: "25%",
     },
     {
-      right: "5%",
-      top: "-100%",
+      bottom: "150%",
       duration: __duration,
     }
   );
@@ -374,27 +421,23 @@ function animateSection4() {
   gsap.fromTo(
     ".dollar-icon-container",
     {
-      left: "30%",
-      bottom: "2%",
+      left: "50%",
+      bottom: "8%",
     },
     {
-      left: "18%",
-      bottom: "58%",
+      left: "35%",
+      bottom: "60%",
       duration: __duration,
     }
   );
 
   gsap.fromTo(
-    ".inclusive-growth-div",
+    ".economic-rejuvenation-div",
     {
-      opacity: 0,
-      right: "30%",
-      top: "100%",
+      bottom: "-150%",
     },
     {
-      opacity: 1,
-      right: "18%",
-      top: "22%",
+      bottom: "17%",
       duration: __duration,
     }
   );
@@ -402,14 +445,10 @@ function animateSection4() {
   gsap.fromTo(
     ".trending-icon-container",
     {
-      opacity: 0,
-      left: "50%",
-      bottom: "-20%",
+      bottom: "-150%",
     },
     {
-      opacity: 1,
-      left: "35%",
-      bottom: "-5%",
+      bottom: "0%",
       duration: __duration,
     }
   );
@@ -427,36 +466,26 @@ function animateSection5() {
   var __duration = GLOBLE_ANIMATION_DURATION;
   isAnimating = true;
 
-  setTimeout(function () {
-    $(".nsm_navbar").removeClass("nsm_navbar_white");
-  }, 300);
-
   gsap.fromTo(
     ".dollar-icon-container",
     {
-      opacity: 1,
-      left: "18%",
-      bottom: "58%",
+      left: "35%",
+      bottom: "60%",
     },
     {
-      opacity: 0,
-      left: "10%",
-      bottom: "100%",
+      left: "35%",
+      bottom: "150%",
       duration: __duration,
     }
   );
 
   gsap.fromTo(
-    ".inclusive-growth-div",
+    ".economic-rejuvenation-div",
     {
-      opacity: 1,
-      right: "18%",
-      top: "22%",
+      bottom: "17%",
     },
     {
-      opacity: 0,
-      right: "18%",
-      top: "-22%",
+      bottom: "150%",
       duration: __duration,
     }
   );
@@ -464,54 +493,22 @@ function animateSection5() {
   gsap.fromTo(
     ".trending-icon-container",
     {
-      opacity: 1,
-      left: "35%",
-      bottom: "-5%",
+      bottom: "0%",
     },
     {
-      opacity: 0,
-      left: "20%",
-      bottom: "30%",
+      bottom: "55%",
       duration: __duration,
     }
   );
 
   gsap.fromTo(
-    ".main-home-screen",
+    ".inclusive-growth-div",
     {
-      opacity: 1,
-      height: "100vh",
+      bottom: "-150%",
     },
     {
-      opacity: 0,
-      height: "0vh",
-      duration: 1,
-    }
-  );
-
-  gsap.fromTo(
-    ".thought-leadership-div",
-    {
-      xPercent: 0,
-      yPercent: 0,
-    },
-    {
-      xPercent: 0,
-      yPercent: -100,
-      duration: 1,
-    }
-  );
-
-  gsap.fromTo(
-    ".nsm_membership_slider_div",
-    {
-      opacity: 0,
-      height: "0vh",
-    },
-    {
-      opacity: 1,
-      height: "100vh",
-      duration: 1,
+      bottom: "20%",
+      duration: __duration,
     }
   );
 
@@ -525,91 +522,75 @@ function animateSection6() {
   // check if aleady animating
   if (isAnimating) return false;
 
-  var __duration = 1;
+  var __duration = GLOBLE_ANIMATION_DURATION;
   isAnimating = true;
 
-  setTimeout(function () {
-    $(".nsm_navbar").removeClass("nsm_navbar_white");
-  }, 300);
-
   gsap.fromTo(
-    ".nsm_side-area",
+    ".main-home-screen",
     {
-      opacity: 1,
+      top: '0%',
     },
     {
-      opacity: 0,
-      duration: __duration,
-    }
-  );
-  gsap.fromTo(
-    ".know-more-about-memeber",
-    {
-      // opacity: 1,
-      scale: 1,
-      xPercent: 0,
-      yPercent: 0,
-    },
-    {
-      // opacity: 0,
-      scale: 1.6,
-      xPercent: 100,
-      yPercent: -1000,
+      top: '-150%',
       duration: __duration,
     }
   );
 
-  gsap.fromTo(
+    gsap.fromTo(
     ".nsm_membership_slider_div",
     {
+      bottom: '-150%',
+    },
+    {
+      bottom: '-5%',
+      duration: __duration,
+    }
+  );
+
+  // change mobile arrow icon color og to white
+  gsap.fromTo(
+    ".nsm_mobile_arrow img",
+    {
+      filter: 'invert(100%) sepia(0%) saturate(0%) hue-rotate(231deg) brightness(102%) contrast(1000%)',
+    },
+    {
+      filter: 'unset',
+      duration: 0,
+    }
+  );
+
+  setTimeout(() => {
+    isAnimating = false;
+    animationSectionNumber = 6;
+  }, __duration * ANIMATION_TIMEOUT_MS);
+}
+
+function animateSection7() {
+  // check if aleady animating
+  if (isAnimating) return false;
+
+  var __duration = GLOBLE_ANIMATION_DURATION;
+  isAnimating = true;
+
+  gsap.fromTo(
+    ".nsm_mobile_arrow",
+    {
       opacity: 1,
-      height: "100vh",
-      top: "0%",
     },
     {
       opacity: 0,
-      height: "0vh",
-      top: "-100%",
       duration: __duration,
     }
   );
 
   gsap.fromTo(
-    ".nsm_footer_div",
+    ".nsm_footer-area-dark",
     {
-      opacity: 0,
-      top: "100%",
-      height: "0vh",
+      bottom: '-150%',
     },
     {
-      opacity: 1,
-      top: "0%",
-      height: "100vh",
+      bottom: '0%',
       duration: __duration,
-    }
-  );
-
-  gsap.fromTo(
-    ".footer-text-div",
-    {
-      top: -100,
-      left: -100,
-    },
-    {
-      top: 0,
-      left: 0,
-      duration: 1,
-    }
-  );
-
-  gsap.fromTo(
-    ".main",
-    {
-      zIndex: 98,
-    },
-    {
-      zIndex: 100,
-      duration: 1,
     }
   );
 

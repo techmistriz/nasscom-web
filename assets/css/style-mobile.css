@@ -209,6 +209,11 @@ header {
   position: absolute;
   width: 100%;
   z-index: 2;
+  top: -50px;
+}
+
+.header-container .hamburger-icon{
+  height: 30px;
 }
 
 .main-home-screen .tag-title, .carousel_section_home .tag-title {
@@ -1201,85 +1206,83 @@ header {
 }
 
 .nsm_membership_slider_div {
-  padding: 2vw 0vw;
   position: absolute;
-  height: 100vh;
   left: 0px;
-  overflow: hidden;
   bottom: -150%;
+  height: 100vh;
+  overflow: hidden;
+  background: white;
 }
 
-.nsm_membership_slider_div .image-block {
-  width: 100%;
-  position: relative;
-  margin-top: 5%;
+.nsm_membership_slider_div .container{
+  padding: 0;
 }
 
-.animate-cstm {
-  margin: 0;
-  position: absolute;
+.nsm_membership_slider_div .image-block img{
+  border-radius: 0;
+  height: 65vw;
 }
 
-.nsm_membership_slider_div .image-block img {
-  width: 100%;
-  border-radius: 1.5vw;
-  height: 27.3vw;
-  object-fit: cover;
-  object-position: center;
-}
-
-.nsm_membership_slider_div .image-block .image-tag {
-  font-size: 0.9vw;
-  line-height: 1.3vw;
+.nsm_membership_slider_div .image-block .image-tag{
+  font-size: 3vw;
+  line-height: 4.2vw;
   color: var(--white-primary);
   font-family: var(--medium-font);
   text-transform: capitalize;
   position: absolute;
-  right: 3%;
+  left: 5%;
   bottom: 5%;
 }
 
-.nsm_membership_slider_div .content-block {
-  margin-left: 20%;
-  padding-top: 1.5vw;
-  position: relative;
+.nsm_membership_slider_div .content-block{
+  margin-left: 0%;
+  padding-top: 3.5vw;
 }
 
-.nsm_membership_slider_div .content-block .row {
-  align-items: center;
-}
 
-.nsm_membership_slider_div .content-block .title_h4 {
+.nsm_membership_slider_div .content-block .title_h4{
+  font-family: var(--bold-font);
   color: var(--red-primary);
-  margin-bottom: 1vw;
+  font-size: 7vw;
+  line-height: 9.3vw;
+  text-align: center;
 }
 
-.nsm_membership_slider_div .content-block .desc {
-  font-size: 1.5vw;
-  line-height: 1.875vw;
+.nsm_membership_slider_div .content-block .desc{
+  font-size: 3.5vw;
+  line-height: 5vw;
   color: var(--red-primary);
-  font-family: var(--regular-font);
-  margin-bottom: 1vw;
-  font-weight: 200;
+  font-family: var(--medium-font);
+  text-align: center;
+  padding: 0px 12vw;
 }
 
-.nsm_membership_slider_div .content-block .link-btn {
-  font-size: 0.9vw;
-  line-height: 1.35vw;
+.nsm_membership_slider_div .content-block .col-md-4{
+  margin: 6vw auto;
+  text-align: center;
+}
+
+.nsm_membership_slider_div .content-block .rd-btn{
+  float: none;
+  padding: 4vw;
+  border-radius: 8.5vw;
+  font-size: 3.6vw;
+  line-height: 4.8vw;
+  color: var(--white-primary);
+  margin-bottom: 5vw;
+}
+
+.nsm_membership_slider_div .content-block .link-btn{
+  font-size: 3.6vw;
+  line-height: 4.8vw;
   color: var(--red-primary);
   font-family: var(--bold-font);
   text-transform: uppercase;
   text-decoration: none;
-  position: absolute;
+  width: 100%;
+  display: block;
 }
 
-.nsm_membership_slider_div .content-block .link-btn:hover {
-  text-decoration: underline;
-}
-
-.nsm_membership_slider_div .content-block .rd-btn {
-  float: right;
-}
 
 
 
@@ -2639,17 +2642,14 @@ border:0px solid black;
 
 /*--- career page end ---*/
 
-
 .nsm_footer-area-dark {
-  background: url("../images/footer-dark-bg.svg");
-  background-size: cover;
-  margin-left: 22.8%;
-  margin-top: 5%;
-  padding: 4vw 0vw 2.5vw 0vw;
-  z-index: 99;
-    position: relative;
+  position: absolute;
+  z-index: 1;
+  bottom: -150%;
+  background: #c33531;
+  height: 100vh;
+/*  padding: 4vw 0vw 2.5vw 0vw;*/
 }
-
 
 .nsm_footer-area-dark .title_h3 {
   color: var(--white-primary);
@@ -3039,6 +3039,8 @@ border:0px solid black;
   bottom: 0%;
   text-align: center;
   z-index: 1;
+  opacity: 0;
+  height: max-content;
 }
 
 .brain-icon-container img
@@ -3062,9 +3064,10 @@ border:0px solid black;
 
 .economic-rejuvenation-div {
   position: absolute;
-  right: 5%;
-  top: 28%;
-  width: 28vw;
+  right: 0%;
+  bottom: -150%; 
+  padding: 15px;
+  z-index: 1;
 }
 
 .economic-rejuvenation-div .title_h4 {
@@ -3098,14 +3101,17 @@ border:0px solid black;
 
 .inclusive-growth-div {
   position: absolute;
-  right: 5%;
-  top: 28%;
-  width: 28vw;
+  bottom: -150%;
+  padding: 15px;
+  z-index: 1;
+  width: 100%;
 }
 
 .inclusive-growth-div .title_h4 {
+  font-size: 24px;
+  line-height: 24px;
   color: var(--white-primary);
-  margin-bottom: 2vw;
+  margin-bottom: 30px;
 }
 
 .inclusive-growth-div .list-item {
@@ -3114,33 +3120,33 @@ border:0px solid black;
 
 .inclusive-growth-div .list-item li {
   list-style-type: none;
-  margin-bottom: 1.5vw;
+  margin-bottom: 25px;
 }
 
 .inclusive-growth-div .list-item li .list-title {
-  font-size: 1vw;
-  line-height: 1.5vw;
+  font-size: 12px;
+  line-height: 14px;
   color: var(--white-primary);
   font-family: var(--bold-font);
-  margin-bottom: 0.5vw;
+  margin-bottom: 5px;
 }
 
 .inclusive-growth-div .list-item li .list-context {
-  font-size: 0.8vw;
-  line-height: 1.2vw;
+  font-size: 10px;
+  line-height: 14px;
   color: var(--white-primary);
   font-family: var(--regular-font);
 }
 
 .trending-icon-container {
   position: absolute;
-  left: 35%;
-  bottom: -10%;
-  width: 20vw;
+  left: 0%;
+  bottom: -150%;
 }
 
-
-
+.trending-icon-container img{
+  width: 80%;
+}
 
 .nsm_membership_review{
   background: linear-gradient(45deg,  #000000a6,  #000000a6) ,url("../images/membership_page_gif.gif");
@@ -4548,15 +4554,19 @@ margin-bottom: 1vw;
   padding-bottom: 1rem !important;
 }
 
-
 .nsm_footer-area-dark .title_h3 {
   color: var(--white-primary);
-  margin-bottom: 8.5vw;
   font-family: var(--regular-font);
-      border-top: 1px solid var(--white-primary);
-    padding-top: 15vw;
+  margin-bottom: 8.5vw;
+  border-top: 1px solid var(--white-primary);
+  margin-top: 20vw;
+  padding-top: 10vw;
 }
 
+.nsm_footer-area-dark .br-top
+{
+  border-top: 1px solid var(--white-primary);
+}
 
 .perspectives_card .job_title {
   font-family: var(--bold-font);
@@ -4569,7 +4579,6 @@ margin-bottom: 1vw;
   min-height: max-content;
 }
 
-
 .perspectives_card .job_desc {
   font-family: var(--regular-font);
   color: var(--black-primary);
@@ -4579,7 +4588,6 @@ margin-bottom: 1vw;
   margin-bottom: 4.5vw;
   padding: 0vw 3vw;
 }
-
 
 .perspectives_card .action-btn{
   padding: 2.4vw 3vw;
@@ -5800,7 +5808,6 @@ form select {
   margin-bottom: 3.5vw;
 }
 
-
 .nsm_pathcontext-block {
   width: 100%;
   background: url(../images/About-Mesh-Gradient-Red.svg);
@@ -5809,18 +5816,14 @@ form select {
   border-radius: 3.5vw;
 }
 
-
 .nsm_footer-area-dark{
-  margin-left: 0%;
-  padding: 20vw 0vw 20vw 0vw;
+/*  margin-left: 0%;*/
+/*  padding: 20vw 0vw 20vw 0vw;*/
 }
 
 .nsm_footer-area-dark .pb-5{
   padding-bottom: 1.5rem !important;
 }
-
-
-
 
 .nsm_footer-area-dark .nsm_footer-text{
   font-size: 4.2vw;
@@ -5829,7 +5832,6 @@ form select {
   color: var(--white-primary);
   margin-bottom: 5vw;
 }
-
 
 .nsm_footer-area-dark .nsm_withtext-block{
   width: 58%;
@@ -5862,7 +5864,7 @@ form select {
 
 .nsm_footer-social img {
   width: 15vw;
-  margin-right: 8vw;
+  margin-right: 4vw;
 }
 
 .nsm_footer-area-dark .nsm_footer-social.footer_links{
@@ -6136,83 +6138,6 @@ font-size: 4.97vw;
     line-height: 10.35vw;
   }
 
-  .nsm_membership_slider_div{
-    /*padding: 8vw 0vw;
-    position: static;
-    height:100vh;
-    opacity: 1!important;*/
-  }
-
-  .nsm_membership_slider_div .container{
-    padding: 0;
-  }
-
-  .nsm_membership_slider_div .image-block img{
-    border-radius: 0;
-    height: 65vw;
-  }
-
-  .nsm_membership_slider_div .image-block .image-tag{
-    font-size: 3vw;
-    line-height: 4.2vw;
-    color: var(--white-primary);
-    font-family: var(--medium-font);
-    text-transform: capitalize;
-    position: absolute;
-    left: 5%;
-    bottom: 5%;
-  }
-
-  .nsm_membership_slider_div .content-block{
-    margin-left: 0%;
-    padding-top: 3.5vw;
-  }
-
-
-  .nsm_membership_slider_div .content-block .title_h4{
-    font-family: var(--bold-font);
-    color: var(--red-primary);
-    font-size: 7.5vw;
-    line-height: 9.3vw;
-    margin: 3vw 12vw 6vw 12vw;
-    text-align: center;
-  }
-
-  .nsm_membership_slider_div .content-block .desc{
-    font-size: 4.2vw;
-    line-height: 5.4vw;
-    color: var(--red-primary);
-    font-family: var(--medium-font);
-    text-align: center;
-    padding: 0px 12vw;
-  }
-
-  .nsm_membership_slider_div .content-block .col-md-4{
-    margin: 6vw auto;
-    text-align: center;
-  }
-
-  .nsm_membership_slider_div .content-block .rd-btn{
-    float: none;
-    padding: 5vw 6.75vw 5vw 6.75vw;
-    border-radius: 8.5vw;
-    font-size: 3.6vw;
-    line-height: 4.8vw;
-    color: var(--white-primary);
-    margin-bottom: 6vw;
-}
-
-  .nsm_membership_slider_div .content-block .link-btn{
-    font-size: 3.6vw;
-    line-height: 4.8vw;
-    color: var(--red-primary);
-    font-family: var(--bold-font);
-    text-transform: uppercase;
-    text-decoration: none;
-    width: 100%;
-    display: block;
-  }
-
   .nsm_mobile_arrow{
     padding: 6vw 0vw;
     text-align: center;
@@ -6365,12 +6290,7 @@ font-size: 4.97vw;
 }
 
 .economic-rejuvenation-div {
-  opacity: 1!important;
-  position: absolute;
-  right: 3%;
-  top: 28%;
-  width: 92vw;
-  bottom: -150%; 
+  
 }
 
 .economic-rejuvenation-div .title_h4 {
@@ -6422,8 +6342,6 @@ font-size: 4.97vw;
   width: 85vw;
 }
 
-
-
 .red-bg-container-3{
   display: block!important;
   height: 100vh;
@@ -6431,15 +6349,9 @@ font-size: 4.97vw;
   overflow-x: hidden;
 }
 
-
 .red-bg-container-3 .inclusive-growth-div{
-  position: absolute;
-  opacity: 1 !important;
-  right: 3%;
-  top: 28%;
-  width: 92vw;
+  
 }
-
 
 .red-bg-container-3 .inclusive-growth-div .title_h4{
   font-family: var(--bold-font);
@@ -6448,8 +6360,6 @@ font-size: 4.97vw;
   line-height: 9.2vw;
   margin-bottom: 8.5vw;
 }
-
-
 
 .red-bg-container-3 .inclusive-growth-div .list-item li{
     margin-bottom: 8.5vw;
