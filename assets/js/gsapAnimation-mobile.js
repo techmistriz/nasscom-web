@@ -41,58 +41,72 @@ function detectTrackPad2(e) {
 
 $(document).ready(function () {
 
+  $(".nsm_mobile_arrow_img").click(function () {
+    initAnimation('down');
+  });
+
   $("#fullpage").bind("mousewheel wheel touchmove", function (event) {
-    if ((!$(".nsm_side-area").hasClass("nsm_side-area-full"))) {
 
-        const { deltaX, deltaY, wheelDelta, detail} = event.originalEvent;
-        const __isTrackPad = isTrackPad(event.originalEvent);
+    console.log("event.originalEvent");
+    
+    const { deltaX, deltaY, wheelDelta, detail} = event.originalEvent;
+    const __isTrackPad = isTrackPad(event.originalEvent);
 
-        console.log("event.originalEvent", { deltaX, deltaY, wheelDelta, detail, __isTrackPad, isAnimating, ANIMATION_TIMEOUT_MS});
+    console.log("event.originalEvent", { deltaX, deltaY, wheelDelta, detail, __isTrackPad, isAnimating, ANIMATION_TIMEOUT_MS});
 
-      // check if aleady animating
-      if (isAnimating) return false;
+    // check if aleady animating
+    if (isAnimating) return false;
 
-      if (
-        event.originalEvent.deltaX === 0 &&
-        (event.originalEvent.wheelDelta > 0 ||
-        event.originalEvent.detail < 0)
-      ) {
-        console.log("scrolling up !");
-        if (animationSectionNumber == 1) {
-          animateSectionReverse1();
-        } else if (animationSectionNumber == 2) {
-          animateSectionReverse2();
-        } else if (animationSectionNumber == 3) {
-          animateSectionReverse3();
-        } else if (animationSectionNumber == 4) {
-          animateSectionReverse4();
-        } else if (animationSectionNumber == 5) {
-          animateSectionReverse5();
-        } else if (animationSectionNumber == 6) {
-          animateSectionReverse6();
-        }
-      } else if (
-        event.originalEvent.deltaX === 0
-      ) { 
+    if (
+      event.originalEvent.deltaX === 0 &&
+      (event.originalEvent.wheelDelta > 0 ||
+      event.originalEvent.detail < 0)
+    ) {
+      console.log("scrolling up !");
+      initAnimation('up');
+      
+    } else if (
+      event.originalEvent.deltaX === 0
+    ) { 
 
-        console.log("scrolling down !");
-        if (animationSectionNumber == 0) {
-          animateSection1();
-        } else if (animationSectionNumber == 1) {
-          animateSection2();
-        } else if (animationSectionNumber == 2) {
-          animateSection3();
-        } else if (animationSectionNumber == 3) {
-          animateSection4();
-        } else if (animationSectionNumber == 4) {
-          animateSection5();
-        } else if (animationSectionNumber == 5) {
-          animateSection6();
-        }
-      }
+      console.log("scrolling down !");
+      initAnimation('down');
     }
   });
 });
+
+function initAnimation(type = 'down') {
+  if(type == 'up'){
+    if (animationSectionNumber == 1) {
+      animateSectionReverse1();
+    } else if (animationSectionNumber == 2) {
+      animateSectionReverse2();
+    } else if (animationSectionNumber == 3) {
+      animateSectionReverse3();
+    } else if (animationSectionNumber == 4) {
+      animateSectionReverse4();
+    } else if (animationSectionNumber == 5) {
+      animateSectionReverse5();
+    } else if (animationSectionNumber == 6) {
+      animateSectionReverse6();
+    }
+  } else {
+    if (animationSectionNumber == 0) {
+        animateSection1();
+      } else if (animationSectionNumber == 1) {
+        animateSection2();
+      } else if (animationSectionNumber == 2) {
+        animateSection3();
+      } else if (animationSectionNumber == 3) {
+        animateSection4();
+      } else if (animationSectionNumber == 4) {
+        animateSection5();
+      } else if (animationSectionNumber == 5) {
+        animateSection6();
+      }
+  }
+}
+
 
 // *************************************************
 // *************************************************
@@ -109,23 +123,78 @@ function animateSection1() {
   var __duration = GLOBLE_ANIMATION_DURATION;
   isAnimating = true;
 
+  // position logo
   gsap.fromTo(
     ".logo-div",
     {
-      top: "80vh",
-      left: "-14%",
-      scale: 1,
+      top: "2vh",
+      left: "0%",
+      // textAlign:"center",
       textShadow: "0 0 2px rgba(0,0,0,0.3)",
     },
     {
-      top: "-3%",
-      left: "-42%",
-      scale: 0.27,
+      top: "0%",
+      left: "-22%",
+      // textAlign:"left",
       textShadow: "0 0 2px rgba(0,0,0,0)",
       duration: __duration,
     }
   );
 
+  // position logo
+  gsap.fromTo(
+    ".header-container",
+    {
+      top: "-50",
+    },
+    {
+      top: "0",
+    }
+  );
+
+  // position scroll button
+  gsap.fromTo(
+    ".nsm_mobile_arrow",
+    {
+      top:'10vh'
+    },
+    {
+      top:'unset',
+      bottom:'10vh',
+      ease: "power3.out",
+      duration: 1.5,
+    }
+  );
+
+  // position scroll button
+  gsap.fromTo(
+    ".bg-red",
+    {
+      opacity: 0,
+      top:'100%'
+    },
+    {
+      opacity: 1,
+      top:'0%',
+      duration: 2,
+    }
+  );
+
+  // position scroll button
+  gsap.fromTo(
+    ".carousel_section_home",
+    {
+      height:'100vh'
+    },
+    {
+      height: 'unset',
+      yPercent: -400,
+      display:'none',
+      duration: __duration,
+    }
+  );
+
+  // scroll up at hidden area driving-innovative-carousel div
   gsap.fromTo(
     ".driving-innovative-carousel",
     {
@@ -139,47 +208,21 @@ function animateSection1() {
     }
   );
 
-  gsap.fromTo(
-    ".we-are-innovation-div",
-    {
-      xPercent: 0,
-      yPercent: 200,
-      display: "none",
-    },
-    {
-      display: "flex",
-      xPercent: 0,
-      yPercent: -60,
-      duration: __duration,
-    }
-  );
-  gsap.fromTo(
-    ".thought-leadership-div",
-    {
-      yPercent: 200,
-      display: "flex",
-    },
-    {
-      yPercent: 0,
-      duration: __duration,
-    }
-  );
-
-  gsap.fromTo(
-    ".nsm_fix-nav",
-    {
-      xPercent: -100,
-      display: "none",
-      opacity: 0,
-    },
-    {
-      xPercent: 2,
-      opacity: 1,
-      duration: 1,
-      display: "flex",
-      ease: "power3.out",
-    }
-  );
+  // Show we-are-innovation-div from bottom
+  // gsap.fromTo(
+  //   ".we-are-innovation-div",
+  //   {
+  //     xPercent: 0,
+  //     yPercent: 200,
+  //     display: "none",
+  //   },
+  //   {
+  //     display: "block",
+  //     xPercent: 0,
+  //     yPercent: 3,
+  //     duration: __duration,
+  //   }
+  // );
 
   setTimeout(() => {
     isAnimating = false;
@@ -194,67 +237,13 @@ function animateSection2() {
   var __duration = GLOBLE_ANIMATION_DURATION;
   isAnimating = true;
 
-  setTimeout(function () {
-    $(".nsm_navbar").addClass("nsm_navbar_white");
-  }, 300);
-
   gsap.fromTo(
     ".we-are-innovation-div",
     {
-      yPercent: -60,
+      yPercent: -3,
     },
     {
-      yPercent: -200,
-      duration: __duration,
-    }
-  );
-
-  gsap.fromTo(
-    ".thought-leadership-div",
-    {
-      // top: "unset",
-      // left: "unset",
-      bottom: "-18%",
-      right: "5%",
-      height: "60vh",
-      width: "55vh",
-      borderRadius: 20,
-    },
-    {
-      // top: 0,
-      // left: 0,
-      bottom: 0,
-      right: 0,
-      height: "100%",
-      width: "100%",
-      yPercent: 0,
-      borderRadius: 0,
-      duration: __duration,
-    }
-  );
-
-  gsap.fromTo(
-    ".thought-leadership-box",
-    {
-      xPercent: 0,
-      yPercent: 0,
-    },
-    {
-      xPercent: 70,
-      yPercent: 20,
-      duration: __duration,
-    }
-  );
-
-  gsap.fromTo(
-    ".red-bg-container",
-    {
-      opacity: 0,
-      display: "none",
-    },
-    {
-      opacity: 1,
-      display: "flex",
+      yPercent: -52,
       duration: __duration,
     }
   );
@@ -263,31 +252,31 @@ function animateSection2() {
     ".brain-icon-container",
     {
       opacity: 0,
-      right: "40%",
-      top: "40%",
+      right: "2%",
+      top: "2%",
     },
     {
       opacity: 1,
-      right: "2%",
+      right: "-45%",
       top: "2%",
       duration: __duration,
     }
   );
 
   gsap.fromTo(
-    ".nasscom-members-container",
+    ".thought-leadership-div",
     {
-      xPercent: 60,
-      yPercent: 50,
+      // xPercent: 200,
+      yPercent: 0,
     },
     {
-      xPercent: 200,
-      yPercent: -40,
+      // xPercent: 60,
+      yPercent: -100,
       duration: __duration,
     }
   );
 
-  gsap.fromTo(
+   gsap.fromTo(
     ".dollar-icon-container",
     {
       opacity: 0,
@@ -311,19 +300,13 @@ function animateSection3() {
   var __duration = GLOBLE_ANIMATION_DURATION;
   isAnimating = true;
 
-  setTimeout(function () {
-    $(".nsm_navbar").addClass("nsm_navbar_white");
-  }, 300);
-
   gsap.fromTo(
-    ".thought-leadership-box",
+    ".we-are-innovation-div",
     {
-      xPercent: 70,
-      yPercent: 20,
+      yPercent: -52,
     },
     {
-      xPercent: 80,
-      yPercent: -200,
+      yPercent: -70,
       duration: __duration,
     }
   );
@@ -332,13 +315,26 @@ function animateSection3() {
     ".brain-icon-container",
     {
       scale: 1,
-      right: "2%",
       top: "2%",
+      right: "-45%",
     },
     {
-      scale: 0.2,
-      right: "2%",
-      top: "-200%",
+      scale: 0.7,
+      right: "40%",
+      top: "2%",
+      duration: __duration,
+    }
+  );
+
+  gsap.fromTo(
+    ".dollar-icon-container",
+    {
+      left: "-24%",
+      bottom: "28%",
+    },
+    {
+      left: "45%",
+      bottom: "37%",
       duration: __duration,
     }
   );
@@ -356,32 +352,34 @@ function animateSection3() {
     }
   );
 
-  gsap.fromTo(
-    ".dollar-icon-container",
-    {
-      left: "20%",
-      bottom: "-18%",
-    },
-    {
-      left: "30%",
-      bottom: "2%",
-      duration: __duration,
-    }
-  );
-  gsap.fromTo(
-    ".economic-rejuvenation-div",
-    {
-      opacity: 0,
-      right: "30%",
-      top: "100%",
-    },
-    {
-      opacity: 1,
-      right: "5%",
-      top: "30%",
-      duration: __duration,
-    }
-  );
+
+  // gsap.fromTo(
+  //   ".thought-leadership-div",
+  //   {
+  //     // xPercent: 200,
+  //     yPercent: 0,
+  //   },
+  //   {
+  //     // xPercent: 60,
+  //     yPercent: -140,
+  //     duration: __duration,
+  //   }
+  // );
+
+  // gsap.fromTo(
+  //   ".economic-rejuvenation-div",
+  //   {
+  //     opacity: 0,
+  //     right: "30%",
+  //     top: "100%",
+  //   },
+  //   {
+  //     opacity: 1,
+  //     right: "5%",
+  //     top: "30%",
+  //     duration: __duration,
+  //   }
+  // );
 
   setTimeout(() => {
     isAnimating = false;
