@@ -107,20 +107,20 @@ function initAnimation(type = 'down') {
     // }
   } else {
     if (animationSectionNumber == 0) {
-        animateSection1();
-      } else if (animationSectionNumber == 1) {
-        animateSection2();
-      } else if (animationSectionNumber == 2) {
-        animateSection3();
-      } else if (animationSectionNumber == 3) {
-        animateSection4();
-      } else if (animationSectionNumber == 4) {
-        animateSection5();
-      } else if (animationSectionNumber == 5) {
-        animateSection6();
-      } else if (animationSectionNumber == 6) {
-        animateSection7();
-      }
+      animateSection1();
+    } else if (animationSectionNumber == 1) {
+      animateSection2();
+    } else if (animationSectionNumber == 2) {
+      animateSection3();
+    } else if (animationSectionNumber == 3) {
+      animateSection4();
+    } else if (animationSectionNumber == 4) {
+      animateSection5();
+    } else if (animationSectionNumber == 5) {
+      animateSection6();
+    } else if (animationSectionNumber == 6) {
+      animateSection7();
+    }
   }
 }
 
@@ -190,7 +190,7 @@ function animateSection1() {
     },
     {
       top:'unset',
-      bottom:'12%',
+      bottom:'20%',
       duration: 1,
     }
   );
@@ -437,7 +437,7 @@ function animateSection4() {
       bottom: "-150%",
     },
     {
-      bottom: "17%",
+      top: "5%",
       duration: __duration,
     }
   );
@@ -482,10 +482,12 @@ function animateSection5() {
   gsap.fromTo(
     ".economic-rejuvenation-div",
     {
-      bottom: "17%",
+      top: '5%',
+      bottom: '-150%',
     },
     {
-      bottom: "150%",
+      top: '-100%',
+      bottom: '0%',
       duration: __duration,
     }
   );
@@ -507,7 +509,7 @@ function animateSection5() {
       bottom: "-150%",
     },
     {
-      bottom: "20%",
+      top: "5%",
       duration: __duration,
     }
   );
@@ -596,7 +598,7 @@ function animateSection7() {
 
   setTimeout(() => {
     isAnimating = false;
-    animationSectionNumber = 6;
+    animationSectionNumber = 7;
   }, __duration * ANIMATION_TIMEOUT_MS);
 }
 

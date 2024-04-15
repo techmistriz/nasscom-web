@@ -203,7 +203,7 @@ header {
 }
 
 .header-container{
-  padding: 10px 5px; 
+  padding: 10px 15px; 
   background: #c33531; 
   /*  border: 1px solid green;*/
   position: absolute;
@@ -2923,7 +2923,7 @@ border:0px solid black;
 .main-home-screen{
   position: relative;
   height: 100vh;
-  border: 1px solid yellow;
+/*  border: 1px solid yellow;*/
 }
 .carousel_section_home{
   position: relative;
@@ -3064,12 +3064,18 @@ border:0px solid black;
 
 .economic-rejuvenation-div {
   position: absolute;
-  right: 0%;
   bottom: -150%; 
-  padding: 15px;
   z-index: 1;
+  width: 100%;
 }
 
+.economic-rejuvenation-box{
+   width: 100%;
+  height: auto;
+  padding: 18vw 5vw;
+  /* z-index: 99; */
+  position: relative;
+}
 .economic-rejuvenation-div .title_h4 {
   color: var(--white-primary);
   margin-bottom: 2vw;
@@ -3102,16 +3108,22 @@ border:0px solid black;
 .inclusive-growth-div {
   position: absolute;
   bottom: -150%;
-  padding: 15px;
   z-index: 1;
   width: 100%;
 }
-
+.inclusive-growth-box {
+  width: 100%;
+  height: auto;
+  padding: 18vw 5vw;
+  /* z-index: 99; */
+  position: relative;
+}
 .inclusive-growth-div .title_h4 {
-  font-size: 24px;
-  line-height: 24px;
+  font-family: var(--bold-font);
   color: var(--white-primary);
-  margin-bottom: 30px;
+  font-size: 7vw;
+  line-height: 8vw;
+  margin-bottom: 7vw;
 }
 
 .inclusive-growth-div .list-item {
@@ -3124,18 +3136,18 @@ border:0px solid black;
 }
 
 .inclusive-growth-div .list-item li .list-title {
-  font-size: 12px;
-  line-height: 14px;
+  font-size: 3.5vw;
+  line-height: 4vw;
   color: var(--white-primary);
   font-family: var(--bold-font);
-  margin-bottom: 5px;
+  margin-bottom: 2.5vw;
 }
 
 .inclusive-growth-div .list-item li .list-context {
-  font-size: 10px;
-  line-height: 14px;
+  font-size: 3vw;
+  line-height: 4vw;
   color: var(--white-primary);
-  font-family: var(--regular-font);
+  font-family: var(--medium-font);
 }
 
 .trending-icon-container {
@@ -6296,9 +6308,9 @@ font-size: 4.97vw;
 .economic-rejuvenation-div .title_h4 {
   font-family: var(--bold-font);
   color: var(--white-primary);
-  font-size: 8vw;
-  line-height: 9.2vw;
-  margin-bottom: 8.5vw;
+  font-size: 7vw; 
+  line-height: 8vw;
+  margin-bottom: 7vw;
 }
 
 .economic-rejuvenation-div .list-item li{
@@ -6306,16 +6318,16 @@ font-size: 4.97vw;
 }
 
 .economic-rejuvenation-div .list-item li .list-title{
-  font-size: 4.2vw;
-  line-height: 5.4vw;
+  font-size: 3.5vw;
+  line-height: 4vw;
   color: var(--white-primary);
   font-family: var(--bold-font);
   margin-bottom: 2.5vw;
 }
 
 .economic-rejuvenation-div .list-item li .list-context{
-  font-size: 3.6vw;
-  line-height: 4.8vw;
+  font-size: 3vw;
+  line-height: 4vw;
   color: var(--white-primary);
   font-family: var(--medium-font);
 }
@@ -6356,9 +6368,9 @@ font-size: 4.97vw;
 .red-bg-container-3 .inclusive-growth-div .title_h4{
   font-family: var(--bold-font);
   color: var(--white-primary);
-  font-size: 8vw;
-  line-height: 9.2vw;
-  margin-bottom: 8.5vw;
+  font-size: 7vw;
+  line-height: 8vw;
+  margin-bottom: 7vw;
 }
 
 .red-bg-container-3 .inclusive-growth-div .list-item li{
