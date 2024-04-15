@@ -206,14 +206,16 @@ header {
   padding: 10px 5px; 
   background: #c33531; 
   /*  border: 1px solid green;*/
-  position: relative;
+  position: absolute;
+  width: 100%;
+  z-index: 2;
 }
 
 .main-home-screen .tag-title, .carousel_section_home .tag-title {
   font-family: var(--medium-font);
   font-size: 8vw;
   color: var(--red-primary);
-  line-height: 9vw;
+  line-height: 10vw;
   text-align: center;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -1028,8 +1030,6 @@ header {
 .nsm_strat-slider {
   cursor: grab;
 }
-
-
 
 .nsm_strategic-section .title_h3 {
   color: var(--white-primary);
@@ -2910,14 +2910,18 @@ border:0px solid black;
 }
 .nsm_mobile_arrow{
   position: absolute;
-  top: 40vh;
+  top: 40%;
   left: 0;
   right: 0;
   padding: 6vw 0vw;
   text-align: center;
   z-index: 11;
 }
-
+.main-home-screen{
+  position: relative;
+  height: 100vh;
+  border: 1px solid yellow;
+}
 .carousel_section_home{
   position: relative;
   z-index: 10;
@@ -2927,11 +2931,25 @@ border:0px solid black;
 }
 .driving-innovative-carousel {
   /* transform: translate(0%, 100%); */
+  position: absolute;
+  top: 20%;
 }
 .we-are-innovation-div {
   color: var(--red-primary);
   /* transform: translate(0%, 100%); */
+/*  padding: 5vw;*/
+  background-image: linear-gradient(to right, #781a19, #9d1f1a);
+}
+
+.we-are-innovation-container{
+  position: absolute;
+  top: 13%;
   padding: 5vw;
+/*  width: 100%;*/
+}
+
+.we-are-innovation-content{
+/*  padding-top: 20px;*/
 }
 
 .we-are-innovation-div .title_h1{
@@ -2940,13 +2958,14 @@ border:0px solid black;
 }
 
 .thought-leadership-div {
-  position: relative;
-  top: unset;
-  bottom: -50%;
-  right: 0%;
-  background-image: linear-gradient(to right, #781a19, #9d1f1a);
   border-radius: 20px;
+  position: absolute;
+  overflow-x: hidden;
+  bottom: -150%;
+  z-index: 1;
+  width: 100%;
 }
+
 .thought-leadership-div .thought-leadership-box {
   padding: 2.5vw;
   background-size: cover;
@@ -3013,19 +3032,29 @@ border:0px solid black;
   font-weight: 200;
 }
 .brain-icon-container {
-  opacity: 0;
-  position: relative;
-  right: 2%;
-  top: 2%;
-  width: 19vw;
+  position: absolute;
+  bottom: 0%;
+  text-align: center;
+  z-index: 1;
+}
+
+.brain-icon-container img
+{
+  width: 80%;
 }
 
 .dollar-icon-container {
-  opacity: 0;
   position: absolute;
-  left: 20%;
-  bottom: -18%;
-  width: 18vw;
+  left: -20%;
+  bottom: 0%;
+  width: 80%;
+  z-index: 1;
+  opacity: 0;
+}
+
+.dollar-icon-container img
+{
+  width: 90%;
 }
 
 .economic-rejuvenation-div {
@@ -6191,7 +6220,6 @@ font-size: 4.97vw;
     text-align: center;
   }
 
-
   .nsm_whats_new_strip{
     position: fixed;
     z-index: 999;
@@ -6229,10 +6257,11 @@ font-size: 4.97vw;
 }
 
 .we-are-innovation-div{
-  display: block !important;
-/*  padding: 8vw 12vw 8vw 5vw;*/
-  position: relative;
+  position: absolute;
   overflow: hidden;
+  bottom: -150%;
+  height: 100%;
+  width: 100%;
 }
 
 .we-are-innovation-div .title_h1{
@@ -6242,29 +6271,15 @@ font-size: 4.97vw;
   color: var(--white-primary);
 }
 
-.brain-icon-container {
-  opacity: 1;
-  position: relative;
-  right:unset;
-  top: unset;
-  width: 92vw;
-}
-
 .thought-leadership-div{
-/*  display: block !important;*/
-  position: relative;
-  background-image: none;
-  overflow-x: hidden;
-  height: 100vh;
-  right: 0%;
-  bottom: 0%;
+
 }
 
 .thought-leadership-div .thought-leadership-box{
   width: 100%;
   height: auto;
   padding: 18vw 5vw;
-  z-index: 99;
+/*  z-index: 99;*/
   position: relative;
 }
 
@@ -6305,13 +6320,8 @@ font-size: 4.97vw;
 
 
 .thought-leadership-div .dollar-icon-container{
-  position: relative;
-  left: -24%;
-  bottom: 28%;
-  width: 80vw;
-  z-index: 9;
+ 
 }
-
 
 .red-bg-container{
 /*  display: block!important;*/
@@ -6345,8 +6355,8 @@ font-size: 4.97vw;
   height: 85vw;
   width: 85vw;
   margin: 0;
-  position: relative;
-  /* bottom: -10%; */
+  position: absolute;
+  bottom: -150%; 
   right: 6%;
   /* left: 20%; */
   /* transform: translate(40%, -10%); */
@@ -6365,7 +6375,6 @@ font-size: 4.97vw;
   font-weight: 200;
 }
 
-
 .red-bg-container-2{
   display: block!important;
   height: 100vh;
@@ -6373,15 +6382,16 @@ font-size: 4.97vw;
   overflow-x: hidden;
 }
 
-.red-bg-container-2 .economic-rejuvenation-div{
+.economic-rejuvenation-div {
   opacity: 1!important;
   position: absolute;
-    right: 3%;
-    top: 28%;
-    width: 92vw;
+  right: 3%;
+  top: 28%;
+  width: 92vw;
+  bottom: -150%; 
 }
 
-.red-bg-container-2 .economic-rejuvenation-div .title_h4{
+.economic-rejuvenation-div .title_h4 {
   font-family: var(--bold-font);
   color: var(--white-primary);
   font-size: 8vw;
@@ -6389,11 +6399,11 @@ font-size: 4.97vw;
   margin-bottom: 8.5vw;
 }
 
-.red-bg-container-2 .economic-rejuvenation-div .list-item li{
+.economic-rejuvenation-div .list-item li{
   margin-bottom: 8.5vw;
 }
 
-.red-bg-container-2 .economic-rejuvenation-div .list-item li .list-title{
+.economic-rejuvenation-div .list-item li .list-title{
   font-size: 4.2vw;
   line-height: 5.4vw;
   color: var(--white-primary);
@@ -6401,7 +6411,7 @@ font-size: 4.97vw;
   margin-bottom: 2.5vw;
 }
 
-.red-bg-container-2 .economic-rejuvenation-div .list-item li .list-context{
+.economic-rejuvenation-div .list-item li .list-context{
   font-size: 3.6vw;
   line-height: 4.8vw;
   color: var(--white-primary);
@@ -6409,7 +6419,7 @@ font-size: 4.97vw;
 }
 
 
-.red-bg-container-2 .economic-rejuvenation-div .list-item {
+.economic-rejuvenation-div .list-item {
   padding: 0;
   width: 92%;
 }

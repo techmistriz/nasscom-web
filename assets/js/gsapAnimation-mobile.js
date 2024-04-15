@@ -156,73 +156,39 @@ function animateSection1() {
   gsap.fromTo(
     ".nsm_mobile_arrow",
     {
-      top:'10vh'
+      top:'40%'
     },
     {
       top:'unset',
-      bottom:'10vh',
-      ease: "power3.out",
-      duration: 1.5,
+      bottom:'10%',
+      duration: 1,
     }
   );
 
   // position scroll button
-  gsap.fromTo(
-    ".bg-red",
-    {
-      opacity: 0,
-      top:'100%'
-    },
-    {
-      opacity: 1,
-      top:'0%',
-      duration: 2,
-    }
-  );
-
-  // position scroll button
-  gsap.fromTo(
-    ".carousel_section_home",
-    {
-      height:'100vh'
-    },
-    {
-      height: 'unset',
-      yPercent: -400,
-      display:'none',
-      duration: __duration,
-    }
-  );
-
-  // scroll up at hidden area driving-innovative-carousel div
   gsap.fromTo(
     ".driving-innovative-carousel",
     {
-      xPercent: 0,
-      yPercent: 0,
+      top:'20%'
     },
     {
-      xPercent: 0,
-      yPercent: -400,
-      duration: __duration,
+      top: '-100%',
+      ease: "power3.out",
+      duration: 5,
     }
   );
 
   // Show we-are-innovation-div from bottom
-  // gsap.fromTo(
-  //   ".we-are-innovation-div",
-  //   {
-  //     xPercent: 0,
-  //     yPercent: 200,
-  //     display: "none",
-  //   },
-  //   {
-  //     display: "block",
-  //     xPercent: 0,
-  //     yPercent: 3,
-  //     duration: __duration,
-  //   }
-  // );
+  gsap.fromTo(
+    ".we-are-innovation-div",
+    {
+      bottom: '-150%',
+    },
+    {
+      bottom: '0%',
+      duration: __duration,
+    }
+  );
 
   setTimeout(() => {
     isAnimating = false;
@@ -238,12 +204,12 @@ function animateSection2() {
   isAnimating = true;
 
   gsap.fromTo(
-    ".we-are-innovation-div",
+    ".we-are-innovation-container",
     {
-      yPercent: -3,
+      top: '0%',
     },
     {
-      yPercent: -52,
+      top: '-50%',
       duration: __duration,
     }
   );
@@ -251,14 +217,12 @@ function animateSection2() {
   gsap.fromTo(
     ".brain-icon-container",
     {
-      opacity: 0,
-      right: "2%",
-      top: "2%",
+      bottom: "0%",
+      right: "0%",
     },
     {
-      opacity: 1,
+      top: "0%",
       right: "-45%",
-      top: "2%",
       duration: __duration,
     }
   );
@@ -266,12 +230,10 @@ function animateSection2() {
   gsap.fromTo(
     ".thought-leadership-div",
     {
-      // xPercent: 200,
-      yPercent: 0,
+      bottom: "-150%",
     },
     {
-      // xPercent: 60,
-      yPercent: -100,
+      top: "5%",
       duration: __duration,
     }
   );
@@ -283,7 +245,7 @@ function animateSection2() {
     },
     {
       opacity: 1,
-      duration: 3,
+      duration: __duration,
     }
   );
 
@@ -301,12 +263,12 @@ function animateSection3() {
   isAnimating = true;
 
   gsap.fromTo(
-    ".we-are-innovation-div",
+    ".thought-leadership-div",
     {
-      yPercent: -52,
+      top: '5%',
     },
     {
-      yPercent: -70,
+      top: '-100%',
       duration: __duration,
     }
   );
@@ -315,13 +277,14 @@ function animateSection3() {
     ".brain-icon-container",
     {
       scale: 1,
-      top: "2%",
+      // top: "0%",
       right: "-45%",
     },
     {
       scale: 0.7,
-      right: "40%",
-      top: "2%",
+      top: "-20%",
+      right: "unset",
+      left: "-40%",
       duration: __duration,
     }
   );
@@ -351,35 +314,6 @@ function animateSection3() {
       duration: __duration,
     }
   );
-
-
-  // gsap.fromTo(
-  //   ".thought-leadership-div",
-  //   {
-  //     // xPercent: 200,
-  //     yPercent: 0,
-  //   },
-  //   {
-  //     // xPercent: 60,
-  //     yPercent: -140,
-  //     duration: __duration,
-  //   }
-  // );
-
-  // gsap.fromTo(
-  //   ".economic-rejuvenation-div",
-  //   {
-  //     opacity: 0,
-  //     right: "30%",
-  //     top: "100%",
-  //   },
-  //   {
-  //     opacity: 1,
-  //     right: "5%",
-  //     top: "30%",
-  //     duration: __duration,
-  //   }
-  // );
 
   setTimeout(() => {
     isAnimating = false;
