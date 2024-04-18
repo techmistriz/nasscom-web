@@ -265,7 +265,7 @@ function animateSection1() {
   gsap.fromTo(
     ".header-container",
     {
-      top: "-50",
+      top: "-80",
     },
     {
       top: "0",
@@ -734,7 +734,7 @@ function animateSectionReverse1() {
       top: "0",
     },
     {
-      top: "-50",
+      top: "-80",
     }
   );
 

@@ -196,13 +196,13 @@ header {
 }
 
 .header-container {
-  padding: 10px 15px;
+  padding: 20px 15px;
   background: #c33531;
   /*  border: 1px solid green;*/
   position: absolute;
   width: 100%;
   z-index: 2;
-  top: -50px;
+  top: -80px;
 }
 
 .header-container .hamburger-icon {
@@ -6090,3 +6090,84 @@ select {
 }
 
 /*----- homepage mobile code end -----*/
+
+
+
+
+
+
+
+
+
+@media (max-width:767px){
+  .nsm_cat-menu{
+  padding: 4.5vw 0vw;
+  border-top: 1px solid var(--white-primary);
+  border-bottom: 1px solid var(--white-primary);
+  display: flex;
+  overflow-x: auto;
+}
+
+.nsm_cat-menu li {
+    display: inline-block;
+    margin-right: 6%;
+}
+
+.nsm_cat-menu li a {
+    font-family: var(--regular-font);
+    font-size: 4.8vw;
+    line-height: 6.2vw;
+    text-align: left;
+    color: var(--red-primary);
+    text-decoration: none;
+    width: max-content;
+    display: block;
+}
+.nsm_single-card {
+    background-size: cover;
+    background-position: center;
+    height: 50vw;
+    position: relative;
+    margin-bottom: 2vw;
+    border-radius: 3.4vw;
+}
+
+.nsm_single-card .title_h6 {
+    color: var(--white-primary);
+    font-family: var(--regular-font);
+    position: absolute;
+    bottom: 3.2vw;
+    left: 3.2vw;
+    font-size: 3.2vw;
+    line-height: 4.4vw;
+}
+
+.nsm_single-card .nsm_cat {
+    font-size: 2.4vw;
+    line-height: 2.825vw;
+    text-transform: uppercase;
+    font-family: var(--regular-font);
+    position: absolute;
+    top: 3.2vw;
+    left: 3.2vw;
+    color: var(--white-primary);
+}
+
+.nsm_single-card .nsm_cat-arrow {
+    position: absolute;
+    top: 3.2vw;
+    right: 3.2vw;
+}
+
+.nsm_single-card .nsm_cat-arrow img{
+  width: 3.6vw;
+}
+
+.nsm_side-area-expand .cat{
+  font-family: var(--bold-font);
+    margin-bottom: 3.5vw;
+}
+
+}
+
+
