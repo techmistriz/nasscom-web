@@ -9,18 +9,17 @@ function isTrackPad(e) {
     ANIMATION_TIMEOUT_MS = 1000;
     return false;
   }
-  ANIMATION_TIMEOUT_MS = 3000;
+  ANIMATION_TIMEOUT_MS = 2000;
   return true;
 }
 
 function detectTrackPad(e) {
   var isTrackpad = false;
   if (e.wheelDeltaY) {
-    if (e.wheelDeltaY === (e.deltaY * -3)) {
+    if (e.wheelDeltaY === e.deltaY * -3) {
       isTrackpad = true;
     }
-  }
-  else if (e.deltaMode === 0) {
+  } else if (e.deltaMode === 0) {
     isTrackpad = true;
   }
   console.log(isTrackpad ? "Trackpad detected" : "Mousewheel detected");
@@ -32,80 +31,158 @@ function detectTrackPad2(e) {
     if (Math.abs(e.wheelDeltaY) !== 120) {
       isTrackpad = true;
     }
-  }
-  else if (e.deltaMode === 0) {
+  } else if (e.deltaMode === 0) {
     isTrackpad = true;
   }
   console.log(isTrackpad ? "Trackpad detected" : "Mousewheel detected");
 }
 
-var start = {x:0, y:0};
-
-function touchStart(event) {
-  start.x = event.changedTouches[0].pageX;
-  start.y = event.changedTouches[0].pageY;
-}
-
-function touchEnd(event) {
-  offset = {};
-
-  offset.x = start.x - event.changedTouches[0].pageX;
-  offset.y = start.y - event.changedTouches[0].pageY;
-
-  return offset;  
-}
-
 $(document).ready(function () {
-
   $(".nsm_mobile_arrow_img").click(function () {
-    initAnimation('down');
+    initAnimation("down");
   });
 
-  $("#fullpage").bind("mousewheel wheel touchmove", function (event) {
+  $(".expand_icon").click(function () {
 
-    // console.log("event.originalEvent", event.originalEvent);
-    // touchStart(event);
-    // const { deltaX, deltaY, wheelDelta, detail} = touchEnd(event);
+    var top = $(".nsm_whats_new_strip").css('top');
+    var height = $(window).height();
+    // console.log("top", top);
+    // console.log("window.height", $(window).height());
 
-    const { deltaX, deltaY, wheelDelta, detail} = event.originalEvent;
+    var __duration = GLOBLE_ANIMATION_DURATION;
+    // position logo
+
+    if(top == '0px'){
+      gsap.fromTo(
+        ".nsm_whats_new_strip",
+        {
+          // top: "90%",
+        },
+        {
+          top: "40%",
+          duration: __duration,
+        }
+      );
+    } else {
+      gsap.fromTo(
+        ".nsm_whats_new_strip",
+        {
+          // top: "90%",
+        },
+        {
+          top: "0%",
+          duration: __duration,
+        }
+      );
+    }
+    
+  });
+
+  $(".halfexpand_icon").click(function () {
+
+    var top = $(".nsm_whats_new_strip").css('top');
+    var height = $(window).height();
+    // console.log("top", top);
+    // console.log("window.height", $(window).height());
+
+    var __duration = GLOBLE_ANIMATION_DURATION;
+
+    // position logo
+    if(parseInt(top) == 0){
+
+      gsap.fromTo(
+        ".nsm_whats_new_strip",
+        {
+          // top: "90%",
+        },
+        {
+          top: "83%",
+          duration: __duration,
+        }
+      );
+    } else if(parseInt(top) > 150 && parseInt(top) < 350){
+
+      gsap.fromTo(
+        ".nsm_whats_new_strip",
+        {
+          // top: "90%",
+        },
+        {
+          top: "83%",
+          duration: __duration,
+        }
+      );
+    } else {
+      gsap.fromTo(
+        ".nsm_whats_new_strip",
+        {
+          // top: "90%",
+        },
+        {
+          top: "40%",
+          duration: __duration,
+        }
+      );
+    }
+  });
+
+  var touchstart;
+  $(document).bind("touchstart", function (e) {
+    touchstart = e.originalEvent.touches[0].clientY;
+    console.log("touchstart", touchstart);
+  });
+
+  $(document).bind("touchend", function (e) {
+
+    var touchend = e.originalEvent.changedTouches[0].clientY;
+    var top = $(".nsm_whats_new_strip").css('top');
+
+    console.log("touchstart touchend==>", { touchstart, touchend, top });
+
+    if(parseInt(top) > 300){
+
+      if (touchstart > touchend + 5) {
+        initAnimation("down");
+      } else if (touchstart < touchend - 5) {
+        initAnimation("up");
+      }
+    }
+    
+  });
+
+  $("#fullpage").bind("mousewheel wheel", function (event) {
+
+    var top = $(".nsm_whats_new_strip").css('top');
+    const { deltaX, deltaY, wheelDelta, detail } = event.originalEvent;
     const __isTrackPad = isTrackPad(event.originalEvent);
 
-    console.log("event.originalEvent", { deltaX, deltaY, wheelDelta, detail, __isTrackPad, isAnimating, ANIMATION_TIMEOUT_MS});
+    console.log("event.originalEvent", {
+      deltaX,
+      deltaY,
+      wheelDelta,
+      detail,
+      __isTrackPad,
+      isAnimating,
+      ANIMATION_TIMEOUT_MS,
+    });
 
     // check if aleady animating
     if (isAnimating) return false;
 
-    if (
-      deltaY === 0 &&
-      (wheelDelta > 0 || detail < 0)
-    ) {
-      console.log("scrolling up !");
-      initAnimation('up');
-      
-    } else if (deltaX === 0 ) {
-
-      console.log("scrolling down !");
-      initAnimation('down');
+    if(parseInt(top) > 300){
+      if (deltaY === 0 && (wheelDelta > 0 || detail < 0)) {
+        console.log("scrolling up !");
+        initAnimation("up");
+      } else if (deltaX === 0) {
+        console.log("scrolling down !");
+        initAnimation("down");
+      }
     }
   });
 });
 
-function initAnimation(type = 'down') {
-  if(type == 'up'){
-    // if (animationSectionNumber == 1) {
-    //   animateSectionReverse1();
-    // } else if (animationSectionNumber == 2) {
-    //   animateSectionReverse2();
-    // } else if (animationSectionNumber == 3) {
-    //   animateSectionReverse3();
-    // } else if (animationSectionNumber == 4) {
-    //   animateSectionReverse4();
-    // } else if (animationSectionNumber == 5) {
-    //   animateSectionReverse5();
-    // } else if (animationSectionNumber == 6) {
-    //   animateSectionReverse6();
-    // }
-  } else {
+function initAnimation(type = "down") {
+  if (type == "down") {
     if (animationSectionNumber == 0) {
       animateSection1();
     } else if (animationSectionNumber == 1) {
@@ -121,9 +198,24 @@ function initAnimation(type = 'down') {
     } else if (animationSectionNumber == 6) {
       animateSection7();
     }
+  } else {
+    if (animationSectionNumber == 1) {
+      animateSectionReverse1();
+    } else if (animationSectionNumber == 2) {
+      animateSectionReverse2();
+    } else if (animationSectionNumber == 3) {
+      animateSectionReverse3();
+    } else if (animationSectionNumber == 4) {
+      animateSectionReverse4();
+    } else if (animationSectionNumber == 5) {
+      animateSectionReverse5();
+    } else if (animationSectionNumber == 6) {
+      animateSectionReverse6();
+    } else if (animationSectionNumber == 7) {
+      animateSectionReverse7();
+    }
   }
 }
-
 
 // *************************************************
 // *************************************************
@@ -147,13 +239,11 @@ function animateSection1() {
       top: "2vh",
       left: "0%",
       // textAlign:"center",
-      textShadow: "0 0 2px rgba(0,0,0,0.3)",
     },
     {
       top: "0%",
       left: "-22%",
       // textAlign:"left",
-      textShadow: "0 0 2px rgba(0,0,0,0)",
       duration: __duration,
     }
   );
@@ -162,11 +252,11 @@ function animateSection1() {
   gsap.fromTo(
     ".logo-div img",
     {
-      // filter: 'invert(20%) sepia(73%) saturate(2432%) hue-rotate(345deg) brightness(109%) contrast(83%)'
+      filter: "unset",
     },
     {
-      // filter: 'invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(118%) contrast(119%)'
-      filter: 'invert(100%) sepia(0%) saturate(0%) hue-rotate(231deg) brightness(102%) contrast(1000%)',
+      filter:
+        "invert(100%) sepia(0%) saturate(0%) hue-rotate(231deg) brightness(102%) contrast(1000%)",
       duration: 0,
     }
   );
@@ -186,11 +276,11 @@ function animateSection1() {
   gsap.fromTo(
     ".nsm_mobile_arrow",
     {
-      top:'40%'
+      top: "40%",
     },
     {
-      top:'unset',
-      bottom:'20%',
+      top: "unset",
+      bottom: "20%",
       duration: 1,
     }
   );
@@ -203,7 +293,8 @@ function animateSection1() {
     },
     {
       opacity: 1,
-      filter: 'invert(100%) sepia(0%) saturate(0%) hue-rotate(231deg) brightness(102%) contrast(1000%)',
+      filter:
+        "invert(100%) sepia(0%) saturate(0%) hue-rotate(231deg) brightness(102%) contrast(1000%)",
       duration: __duration,
     }
   );
@@ -212,10 +303,10 @@ function animateSection1() {
   gsap.fromTo(
     ".driving-innovative-carousel",
     {
-      top:'20%'
+      top: "20%",
     },
     {
-      top: '-100%',
+      top: "-100%",
       ease: "power3.out",
       duration: 5,
     }
@@ -225,23 +316,23 @@ function animateSection1() {
   gsap.fromTo(
     ".we-are-innovation-div",
     {
-      bottom: '-150%',
+      top: "100%",
     },
     {
-      bottom: '0%',
+      top: "0%",
       duration: __duration,
     }
   );
 
   // Show we-are-innovation-div from bottom
   gsap.fromTo(
-    ".brain-icon-container",
+    ".brain-icon-div",
     {
       opacity: 0,
     },
     {
       opacity: 1,
-      duration: 2,
+      duration: __duration,
     }
   );
 
@@ -261,25 +352,25 @@ function animateSection2() {
   gsap.fromTo(
     ".we-are-innovation-container",
     {
-      top: '0%',
+      top: "0%",
     },
     {
-      top: '-50%',
+      top: "-50%",
       duration: __duration,
     }
   );
 
   gsap.fromTo(
-    ".brain-icon-container",
+    ".brain-icon-div",
     {
       scale: 1,
-      bottom: "0%",
-      right: "0%",
+      top: "50%",
+      xPercent: 0,
     },
     {
       scale: 0.8,
-      top: "-5%",
-      right: "-50%",
+      top: "-1%",
+      xPercent: 45,
       duration: __duration,
     }
   );
@@ -287,15 +378,15 @@ function animateSection2() {
   gsap.fromTo(
     ".thought-leadership-div",
     {
-      bottom: "-150%",
+      top: "100%",
     },
     {
-      top: "5%",
+      top: "15%",
       duration: __duration,
     }
   );
 
-   gsap.fromTo(
+  gsap.fromTo(
     ".dollar-icon-container",
     {
       opacity: 0,
@@ -322,31 +413,25 @@ function animateSection3() {
   gsap.fromTo(
     ".thought-leadership-div",
     {
-      top: '5%',
-      bottom: '-150%',
+      top: "15%",
     },
     {
-      top: '-100%',
-      bottom: '0%',
+      top: "-100%",
       duration: __duration,
     }
   );
 
   gsap.fromTo(
-    ".brain-icon-container",
+    ".brain-icon-div",
     {
       scale: 0.8,
-      top: "-5%",
-      right: "-50%",
-      left:'unset',
-      textAlign: 'center'
+      top: "-1%",
+      xPercent: 45,
     },
     {
       scale: 0.7,
-      top: "-20%",
-      right: "0%",
-      left: "-40%",
-      textAlign: 'left',
+      top: "-10%",
+      xPercent: -45,
       duration: __duration,
     }
   );
@@ -355,22 +440,22 @@ function animateSection3() {
     ".dollar-icon-container",
     {
       left: "-20%",
-      bottom: "0%",
+      top: "60%",
     },
     {
       left: "50%",
-      bottom: "8%",
+      top: "55%",
       duration: __duration,
     }
   );
 
   gsap.fromTo(
-    ".nasscom-members-container",
+    ".nasscom-members-div",
     {
-      bottom: "-150%",
+      top: "100%",
     },
     {
-      bottom: "25%",
+      top: "25%",
       duration: __duration,
     }
   );
@@ -389,31 +474,27 @@ function animateSection4() {
   isAnimating = true;
 
   gsap.fromTo(
-    ".brain-icon-container",
+    ".brain-icon-div",
     {
       scale: 0.7,
-      top: "-20%",
-      right: "0%",
-      left: "-40%",
-      textAlign: 'left',
+      top: "-10%",
+      xPercent: -45,
     },
     {
-      scale: 0.7,
+      scale: 0.8,
       top: "-100%",
-      right: "0%",
-      left: "-40%",
-      textAlign: 'left',
+      xPercent: -45,
       duration: __duration,
     }
   );
 
   gsap.fromTo(
-    ".nasscom-members-container",
+    ".nasscom-members-div",
     {
-      bottom: "25%",
+      top: "10%",
     },
     {
-      bottom: "150%",
+      top: "-100%",
       duration: __duration,
     }
   );
@@ -422,11 +503,11 @@ function animateSection4() {
     ".dollar-icon-container",
     {
       left: "50%",
-      bottom: "8%",
+      top: "50%",
     },
     {
-      left: "35%",
-      bottom: "60%",
+      left: "40%",
+      top: "0%",
       duration: __duration,
     }
   );
@@ -434,10 +515,10 @@ function animateSection4() {
   gsap.fromTo(
     ".economic-rejuvenation-div",
     {
-      bottom: "-150%",
+      top: "100%",
     },
     {
-      top: "5%",
+      top: "15%",
       duration: __duration,
     }
   );
@@ -445,10 +526,10 @@ function animateSection4() {
   gsap.fromTo(
     ".trending-icon-container",
     {
-      bottom: "-150%",
+      top: "100%",
     },
     {
-      bottom: "0%",
+      top: "55%",
       duration: __duration,
     }
   );
@@ -469,12 +550,12 @@ function animateSection5() {
   gsap.fromTo(
     ".dollar-icon-container",
     {
-      left: "35%",
-      bottom: "60%",
+      left: "40%",
+      top: "0%",
     },
     {
-      left: "35%",
-      bottom: "150%",
+      left: "40%",
+      top: "-100%",
       duration: __duration,
     }
   );
@@ -482,12 +563,10 @@ function animateSection5() {
   gsap.fromTo(
     ".economic-rejuvenation-div",
     {
-      top: '5%',
-      bottom: '-150%',
+      top: "25%",
     },
     {
-      top: '-100%',
-      bottom: '0%',
+      top: "-100%",
       duration: __duration,
     }
   );
@@ -495,10 +574,11 @@ function animateSection5() {
   gsap.fromTo(
     ".trending-icon-container",
     {
-      bottom: "0%",
+      top: "55%",
     },
     {
-      bottom: "55%",
+      top: "0%",
+      right: "-20%",
       duration: __duration,
     }
   );
@@ -506,10 +586,10 @@ function animateSection5() {
   gsap.fromTo(
     ".inclusive-growth-div",
     {
-      bottom: "-150%",
+      top: "100%",
     },
     {
-      top: "5%",
+      top: "15%",
       duration: __duration,
     }
   );
@@ -530,21 +610,21 @@ function animateSection6() {
   gsap.fromTo(
     ".main-home-screen",
     {
-      top: '0%',
+      top: "0%",
     },
     {
-      top: '-150%',
+      top: "-100%",
       duration: __duration,
     }
   );
 
-    gsap.fromTo(
+  gsap.fromTo(
     ".nsm_membership_slider_div",
     {
-      bottom: '-150%',
+      top: "100%",
     },
     {
-      bottom: '-5%',
+      top: "5%",
       duration: __duration,
     }
   );
@@ -553,10 +633,11 @@ function animateSection6() {
   gsap.fromTo(
     ".nsm_mobile_arrow img",
     {
-      filter: 'invert(100%) sepia(0%) saturate(0%) hue-rotate(231deg) brightness(102%) contrast(1000%)',
+      filter:
+        "invert(100%) sepia(0%) saturate(0%) hue-rotate(231deg) brightness(102%) contrast(1000%)",
     },
     {
-      filter: 'unset',
+      filter: "unset",
       duration: 0,
     }
   );
@@ -588,10 +669,10 @@ function animateSection7() {
   gsap.fromTo(
     ".nsm_footer-area-dark",
     {
-      bottom: '-150%',
+      top: "100%",
     },
     {
-      bottom: '0%',
+      top: "0%",
       duration: __duration,
     }
   );
@@ -617,76 +698,108 @@ function animateSectionReverse1() {
   var __duration = GLOBLE_ANIMATION_DURATION;
   isAnimating = true;
 
+  // position logo
   gsap.fromTo(
     ".logo-div",
     {
-      top: "-3%",
-      left: "-42%",
-      scale: 0.27,
-      textShadow: "0 0 2px rgba(0,0,0,0)",
+      top: "0%",
+      left: "-22%",
+      // textAlign:"left",
+      duration: __duration,
     },
     {
-      top: "80vh",
-      left: "-14%",
-      scale: 1,
-      textShadow: "0 0 2px rgba(0,0,0,0.3)",
+      top: "2vh",
+      left: "0%",
+      // textAlign:"center",
+    }
+  );
+
+  // change logo color og to white
+  gsap.fromTo(
+    ".logo-div img",
+    {
+      filter:
+        "invert(100%) sepia(0%) saturate(0%) hue-rotate(231deg) brightness(102%) contrast(1000%)",
+    },
+    {
+      filter: "unset",
+      duration: 0,
+    }
+  );
+
+  // position logo
+  gsap.fromTo(
+    ".header-container",
+    {
+      top: "0",
+    },
+    {
+      top: "-50",
+    }
+  );
+
+  // position scroll button
+  gsap.fromTo(
+    ".nsm_mobile_arrow",
+    {
+      top: "unset",
+      bottom: "20%",
+      duration: 1,
+    },
+    {
+      top: "40%",
+    }
+  );
+
+  // change mobile arrow icon color og to white
+  gsap.fromTo(
+    ".nsm_mobile_arrow img",
+    {
+      opacity: 0,
+      filter:
+        "invert(100%) sepia(0%) saturate(0%) hue-rotate(231deg) brightness(102%) contrast(1000%)",
+    },
+    {
+      filter: "unset",
+      opacity: 1,
       duration: __duration,
     }
   );
 
+  // position scroll button
   gsap.fromTo(
     ".driving-innovative-carousel",
     {
-      xPercent: 0,
-      yPercent: -400,
+      top: "-100%",
     },
     {
-      xPercent: 0,
-      yPercent: 0,
-      duration: __duration,
+      top: "20%",
+      ease: "power3.out",
+      duration: 2,
     }
   );
 
+  // Show we-are-innovation-div from bottom
   gsap.fromTo(
     ".we-are-innovation-div",
     {
-      display: "none",
-      xPercent: 0,
-      yPercent: 0,
+      top: "0%",
     },
     {
-      xPercent: 0,
-      yPercent: 200,
-      display: "flex",
-      duration: __duration,
-    }
-  );
-  gsap.fromTo(
-    ".thought-leadership-div",
-    {
-      yPercent: 0,
-      display: "none",
-    },
-    {
-      yPercent: 200,
-      display: "flex",
+      top: "100%",
       duration: __duration,
     }
   );
 
+  // Show we-are-innovation-div from bottom
   gsap.fromTo(
-    ".nsm_fix-nav",
+    ".brain-icon-div",
     {
-      xPercent: 2,
       opacity: 1,
-      display: "flex",
     },
     {
-      xPercent: -100,
       opacity: 0,
-      display: "none",
-      duration: 1,
-      ease: "power3.out",
+      duration: __duration,
     }
   );
 
@@ -703,19 +816,28 @@ function animateSectionReverse2() {
   var __duration = GLOBLE_ANIMATION_DURATION;
   isAnimating = true;
 
-  setTimeout(function () {
-    $(".nsm_navbar").removeClass("nsm_navbar_white");
-  }, 50);
-
   gsap.fromTo(
-    ".we-are-innovation-div",
+    ".we-are-innovation-container",
     {
-      yPercent: -200,
-      opacity: 1,
+      top: "-50%",
     },
     {
-      opacity: 1,
-      yPercent: -60,
+      top: "13%",
+      duration: __duration,
+    }
+  );
+
+  gsap.fromTo(
+    ".brain-icon-div",
+    {
+      scale: 0.8,
+      top: "-1%",
+      xPercent: 45,
+    },
+    {
+      scale: 1,
+      top: "50%",
+      xPercent: 0,
       duration: __duration,
     }
   );
@@ -723,78 +845,10 @@ function animateSectionReverse2() {
   gsap.fromTo(
     ".thought-leadership-div",
     {
-      // top: 0,
-      // left: 0,
-      bottom: 0,
-      right: 0,
-      height: "100%",
-      width: "100%",
-      yPercent: 0,
-      borderRadius: 0,
+      top: "15%",
     },
     {
-      // top: "unset",
-      // left: "unset",
-      bottom: "-18%",
-      right: "5%",
-      height: "60vh",
-      width: "55vh",
-      borderRadius: 20,
-      duration: __duration,
-    }
-  );
-
-  gsap.fromTo(
-    ".thought-leadership-box",
-    {
-      xPercent: 70,
-      yPercent: 20,
-    },
-    {
-      xPercent: 0,
-      yPercent: 0,
-      duration: __duration,
-    }
-  );
-
-  gsap.fromTo(
-    ".red-bg-container",
-    {
-      opacity: 1,
-      display: "flex",
-    },
-    {
-      opacity: 0,
-      display: "none",
-      duration: __duration,
-    }
-  );
-
-  gsap.fromTo(
-    ".brain-icon-container",
-    {
-      opacity: 1,
-      right: "2%",
-      top: "2%",
-    },
-    {
-      opacity: 0,
-      right: "40%",
-      top: "40%",
-
-      duration: __duration,
-    }
-  );
-
-  gsap.fromTo(
-    ".nasscom-members-container",
-    {
-      xPercent: 200,
-      yPercent: -40,
-    },
-    {
-      xPercent: 60,
-      yPercent: 50,
+      top: "100%",
       duration: __duration,
     }
   );
@@ -806,7 +860,7 @@ function animateSectionReverse2() {
     },
     {
       opacity: 0,
-      duration: 3,
+      duration: __duration,
     }
   );
 
@@ -823,47 +877,28 @@ function animateSectionReverse3() {
   var __duration = GLOBLE_ANIMATION_DURATION;
   isAnimating = true;
 
-  setTimeout(function () {
-    $(".nsm_navbar").addClass("nsm_navbar_white");
-  }, 300);
-
   gsap.fromTo(
-    ".thought-leadership-box",
+    ".thought-leadership-div",
     {
-      xPercent: 80,
-      yPercent: -200,
+      top: "-100%",
     },
     {
-      xPercent: 70,
-      yPercent: 20,
+      top: "15%",
       duration: __duration,
     }
   );
 
   gsap.fromTo(
-    ".brain-icon-container",
+    ".brain-icon-div",
     {
-      scale: 0.2,
-      right: "2%",
-      top: "-200%",
+      scale: 0.8,
+      top: "-10%",
+      xPercent: -45,
     },
     {
-      scale: 1,
-      right: "2%",
-      top: "2%",
-      duration: __duration,
-    }
-  );
-
-  gsap.fromTo(
-    ".nasscom-members-container",
-    {
-      xPercent: 60,
-      yPercent: -160,
-    },
-    {
-      xPercent: 200,
-      yPercent: -40,
+      scale: 0.8,
+      top: "-1%",
+      xPercent: 45,
       duration: __duration,
     }
   );
@@ -871,27 +906,23 @@ function animateSectionReverse3() {
   gsap.fromTo(
     ".dollar-icon-container",
     {
-      left: "30%",
-      bottom: "2%",
+      left: "50%",
+      top: "55%",
     },
     {
-      left: "20%",
-      bottom: "-18%",
+      left: "-20%",
+      top: "60%",
       duration: __duration,
     }
   );
+
   gsap.fromTo(
-    ".economic-rejuvenation-div",
+    ".nasscom-members-div",
     {
-      opacity: 1,
-      right: "5%",
-      top: "30%",
+      top: "25%",
     },
     {
-      opacity: 0,
-      right: "30%",
       top: "100%",
-
       duration: __duration,
     }
   );
@@ -909,32 +940,28 @@ function animateSectionReverse4() {
   var __duration = GLOBLE_ANIMATION_DURATION;
   isAnimating = true;
 
-  setTimeout(function () {
-    $(".nsm_navbar").addClass("nsm_navbar_white");
-  }, 300);
-
   gsap.fromTo(
-    ".nasscom-members-container",
+    ".brain-icon-div",
     {
-      xPercent: 60,
-      yPercent: -300,
+      scale: 0.8,
+      top: "-100%",
+      xPercent: -45,
     },
     {
-      xPercent: 60,
-      yPercent: -160,
+      scale: 0.8,
+      top: "-10%",
+      xPercent: -45,
       duration: __duration,
     }
   );
 
   gsap.fromTo(
-    ".economic-rejuvenation-div",
+    ".nasscom-members-div",
     {
-      right: "5%",
       top: "-100%",
     },
     {
-      right: "5%",
-      top: "30%",
+      top: "25%",
       duration: __duration,
     }
   );
@@ -942,26 +969,16 @@ function animateSectionReverse4() {
   gsap.fromTo(
     ".dollar-icon-container",
     {
-      left: "18%",
-      bottom: "58%",
+      left: "40%",
+      top: "0%",
     },
-    {
-      left: "30%",
-      bottom: "2%",
-      duration: __duration,
-    }
+    { left: "50%", top: "50%", duration: __duration }
   );
 
   gsap.fromTo(
-    ".inclusive-growth-div",
+    ".economic-rejuvenation-div",
+    { top: "15%" },
     {
-      opacity: 1,
-      right: "18%",
-      top: "22%",
-    },
-    {
-      opacity: 0,
-      right: "30%",
       top: "100%",
       duration: __duration,
     }
@@ -970,14 +987,11 @@ function animateSectionReverse4() {
   gsap.fromTo(
     ".trending-icon-container",
     {
-      opacity: 1,
-      left: "35%",
-      bottom: "-5%",
+      top: "55%",
     },
     {
-      opacity: 0,
-      left: "50%",
-      bottom: "-20%",
+      top: "100%",
+
       duration: __duration,
     }
   );
@@ -995,36 +1009,26 @@ function animateSectionReverse5() {
   var __duration = GLOBLE_ANIMATION_DURATION;
   isAnimating = true;
 
-  setTimeout(function () {
-    $(".nsm_navbar").addClass("nsm_navbar_white");
-  }, 300);
-
   gsap.fromTo(
     ".dollar-icon-container",
     {
-      opacity: 0,
-      left: "10%",
-      bottom: "100%",
+      left: "40%",
+      top: "-100%",
     },
     {
-      opacity: 1,
-      left: "18%",
-      bottom: "58%",
+      left: "40%",
+      top: "0%",
       duration: __duration,
     }
   );
 
   gsap.fromTo(
-    ".inclusive-growth-div",
+    ".economic-rejuvenation-div",
     {
-      opacity: 0,
-      right: "18%",
-      top: "-22%",
+      top: "-100%",
     },
     {
-      opacity: 1,
-      right: "18%",
-      top: "22%",
+      top: "25%",
       duration: __duration,
     }
   );
@@ -1032,54 +1036,23 @@ function animateSectionReverse5() {
   gsap.fromTo(
     ".trending-icon-container",
     {
-      opacity: 0,
-      left: "20%",
-      bottom: "30%",
+      top: "0%",
+      right: "-20%",
     },
     {
-      opacity: 1,
-      left: "35%",
-      bottom: "-5%",
+      top: "55%",
       duration: __duration,
     }
   );
 
   gsap.fromTo(
-    ".main-home-screen",
+    ".inclusive-growth-div",
     {
-      opacity: 0,
-      height: "0vh",
+      top: "15%",
     },
     {
-      opacity: 1,
-      height: "100vh",
-      duration: 1,
-    }
-  );
-
-  gsap.fromTo(
-    ".thought-leadership-div",
-    {
-      xPercent: 0,
-      yPercent: -100,
-    },
-    {
-      xPercent: 0,
-      yPercent: 0,
-      duration: 1,
-    }
-  );
-
-  gsap.fromTo(
-    ".nsm_membership_slider_div",
-    {
-      opacity: 1,
-      height: "100vh",
-    },
-    {
-      opacity: 0,
-      height: "0vh",
-      duration: 1,
+      top: "100%",
+      duration: __duration,
     }
   );
 
@@ -1096,33 +1069,13 @@ function animateSectionReverse6() {
   var __duration = 1;
   isAnimating = true;
 
-  setTimeout(function () {
-    $(".nsm_navbar").removeClass("nsm_navbar_white");
-  }, 300);
-
   gsap.fromTo(
-    ".nsm_side-area",
+    ".main-home-screen",
     {
-      opacity: 0,
+      top: "-100%",
     },
     {
-      opacity: 1,
-      duration: __duration,
-    }
-  );
-  gsap.fromTo(
-    ".know-more-about-memeber",
-    {
-      // opacity: 0,
-      scale: 1.6,
-      xPercent: 100,
-      yPercent: -1000,
-    },
-    {
-      // opacity: 1,
-      scale: 1,
-      xPercent: 0,
-      yPercent: 0,
+      top: "0%",
       duration: __duration,
     }
   );
@@ -1130,60 +1083,64 @@ function animateSectionReverse6() {
   gsap.fromTo(
     ".nsm_membership_slider_div",
     {
-      opacity: 0,
-      height: "0vh",
-      top: "-100%",
+      top: "5%",
     },
     {
-      opacity: 1,
-      height: "100vh",
-      top: "0%",
-      duration: __duration,
-    }
-  );
-
-  gsap.fromTo(
-    ".nsm_footer_div",
-    {
-      opacity: 1,
-      top: "0%",
-      height: "100vh",
-    },
-    {
-      opacity: 0,
       top: "100%",
-      height: "0vh",
-
       duration: __duration,
     }
   );
 
+  // change mobile arrow icon color og to white
   gsap.fromTo(
-    ".footer-text-div",
+    ".nsm_mobile_arrow img",
     {
-      top: 0,
-      left: 0,
+      filter: "unset",
     },
     {
-      top: -100,
-      left: -100,
-      duration: 1,
-    }
-  );
-
-  gsap.fromTo(
-    ".main",
-    {
-      zIndex: 100,
-    },
-    {
-      zIndex: 98,
-      duration: 1,
+      filter:
+        "invert(100%) sepia(0%) saturate(0%) hue-rotate(231deg) brightness(102%) contrast(1000%)",
+      duration: 0,
     }
   );
 
   setTimeout(() => {
     isAnimating = false;
     animationSectionNumber = 5;
+  }, __duration * ANIMATION_TIMEOUT_MS);
+}
+
+function animateSectionReverse7() {
+  // check if aleady animating
+  if (isAnimating) return false;
+
+  var __duration = 1;
+  isAnimating = true;
+
+  gsap.fromTo(
+    ".nsm_mobile_arrow",
+    {
+      opacity: 0,
+    },
+    {
+      opacity: 1,
+      duration: __duration,
+    }
+  );
+
+  gsap.fromTo(
+    ".nsm_footer-area-dark",
+    {
+      top: "0%",
+    },
+    {
+      top: "100%",
+      duration: __duration,
+    }
+  );
+
+  setTimeout(() => {
+    isAnimating = false;
+    animationSectionNumber = 6;
   }, __duration * ANIMATION_TIMEOUT_MS);
 }
