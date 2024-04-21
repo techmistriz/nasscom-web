@@ -27,7 +27,7 @@
     <div id="fullpage">
         <div class="container-fluid main">
 
-            <div class="header-container">
+            <div class="header-container homenav">
                 <div class="row align-items-center position-relative">
                     <div class="col-6 position-relative">
                         <!-- <div class="logo-div1">
@@ -36,11 +36,35 @@
                         </div> -->
                     </div>
                     <div class="col-6">
-                        <div class="text-end">
+                        <!-- <div class="text-end">
                             <a href="#"><img src="./assets/images/hamburger-white.svg"
                                     class="img-fluid hamburger-icon"></a>
+                        </div> -->
+                        <div class="hamburger_icon home-toggle">
+                            <img src="assets/images/lucide_menu.svg" class="toggle_icon">
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <div class="nsm_fix-nav-inner">
+                <ul class="nsm_navbar-inner">
+                        <li class="has_children">
+                            <a href="#">About</a>
+                            <ul class="dropdown_menu">
+                                <li><a href="about-us.html">Know us better</a></li>
+                                <li><a href="membership.html">Membership</a></li>
+                                <li><a href="people.html">People</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Engage</a></li>
+                        <li><a href="#">Sectors</a></li>
+                        <li><a href="perspectives.html">Perspectives</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="#" id="myBtn">Login</a></li>
+                </ul>
+                <div class="hamburger_icon">
+                    <img src="assets/images/close_icon.svg" class="close_icon">
                 </div>
             </div>
 
@@ -506,6 +530,26 @@
         });
         
         $(window).scroll(fixDiv);*/
+
+        $(".hamburger_icon .toggle_icon").click(function() {
+                $(this).toggleClass("on");
+                $(".nsm_fix-nav-inner").slideDown("slow");
+            });
+
+            $(".hamburger_icon .close_icon").click(function() {
+                $(this).toggleClass("on");
+                $(".nsm_fix-nav-inner").slideUp("fast");
+            });
+
+
+            $('.has_children').on('click',function(){
+    $(this).toggleClass("bold");
+  $(this).children(".dropdown_menu").slideToggle(280);
+});
+
+$('.dropdown_menu li').on('click',function(){
+  $(this).toggleClass("active");
+});
 
         $(document).ready(function () {
 

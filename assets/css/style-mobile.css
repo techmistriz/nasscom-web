@@ -6090,6 +6090,28 @@ select {
     width: 85vw;
     opacity: 1 !important;
   }
+
+  .nsm_footer-area-dark .nsm_footer-social{
+    display: inherit;
+  }
+
+  .nsm_footer-social img {
+        width: 15vw;
+        margin-right: 8vw;
+    }
+
+        .home-toggle {
+        position: absolute;
+        top: 0.5vw;
+        right: 3%;
+        display: block;
+    }
+
+    .homenav{
+      height: 70px;
+    }
+
+
 }
 
 /*----- homepage mobile code end -----*/
