@@ -19,10 +19,10 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- Custom css -->
-    <link href="./assets/css/style-mobile.css?v=1.18" rel="stylesheet">
+    <link href="./assets/css/style-mobile.css?v=1.19" rel="stylesheet">
 </head>
 
-<body class="homepage" style="overflow:hidden;">
+<body class="homepage" id="body" style="overflow:hidden;">
 
     <div id="fullpage">
         <div class="container-fluid main">
@@ -47,7 +47,7 @@
                 </div>
             </div>
 
-            <div class="nsm_fix-nav-inner">
+            <!-- <div class="nsm_fix-nav-inner">
                 <ul class="nsm_navbar-inner">
                         <li class="has_children">
                             <a href="#">About</a>
@@ -66,7 +66,7 @@
                 <div class="hamburger_icon">
                     <img src="assets/images/close_icon.svg" class="close_icon">
                 </div>
-            </div>
+            </div> -->
 
             <div class="red-bg-container"> </div>
 
@@ -281,7 +281,7 @@
                         <div class="col-md-12">
                             <div class="nsm_footer-widget scrolling-wrapper">
                                 <div class="nsm_withimage-block nsm_block_footer">
-                                    <img src="assets/images/footer-dummy-image.png" width="100%">
+                                    <img class="footer-slider-img" src="assets/images/footer-dummy-image.png" width="100%">
                                 </div>
                                 <div class="nsm_withtext-block widget-reddark nsm_block_footer">
                                     <div class="nsm_desc">
@@ -300,7 +300,7 @@
                                     </div>
                                 </div>
                                 <div class="nsm_withimage-block nsm_block_footer">
-                                    <img src="assets/images/footer-dummy-image.png" width="100%">
+                                    <img class="footer-slider-img" src="assets/images/footer-dummy-image.png" width="100%">
                                 </div>
                                 <div class="nsm_withtext-block widget-reddark nsm_block_footer">
                                     <div class="nsm_desc">
@@ -374,136 +374,147 @@
                             </div>
                         </div>
 
-                        <div class="row">
-                            <div class="col-md-12 p-0">
-                                <h6 class="cat title_h61 text-white">Events</h6>
-                                <div class="row pb-4">
-                                    <div class="owl-carousel">
-                                        <div class="single-item item">
-                                            <div class="nsm_single-card"
-                                                style="background-image:url('./assets/images/dummy-image-event.png') ;">
-                                                <div class="nsm_cat">event</div>
-                                                <div class="nsm_cat-arrow">
-                                                    <a href="#">
-                                                        <img src="./assets/images/arrow-topright.svg">
-                                                    </a>
+                        <div class="whats-new-scrolling-wrapper">
+                            <div class="row">
+                                <div class="col-md-12 p-0">
+                                    <h6 class="cat title_h61 text-white">Events</h6>
+                                    <div class="row pb-4">
+                                        <div class="owl-carousel">
+                                            <div class="single-item item">
+                                                <div class="nsm_single-card"
+                                                    style="background-image:url('./assets/images/dummy-image-event.png') ;">
+                                                    <div class="nsm_cat">event</div>
+                                                    <div class="nsm_cat-arrow">
+                                                        <a href="#">
+                                                            <img src="./assets/images/arrow-topright.svg">
+                                                        </a>
+                                                    </div>
+                                                    <h6 class="title_h6">G20 Summit, Techconference by Nasscom Konnect
+                                                    </h6>
                                                 </div>
-                                                <h6 class="title_h6">G20 Summit, Techconference by Nasscom Konnect</h6>
                                             </div>
-                                        </div>
-                                        <div class="single-item item">
-                                            <div class="nsm_single-card"
-                                                style="background-image:url('./assets/images/dummy-image-event.png') ;">
-                                                <div class="nsm_cat">event</div>
-                                                <div class="nsm_cat-arrow">
-                                                    <a href="#">
-                                                        <img src="./assets/images/arrow-topright.svg">
-                                                    </a>
+                                            <div class="single-item item">
+                                                <div class="nsm_single-card"
+                                                    style="background-image:url('./assets/images/dummy-image-event.png') ;">
+                                                    <div class="nsm_cat">event</div>
+                                                    <div class="nsm_cat-arrow">
+                                                        <a href="#">
+                                                            <img src="./assets/images/arrow-topright.svg">
+                                                        </a>
+                                                    </div>
+                                                    <h6 class="title_h6">G20 Summit, Techconference by Nasscom Konnect
+                                                    </h6>
                                                 </div>
-                                                <h6 class="title_h6">G20 Summit, Techconference by Nasscom Konnect</h6>
                                             </div>
-                                        </div>
-                                        <div class="single-item item">
-                                            <div class="nsm_single-card"
-                                                style="background-image:url('./assets/images/dummy-image-event.png') ;">
-                                                <div class="nsm_cat">event</div>
-                                                <div class="nsm_cat-arrow">
-                                                    <a href="#">
-                                                        <img src="./assets/images/arrow-topright.svg">
-                                                    </a>
+                                            <div class="single-item item">
+                                                <div class="nsm_single-card"
+                                                    style="background-image:url('./assets/images/dummy-image-event.png') ;">
+                                                    <div class="nsm_cat">event</div>
+                                                    <div class="nsm_cat-arrow">
+                                                        <a href="#">
+                                                            <img src="./assets/images/arrow-topright.svg">
+                                                        </a>
+                                                    </div>
+                                                    <h6 class="title_h6">G20 Summit, Techconference by Nasscom Konnect
+                                                    </h6>
                                                 </div>
-                                                <h6 class="title_h6">G20 Summit, Techconference by Nasscom Konnect</h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <h6 class="cat title_h61 text-white">Publications</h6>
-
-                                <div class="row pb-4">
-                                    <div class="owl-carousel">
-                                        <div class="single-item item">
-                                            <div class="nsm_single-card"
-                                                style="background-image:url('./assets/images/dummy-image-event.png') ;">
-                                                <div class="nsm_cat">event</div>
-                                                <div class="nsm_cat-arrow">
-                                                    <a href="#">
-                                                        <img src="./assets/images/arrow-topright.svg">
-                                                    </a>
-                                                </div>
-                                                <h6 class="title_h6">G20 Summit, Techconference by Nasscom Konnect</h6>
-                                            </div>
-                                        </div>
-                                        <div class="single-item item">
-                                            <div class="nsm_single-card"
-                                                style="background-image:url('./assets/images/dummy-image-event.png') ;">
-                                                <div class="nsm_cat">event</div>
-                                                <div class="nsm_cat-arrow">
-                                                    <a href="#">
-                                                        <img src="./assets/images/arrow-topright.svg">
-                                                    </a>
-                                                </div>
-                                                <h6 class="title_h6">G20 Summit, Techconference by Nasscom Konnect</h6>
-                                            </div>
-                                        </div>
-                                        <div class="single-item item">
-                                            <div class="nsm_single-card"
-                                                style="background-image:url('./assets/images/dummy-image-event.png') ;">
-                                                <div class="nsm_cat">event</div>
-                                                <div class="nsm_cat-arrow">
-                                                    <a href="#">
-                                                        <img src="./assets/images/arrow-topright.svg">
-                                                    </a>
-                                                </div>
-                                                <h6 class="title_h6">G20 Summit, Techconference by Nasscom Konnect</h6>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <h6 class="cat title_h61 text-white">Insight</h6>
+                                    <h6 class="cat title_h61 text-white">Publications</h6>
 
-                                <div class="row pb-4">
-                                    <div class="owl-carousel">
-                                        <div class="single-item item">
-                                            <div class="nsm_single-card"
-                                                style="background-image:url('./assets/images/dummy-image-event.png') ;">
-                                                <div class="nsm_cat">event</div>
-                                                <div class="nsm_cat-arrow">
-                                                    <a href="#">
-                                                        <img src="./assets/images/arrow-topright.svg">
-                                                    </a>
+                                    <div class="row pb-4">
+                                        <div class="owl-carousel">
+                                            <div class="single-item item">
+                                                <div class="nsm_single-card"
+                                                    style="background-image:url('./assets/images/dummy-image-event.png') ;">
+                                                    <div class="nsm_cat">event</div>
+                                                    <div class="nsm_cat-arrow">
+                                                        <a href="#">
+                                                            <img src="./assets/images/arrow-topright.svg">
+                                                        </a>
+                                                    </div>
+                                                    <h6 class="title_h6">G20 Summit, Techconference by Nasscom Konnect
+                                                    </h6>
                                                 </div>
-                                                <h6 class="title_h6">G20 Summit, Techconference by Nasscom Konnect</h6>
                                             </div>
-                                        </div>
-                                        <div class="single-item item">
-                                            <div class="nsm_single-card"
-                                                style="background-image:url('./assets/images/dummy-image-event.png') ;">
-                                                <div class="nsm_cat">event</div>
-                                                <div class="nsm_cat-arrow">
-                                                    <a href="#">
-                                                        <img src="./assets/images/arrow-topright.svg">
-                                                    </a>
+                                            <div class="single-item item">
+                                                <div class="nsm_single-card"
+                                                    style="background-image:url('./assets/images/dummy-image-event.png') ;">
+                                                    <div class="nsm_cat">event</div>
+                                                    <div class="nsm_cat-arrow">
+                                                        <a href="#">
+                                                            <img src="./assets/images/arrow-topright.svg">
+                                                        </a>
+                                                    </div>
+                                                    <h6 class="title_h6">G20 Summit, Techconference by Nasscom Konnect
+                                                    </h6>
                                                 </div>
-                                                <h6 class="title_h6">G20 Summit, Techconference by Nasscom Konnect</h6>
                                             </div>
-                                        </div>
-                                        <div class="single-item item">
-                                            <div class="nsm_single-card"
-                                                style="background-image:url('./assets/images/dummy-image-event.png') ;">
-                                                <div class="nsm_cat">event</div>
-                                                <div class="nsm_cat-arrow">
-                                                    <a href="#">
-                                                        <img src="./assets/images/arrow-topright.svg">
-                                                    </a>
+                                            <div class="single-item item">
+                                                <div class="nsm_single-card"
+                                                    style="background-image:url('./assets/images/dummy-image-event.png') ;">
+                                                    <div class="nsm_cat">event</div>
+                                                    <div class="nsm_cat-arrow">
+                                                        <a href="#">
+                                                            <img src="./assets/images/arrow-topright.svg">
+                                                        </a>
+                                                    </div>
+                                                    <h6 class="title_h6">G20 Summit, Techconference by Nasscom Konnect
+                                                    </h6>
                                                 </div>
-                                                <h6 class="title_h6">G20 Summit, Techconference by Nasscom Konnect</h6>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
 
+                                    <h6 class="cat title_h61 text-white">Insight</h6>
+
+                                    <div class="row pb-4">
+                                        <div class="owl-carousel">
+                                            <div class="single-item item">
+                                                <div class="nsm_single-card"
+                                                    style="background-image:url('./assets/images/dummy-image-event.png') ;">
+                                                    <div class="nsm_cat">event</div>
+                                                    <div class="nsm_cat-arrow">
+                                                        <a href="#">
+                                                            <img src="./assets/images/arrow-topright.svg">
+                                                        </a>
+                                                    </div>
+                                                    <h6 class="title_h6">G20 Summit, Techconference by Nasscom Konnect
+                                                    </h6>
+                                                </div>
+                                            </div>
+                                            <div class="single-item item">
+                                                <div class="nsm_single-card"
+                                                    style="background-image:url('./assets/images/dummy-image-event.png') ;">
+                                                    <div class="nsm_cat">event</div>
+                                                    <div class="nsm_cat-arrow">
+                                                        <a href="#">
+                                                            <img src="./assets/images/arrow-topright.svg">
+                                                        </a>
+                                                    </div>
+                                                    <h6 class="title_h6">G20 Summit, Techconference by Nasscom Konnect
+                                                    </h6>
+                                                </div>
+                                            </div>
+                                            <div class="single-item item">
+                                                <div class="nsm_single-card"
+                                                    style="background-image:url('./assets/images/dummy-image-event.png') ;">
+                                                    <div class="nsm_cat">event</div>
+                                                    <div class="nsm_cat-arrow">
+                                                        <a href="#">
+                                                            <img src="./assets/images/arrow-topright.svg">
+                                                        </a>
+                                                    </div>
+                                                    <h6 class="title_h6">G20 Summit, Techconference by Nasscom Konnect
+                                                    </h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -524,123 +535,15 @@
         integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- Custom script -->
-    <script src="./assets/js/gsapAnimation-mobile.js?v=1.16"></script>
+    <script src="./assets/js/gsapAnimation-mobile.js?v=1.19"></script>
 
     <script>
 
-        // $(".tabs-nav").data("top", $(".tabs-nav").offset().top); // set original position on load
-
-        // $('.has_children').on('click',function(){
-        //     $(this).toggleClass("bold");
-        //     $(this).children(".dropdown_menu").slideToggle(280);
-        // });
-
-        // $('.dropdown_menu li').on('click',function(){
-        //     $(this).toggleClass("active");
-        // });
-
-        // // Get the modal
-        // var modal = document.getElementById("loginregister_page");
-
-        // // Get the button that opens the modal
-        // var btn = document.getElementById("myBtn");
-
-        // // Get the <span> element that closes the modal
-        // var span = document.getElementsByClassName("form_close")[0];
-
-        // // When the user clicks the button, open the modal 
-        // btn.onclick = function() {
-        //     modal.style.display = "block";
-        // }
-
-        // // When the user clicks on <span> (x), close the modal
-        // span.onclick = function() {
-        //     modal.style.display = "none";
-        // }
-
-        // // When the user clicks anywhere outside of the modal, close it
-        // window.onclick = function(event) {
-        //     if (event.target == modal) {
-        //         modal.style.display = "none";
-        //     }
-        // }
-
-        /*$(window).scroll(function(){
-            if ($(this).scrollTop() > 600) {
-               $('.secondary-header').addClass('showheader');
-            } else {
-               $('.secondary-header').removeClass('showheader');
-            }
-        });
-        
-        $(window).scroll(fixDiv);*/
-
-        $(".hamburger_icon .toggle_icon").click(function() {
-                $(this).toggleClass("on");
-                $(".nsm_fix-nav-inner").slideDown("slow");
-            });
-
-            $(".hamburger_icon .close_icon").click(function() {
-                $(this).toggleClass("on");
-                $(".nsm_fix-nav-inner").slideUp("fast");
-            });
-
-
-            $('.has_children').on('click',function(){
-    $(this).toggleClass("bold");
-  $(this).children(".dropdown_menu").slideToggle(280);
-});
-
-$('.dropdown_menu li').on('click',function(){
-  $(this).toggleClass("active");
-});
-
         $(document).ready(function () {
 
-            $('.tabs-nav a').click(function () {
-
-                // Check for active
-                $('.tabs-nav li').removeClass('active');
-                $(this).parent().addClass('active');
-
-                // Display active tab
-                let currentTab = $(this).attr('href');
-                $('.tabs-content .tab-item').hide();
-                $(currentTab).show();
-
-                return false;
-            });
-
-            // $('.nsm_side-area-expand').hide();
             __owlCarouselInit(100);
             scrollingSlider();
-
-            $('.expand-btn').on("click", function () {
-                $('.nsm_side-area').toggleClass('nsm_side-area-full');
-                // $('.expand-btn').toggleClass('collapse-btn');
-                if ($(".nsm_side-area").hasClass("nsm_side-area-full")) {
-                    $('.expand-btn').text('COLLAPSE');
-                } else {
-                    $('.expand-btn').text('EXPAND');
-                }
-                $('.nsm_side-area-expand').toggle();
-                $('.nsm_small_sidbar_content').toggle();
-                __owlCarouselInit(1200);
-            });
         });
-
-        function fixDiv() {
-
-            var $div = $(".tabs-nav");
-            if ($(window).scrollTop() > $div.data("top")) {
-
-                $('.tabs-nav').addClass('stickyelement');
-
-            } else {
-
-                $('.tabs-nav').removeClass('stickyelement');
-            }
-        }
 
         function __owlCarouselInit(timeout = 100) {
 
@@ -717,7 +620,6 @@ $('.dropdown_menu li').on('click',function(){
         }
 
     </script>
-
 </body>
 
 </html>
