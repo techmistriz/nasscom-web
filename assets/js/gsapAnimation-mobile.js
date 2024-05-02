@@ -64,7 +64,7 @@ $(document).ready(function () {
           // top: "90%",
         },
         {
-          top: "40%",
+          top: "50%",
           duration: __duration,
         }
       );
@@ -109,7 +109,7 @@ $(document).ready(function () {
           // top: "90%",
         },
         {
-          top: "40%",
+          top: "84%",
           duration: __duration,
         }
       );
@@ -143,7 +143,7 @@ $(document).ready(function () {
           // top: "90%",
         },
         {
-          top: "40%",
+          top: "50%",
           duration: __duration,
         }
       );
@@ -337,16 +337,6 @@ function animateSection1() {
     }
   );
 
-  // $(".box").on("mouseenter", function () {
-  //   var duration = 1;
-  //   TweenMax.to(this, duration / 4, { y: -50, ease: Power2.easeOut });
-  //   TweenMax.to(this, duration / 2, {
-  //     y: 0,
-  //     ease: Bounce.easeOut,
-  //     delay: duration / 4,
-  //   });
-  // });
-
   // Show we-are-innovation-div from bottom
   gsap.fromTo(
     ".we-are-innovation-div",
@@ -368,6 +358,20 @@ function animateSection1() {
     },
     {
       opacity: 1,
+      duration: __duration,
+    }
+  );
+
+  // Show we-are-innovation-div from bottom
+  gsap.fromTo(
+    ".nsm_whats_new_strip",
+    {
+      opacity: 0,
+      top: "100%",
+    },
+    {
+      opacity: 1,
+      top: "84%",
       duration: __duration,
     }
   );
@@ -681,7 +685,7 @@ function animateSection6() {
       top: "100%",
     },
     {
-      top: "5%",
+      top: "7%",
       duration: __duration,
     }
   );
@@ -1164,7 +1168,7 @@ function animateSectionReverse6() {
   gsap.fromTo(
     ".nsm_membership_slider_div",
     {
-      top: "5%",
+      top: "7%",
     },
     {
       top: "100%",
