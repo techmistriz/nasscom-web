@@ -9,7 +9,7 @@
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.8/slick.min.css">
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.8/slick-theme.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-<link href="assets/css/style.css" rel="stylesheet">
+<link href="assets/css/style.css?v=1.26" rel="stylesheet">
 </head>
 <body>
 
@@ -19,7 +19,7 @@
             <div class="col-md-12 p-0">
                 <div class="nsm_main-logo">
                     <a href="index.html"><img src="assets/images/logo.svg" alt="" class="desk_logo"></a>
-                    <a href="index.html"><img src="assets/images/Nasscom_Logo_White.svg" alt="" class="mobile_logo"></a>
+                    <a href="index.html"><img src="assets/images/Nasscom_Logo.png" alt="" class="mobile_logo"></a>
                 </div>
             </div>
         </div>
@@ -304,6 +304,11 @@
                     <div class="col-md-6">
                         <input type="number" name="year2" placeholder="Year*" required>
                     </div>
+                    <div class="col-md-12">
+                        <div class="calculate-btn">
+                            <a class="rd-btn" id="myBtn2">Calculate Fee</a>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="row">
@@ -357,6 +362,10 @@
 </section>
 
 
+
+
+
+
 <section class="loginregister_page" id="loginregister_page">
     <div class="container">
         <div class="row">
@@ -394,9 +403,11 @@
                                             <input type="password" name="lg-password" placeholder="Password">
                                         </div>
             
-                                        <div class="col-md-12">
-                                            <input type="checkbox" id="logincheck" name="logincheck" value="Bike">
-                                            <label for="logincheck"> Remember me</label><br>
+                                       <div class="col-md-12">
+                                            <div class="checkbox-container">
+                                                <input type="checkbox" id="logincheck" name="logincheck" value="Bike">
+                                                <label for="logincheck"> Remember me</label><br>
+                                            </div>
                                         </div>
                         
                                         <div class="col-md-12">
@@ -477,6 +488,59 @@
     </div>
 </section>
 
+
+
+<section class="loginregister_page calculatepopup" id="loginregister_page_2">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form_card">
+                    <div class="form_close2"><img src="assets/images/form_close.svg"></div>
+                    <div class="form_logo">
+                        <a href="/"><img src="assets/images/logo.svg"></a>
+                    </div>
+
+                    <div class="popup-title">
+                        Membership Fee
+                    </div>
+                    <div class="popup-content">
+                        <table class="table-items">
+                            <tbody>
+                                <tr>
+                                    <td class="desc">One time admission fee</td>
+                                    <td class="value">₹ 5,000</td>
+                                </tr>
+                                <tr>
+                                    <td class="desc">Annual membership subscription for FY 2024-25</td>
+                                    <td class="value">₹ 2,00,000</td>
+                                </tr>
+                                <tr>
+                                    <td class="desc">GST @ 18%</td>
+                                    <td class="value">₹ 36,00</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <table class="total-charge">
+                            <tbody>
+                                <tr>
+                                    <td class="desc">Total Charges</td>
+                                    <td class="value">₹ 2,41,900</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+                
+                          </ul>
+                        </div>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 
 <footer class="nsm_footer-area-dark">
@@ -614,6 +678,36 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
+
+
+
+// Get the modal
+var modal2 = document.getElementById("loginregister_page_2");
+
+// Get the button that opens the modal
+var btn2 = document.getElementById("myBtn2");
+
+// Get the <span> element that closes the modal
+var span2 = document.getElementsByClassName("form_close2")[0];
+
+// When the user clicks the button, open the modal 
+btn2.onclick = function() {
+  modal2.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span2.onclick = function() {
+  modal2.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal2) {
+    modal2.style.display = "none";
+  }
+}
+
+
 
 
 

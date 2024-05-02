@@ -5867,10 +5867,7 @@ select {
     width: 100%;
     /* top: 50%; */
     bottom: -50%;
-    height: 100vh; /* Use vh as a fallback for browsers that do not support Custom Properties */
-    /* height: calc(var(--vh, 1vh) * 115); */
-    /* height: var(--app-height); */
-    height: calc(100vh + var(--status-bar));
+    height: 100vh;
     background: black;
   }
 

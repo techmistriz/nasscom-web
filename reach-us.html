@@ -9,7 +9,7 @@
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.8/slick.min.css">
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.8/slick-theme.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-<link href="assets/css/style.css" rel="stylesheet">
+<link href="assets/css/style.css?v=1.1" rel="stylesheet">
 </head>
 <body>
 
@@ -19,7 +19,7 @@
             <div class="col-md-12 p-0">
                 <div class="nsm_main-logo">
                     <a href="index.html"><img src="assets/images/logo.svg" alt="" class="desk_logo"></a>
-                    <a href="index.html"><img src="assets/images/Nasscom_Logo_White.svg" alt="" class="mobile_logo"></a>
+                    <a href="index.html"><img src="assets/images/Nasscom_Logo.png" alt="" class="mobile_logo"></a>
                 </div>
             </div>
         </div>
@@ -76,7 +76,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div id="mycontainer">
-                    <div class="tabs-nav">
+                    <div class="tabs-nav" id="desktop_tab">
                       <ul>
                         <div class="row">
                             <div class="col-md-12">
@@ -93,6 +93,31 @@
                         </div>
                       </ul>
                     </div>
+
+
+                    <!--- This tab section is for mobile-->
+                    <div class="tabs-nav" id="mobile_tab">
+                        <ul class="nav nav-tabs mobilehead_tab" id="myTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                              <button class="nav-link active" id="loc-tab" data-bs-toggle="tab" data-bs-target="#loc" type="button" role="tab" aria-controls="loc" aria-selected="true">Market</button>
+                            </li>
+                          </ul>
+                          <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="loc" role="tabpanel" aria-labelledby="loc-tab">
+                                <div class="mobile_tabitems_block">
+                                    <li class="active"><a href="#tab1">banglore</a></li>
+                                    <li><a href="#tab2">chennai</a></li>
+                                    <li><a href="#tab3">hyderabad</a></li>
+                                    <li><a href="#tab4">kochi</a></li>
+                                    <li><a href="#tab5">kolkata</a></li>
+                                    <li><a href="#tab6">mumbai</a></li>
+                                    <li><a href="#tab7">ncr</a></li>
+                                    <li><a href="#tab8">THIRUVANANTHAPURAM</a></li>
+                                </div>
+                            </div>
+                          </div>
+                    </div>
+                    <!--- This tab section is for mobile-->
                   
                     <section class="tabs-content">
                         <div class="tab-item" id="tab1">
@@ -105,7 +130,7 @@
                                             <p class="desc">2nd Floor, Novel MSR PARK, K. No. 731/2389, 93/9, Varthur Main Road, Munnekolalu, Marathahalli, Bengaluru - 560037</p>
                                         
                                             <p class="heading">Phone</p>
-                                            <p class="desc">+91-80-41682064 / 49576017</p>
+                                            <p class="desc"> <a href="tel:+91-80-41682064">+91-80-41682064</a> / <a href="tel:+91-80-49576017">49576017</a></p>
 
                                             <p class="heading">Email</p>
                                             <p class="desc">bangalore@nasscom.in</p>
@@ -256,9 +281,11 @@
                                             <input type="password" name="lg-password" placeholder="Password">
                                         </div>
             
-                                        <div class="col-md-12">
-                                            <input type="checkbox" id="logincheck" name="logincheck" value="Bike">
-                                            <label for="logincheck"> Remember me</label><br>
+                                       <div class="col-md-12">
+                                            <div class="checkbox-container">
+                                                <input type="checkbox" id="logincheck" name="logincheck" value="Bike">
+                                                <label for="logincheck"> Remember me</label><br>
+                                            </div>
                                         </div>
                         
                                         <div class="col-md-12">

@@ -37,69 +37,6 @@ function detectTrackPad2(e) {
   console.log(isTrackpad ? "Trackpad detected" : "Mousewheel detected");
 }
 
-function swipedetect(el, callback) {
-  var touchsurface = el,
-    swipedir,
-    startX,
-    startY,
-    distX,
-    distY,
-    threshold = 150, //required min distance traveled to be considered swipe
-    restraint = 100, // maximum distance allowed at the same time in perpendicular direction
-    allowedTime = 300, // maximum time allowed to travel that distance
-    elapsedTime,
-    startTime,
-    handleswipe = callback || function (swipedir) {};
-
-  touchsurface.addEventListener(
-    "touchstart",
-    function (e) {
-      var touchobj = e.changedTouches[0];
-      swipedir = "none";
-      dist = 0;
-      startX = touchobj.pageX;
-      startY = touchobj.pageY;
-      startTime = new Date().getTime(); // record time when finger first makes contact with surface
-      // e.preventDefault();
-    },
-    false
-  );
-
-  touchsurface.addEventListener(
-    "touchmove",
-    function (e) {
-      // e.preventDefault(); // prevent scrolling when inside DIV
-    },
-    false
-  );
-
-  touchsurface.addEventListener(
-    "touchend",
-    function (e) {
-      var touchobj = e.changedTouches[0];
-      distX = touchobj.pageX - startX; // get horizontal dist traveled by finger while in contact with surface
-      distY = touchobj.pageY - startY; // get vertical dist traveled by finger while in contact with surface
-      elapsedTime = new Date().getTime() - startTime; // get time elapsed
-      if (elapsedTime <= allowedTime) {
-        // first condition for awipe met
-        if (Math.abs(distX) >= threshold && Math.abs(distY) <= restraint) {
-          // 2nd condition for horizontal swipe met
-          swipedir = distX < 0 ? "left" : "right"; // if dist traveled is negative, it indicates left swipe
-        } else if (
-          Math.abs(distY) >= threshold &&
-          Math.abs(distX) <= restraint
-        ) {
-          // 2nd condition for vertical swipe met
-          swipedir = distY < 0 ? "down" : "up"; // if dist traveled is negative, it indicates up swipe
-        }
-      }
-      handleswipe(swipedir);
-      // e.preventDefault();
-    },
-    false
-  );
-}
-
 $(document).ready(function () {
   var EXPAND_ICON = "./assets/images/expand_btn.svg";
   var COLLAPSE_ICON = "./assets/images/eva_collapse-fill.svg";
@@ -112,23 +49,22 @@ $(document).ready(function () {
   });
 
   $(".expand_icon").click(function () {
-    var bottom = $(".nsm_whats_new_strip").css("bottom");
-    bottom = Math.abs(parseInt(bottom));
+    var top = $(".nsm_whats_new_strip").css("top");
     var height = $(window).height();
-    // console.log("bottom", bottom);
+    // console.log("top", top);
     // console.log("window.height", $(window).height());
 
     var __duration = GLOBLE_ANIMATION_DURATION;
     // position logo
 
-    if (bottom == 0) {
+    if (parseInt(top) == 0) {
       gsap.fromTo(
         ".nsm_whats_new_strip",
         {
-          // bottom: "90%",
+          // top: "90%",
         },
         {
-          bottom: "-50%",
+          top: "40%",
           duration: __duration,
         }
       );
@@ -137,15 +73,14 @@ $(document).ready(function () {
         "src",
         COLLAPSE_ICON_HALF
       );
-      $(".whats-new-scrolling-wrapper").css({ height: "unset" });
     } else {
       gsap.fromTo(
         ".nsm_whats_new_strip",
         {
-          // bottom: "90%",
+          // top: "90%",
         },
         {
-          bottom: "0%",
+          top: "0%",
           duration: __duration,
         }
       );
@@ -155,28 +90,26 @@ $(document).ready(function () {
         "src",
         COLLAPSE_ICON_HALF
       );
-      $(".whats-new-scrolling-wrapper").css({ height: "80vh" });
     }
   });
 
   $(".halfexpand_icon").click(function () {
-    var bottom = $(".nsm_whats_new_strip").css("bottom");
-    bottom = Math.abs(parseInt(bottom));
+    var top = $(".nsm_whats_new_strip").css("top");
     var height = $(window).height();
-    console.log("bottom", Math.abs(parseInt(bottom)));
+    // console.log("top", top);
     // console.log("window.height", $(window).height());
 
     var __duration = GLOBLE_ANIMATION_DURATION;
 
     // position logo
-    if (bottom == 0) {
+    if (parseInt(top) == 0) {
       gsap.fromTo(
         ".nsm_whats_new_strip",
         {
-          // bottom: "90%",
+          // top: "90%",
         },
         {
-          bottom: "-90%",
+          top: "40%",
           duration: __duration,
         }
       );
@@ -186,15 +119,14 @@ $(document).ready(function () {
         "src",
         EXPAND_ICON_HALF
       );
-      $(".whats-new-scrolling-wrapper").css({ height: "unset" });
-    } else if (bottom > 200 && bottom < 500) {
+    } else if (parseInt(top) > 200 && parseInt(top) < 500) {
       gsap.fromTo(
         ".nsm_whats_new_strip",
         {
-          // bottom: "90%",
+          // top: "90%",
         },
         {
-          bottom: "-90%",
+          top: "84%",
           duration: __duration,
         }
       );
@@ -204,15 +136,14 @@ $(document).ready(function () {
         "src",
         EXPAND_ICON_HALF
       );
-      $(".whats-new-scrolling-wrapper").css({ height: "unset" });
     } else {
       gsap.fromTo(
         ".nsm_whats_new_strip",
         {
-          // bottom: "90%",
+          // top: "90%",
         },
         {
-          bottom: "-50%",
+          top: "40%",
           duration: __duration,
         }
       );
@@ -222,59 +153,49 @@ $(document).ready(function () {
         "src",
         COLLAPSE_ICON_HALF
       );
-      $(".whats-new-scrolling-wrapper").css({ height: "unset" });
     }
   });
 
-  var el = document.getElementById("body");
-  swipedetect(el, function (swipedir) {
-    // swipedir contains either "none", "left", "right", "top", or "down"
-    console.log("You just swiped " + swipedir);
+  var touchstart;
+  $(document).bind("touchstart", function (e) {
+    touchstart = e.originalEvent.touches[0].clientY;
+    console.log("touchstart", touchstart);
+  });
+
+  $(document).bind("touchend", function (e) {
+    var touchend = e.originalEvent.changedTouches[0].clientY;
     var top = $(".nsm_whats_new_strip").css("top");
-    if (parseInt(top) > 500) {
-      initAnimation(swipedir);
+
+    console.log("touchstart touchend==>", { touchstart, touchend, top });
+
+    if (parseInt(top) > 300) {
+      if (touchstart > touchend + 5) {
+        initAnimation("down");
+      } else if (touchstart < touchend - 5) {
+        initAnimation("up");
+      }
     }
   });
-
-  // var touchstart;
-  // $(document).bind("touchstart", function (e) {
-  //   touchstart = e.originalEvent.touches[0].clientY;
-  //   console.log("e.originalEvent", e.originalEvent);
-  // });
-
-  // $(document).bind("touchend", function (e) {
-  //   var touchend = e.originalEvent.changedTouches[0].clientY;
-  //   var top = $(".nsm_whats_new_strip").css("top");
-  //   console.log("touchstart touchend==>", { touchstart, touchend, top });
-  //   if (parseInt(top) > 500) {
-  //     if (touchstart > touchend + 5) {
-  //       initAnimation("down");
-  //     } else if (touchstart < touchend - 5) {
-  //       initAnimation("up");
-  //     }
-  //   }
-  // });
 
   $("#fullpage").bind("mousewheel wheel", function (event) {
     var top = $(".nsm_whats_new_strip").css("top");
     const { deltaX, deltaY, wheelDelta, detail } = event.originalEvent;
     const __isTrackPad = isTrackPad(event.originalEvent);
 
-    // console.log("event.originalEvent", {
-    //   deltaX,
-    //   deltaY,
-    //   wheelDelta,
-    //   detail,
-    //   __isTrackPad,
-    //   isAnimating,
-    //   ANIMATION_TIMEOUT_MS,
-    //   top
-    // });
+    console.log("event.originalEvent", {
+      deltaX,
+      deltaY,
+      wheelDelta,
+      detail,
+      __isTrackPad,
+      isAnimating,
+      ANIMATION_TIMEOUT_MS,
+    });
 
     // check if aleady animating
     if (isAnimating) return false;
 
-    if (parseInt(top) > 500) {
+    if (parseInt(top) > 300) {
       if (deltaY === 0 && (wheelDelta > 0 || detail < 0)) {
         console.log("scrolling up !");
         initAnimation("up");
@@ -303,7 +224,7 @@ function initAnimation(type = "down") {
     } else if (animationSectionNumber == 6) {
       animateSection7();
     }
-  } else if (type == "up") {
+  } else {
     if (animationSectionNumber == 1) {
       animateSectionReverse1();
     } else if (animationSectionNumber == 2) {
@@ -416,6 +337,16 @@ function animateSection1() {
     }
   );
 
+  // $(".box").on("mouseenter", function () {
+  //   var duration = 1;
+  //   TweenMax.to(this, duration / 4, { y: -50, ease: Power2.easeOut });
+  //   TweenMax.to(this, duration / 2, {
+  //     y: 0,
+  //     ease: Bounce.easeOut,
+  //     delay: duration / 4,
+  //   });
+  // });
+
   // Show we-are-innovation-div from bottom
   gsap.fromTo(
     ".we-are-innovation-div",
@@ -437,20 +368,6 @@ function animateSection1() {
     },
     {
       opacity: 1,
-      duration: __duration,
-    }
-  );
-
-  // nsm_whats_new_strip from bottom
-  gsap.fromTo(
-    ".nsm_whats_new_strip",
-    {
-      opacity: 0,
-      // top: "100%",
-    },
-    {
-      opacity: 1,
-      bottom: "-90%",
       duration: __duration,
     }
   );
@@ -764,7 +681,7 @@ function animateSection6() {
       top: "100%",
     },
     {
-      top: "7%",
+      top: "5%",
       duration: __duration,
     }
   );
@@ -1247,7 +1164,7 @@ function animateSectionReverse6() {
   gsap.fromTo(
     ".nsm_membership_slider_div",
     {
-      top: "7%",
+      top: "5%",
     },
     {
       top: "100%",

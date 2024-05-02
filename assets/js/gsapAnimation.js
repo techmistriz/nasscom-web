@@ -217,7 +217,7 @@ function animateSection2() {
       bottom: "-18%",
       right: "5%",
       height: "60vh",
-      width: "55vh",
+      width: "40%",
       borderRadius: 20,
     },
     {
@@ -810,7 +810,7 @@ function animateSectionReverse2() {
       bottom: "-18%",
       right: "5%",
       height: "60vh",
-      width: "55vh",
+      width: "40%",
       borderRadius: 20,
       duration: __duration,
     }

@@ -729,6 +729,10 @@ header {
   margin-right: 1%;
 }
 
+.nsm_withimage-block img{
+  border-radius: 2vw;
+}
+
 .nsm_withtext-block {
   width: 30%;
   border-radius: 2vw;
@@ -1256,11 +1260,6 @@ header {
   text-decoration: underline;
 }
 
-.nsm_membership_slider_div .content-block .rd-btn {
-  float: right;
-}
-
-
 
 
 
@@ -1311,7 +1310,7 @@ header {
     color: var(--black-primary);
     font-family: var(--regular-font);
     font-size: 4.2vw;
-    line-height: 5.2vw;
+    line-height: 5.8vw;
   }
 
   .market-industry-intro .title_h1{
@@ -1478,8 +1477,8 @@ header {
 }
 
 .tabs-content .content-block a{
-  font-family: var(--bold-font);
-  font-size: 1vw;
+  /* font-family: var(--bold-font); */
+  /* font-size: 1vw; */
   line-height: 1.5vw;
   color: var(--black-primary);
   text-transform: uppercase;
@@ -1615,9 +1614,9 @@ header {
 
 @media (max-width:767px){
   .contact-main-content .tabs-nav.stickyelement{
-    position: fixed;
-    top: 0;
-    width: 75%;
+    position: sticky;
+    top: 15vw;
+    width: 100%;
   }
 }
 
@@ -1851,7 +1850,10 @@ border-bottom: 1px solid var(--black-primary);
   text-align: left;
   margin-bottom: 0.5vw;
   padding: 1vw 1vw 0vw 1vw;
+/*  height: 4vw;*/
+  overflow: hidden;
 }
+
 
 .career-main-content .tabs-content .career_card .job_desc{
   font-family: var(--regular-font);
@@ -1861,6 +1863,8 @@ border-bottom: 1px solid var(--black-primary);
   text-align: left;
   margin-bottom: 1.5vw;
   padding: 0vw 1vw;
+  height: 4.5vw;
+  overflow-y: hidden;
 }
 
 .career-main-content .tabs-content .career_card .seperator{
@@ -1875,14 +1879,16 @@ border-bottom: 1px solid var(--black-primary);
 }
 
 .career_card .action-btn .cat{
-  width:50%;
+  width:70%;
   color: var(--black-primary);
   font-family: var(--regular-font);
   font-size: 0.7vw;
+  height: 1.8vw;
+  overflow: hidden;
 }
 
 .career_card .action-btn .apply{
-  width:50%;
+  width:70%;
   text-align: right;
 }
 
@@ -2091,13 +2097,18 @@ form input{
     padding: 1vw 1.5vw;
     width: 100%;
     margin-bottom: 1.5vw;
+    -webkit-appearance: none;
+    border-radius: 0;
+    color: var(--black-primary);
+    height: 50px;
+    
 }
 
 
 
 
 form input::placeholder{
-  color: var(--black-primary);
+  color: var(--black-primary)!important;
   font-family: var(--regular-font);
   font-size: 1vw;
   width: 60vw;
@@ -2114,6 +2125,8 @@ form select{
     color: var(--black-primary);
   font-family: var(--regular-font);
   font-size: 1vw;
+  --webkit-appearance:none;
+  border-radius: 0;
 }
 
 
@@ -2136,8 +2149,8 @@ form input[type="submit"]{
   color: var(--white-primary);
   text-transform: uppercase;
   background: var(--red-primary);
-  font-size: 0.9vw;
-  line-height: 1.35vw;
+  font-size: 14px;
+  line-height: 14px;
   text-align: center;
   font-family: var(--bold-font);
   text-decoration: none;
@@ -2152,12 +2165,20 @@ form input[type="file"]{
   background-repeat: no-repeat;
   color:transparent;
   cursor: pointer;
+  height: 50px;
 }
 
 form input[type="file"]::-webkit-file-upload-button {
   display: none;
 }
 
+form input[type="file"]::-ms-browse {
+  display: none;
+}
+
+form input[type=file]::file-selector-button {
+  display: none;
+}
 
 .application_form input[type="file"]{
   padding: 1vw 1.5vw;
@@ -2165,12 +2186,14 @@ form input[type="file"]::-webkit-file-upload-button {
 
 @media (max-width:767px){
 .application_form input[type="file"]{
-  padding: 5vw 3.5vw;
+  padding: 1.2rem 3.5vw;
+  min-height: 3.5rem;
 }
 
 
 #applynow .application_form input[type="file"]{
   padding: 3vw 1.5vw;
+  min-height: 2.5rem;
 }
 
 }
@@ -2205,20 +2228,20 @@ form.application_form{
   color: var(--black-primary);
     font-family: var(--regular-font);
     font-size: 1vw;
-    margin-bottom: 0.2vw;
+    /* margin-bottom: 0.2vw; */
     position: absolute;
     left: 2.4vw;
-    top: 1vw;
+    top: 14px;
 }
 
 #fileLabel2{
   color: var(--black-primary);
     font-family: var(--regular-font);
     font-size: 1vw;
-    margin-bottom: 0.2vw;
+    /* margin-bottom: 0.2vw; */
     position: absolute;
     left: 2.4vw;
-    top: 1vw;
+    top: 14px;
 }
 
 
@@ -2258,6 +2281,21 @@ form.application_form{
   margin-bottom: 2vw;
 }
 
+
+}
+    
+form.node-member-profile-form .form-textarea{
+   padding: 1vw 1.5vw!important;
+}
+
+
+form.node-member-profile-form .form-textarea::placeholder{
+
+font-size: 1vw!important;
+color: var(--black-primary)!important;
+font-family: var(--regular-font)!important;
+}
+
 select{
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -2267,6 +2305,26 @@ select{
     background-size: 1vw !important;
     background-position: calc(100% - 1.5vw) 1.2vw !important;
   background-repeat: no-repeat!important;
+}
+
+
+@media (max-width:767px){
+  
+select{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16"> <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/> </svg>')
+    no-repeat!important;
+    background-size: 3.5vw !important;
+    background-position: calc(100% - 3.5vw) 3.5vw !important;
+  background-repeat: no-repeat!important;
+}
+
+}
+
+#register input[type="submit"]{
+  margin-top: 3vw;
 }
 
 .submit-btnblock{
@@ -2419,6 +2477,8 @@ border:0px solid black;
   text-align: left;
   margin-bottom: 0.5vw;
   padding: 1vw 1vw 0vw 1vw;
+  height: 4vw;
+  overflow: hidden;
 }
 
 .tabs-content .media_card .job_desc{
@@ -2429,6 +2489,8 @@ border:0px solid black;
   text-align: left;
   margin-bottom: 1.5vw;
   padding: 0vw 1vw;
+  height: 3.5vw;
+  overflow-x: hidden;
 }
 
 .tabs-content .media_card .seperator{
@@ -2634,7 +2696,7 @@ border:0px solid black;
   color: var(--white-primary);
   margin-bottom: 3.5vw;
   font-family: var(--regular-font);
-  border-top: 1px solid var(--white-primary);
+  border-top: 0px solid var(--white-primary);
 }
 
 .nsm_footer-area-dark .nsm_footer-widget {
@@ -2643,13 +2705,13 @@ border:0px solid black;
 }
 
 .nsm_footer-area-dark .nsm_withimage-block {
-  width: 90%;
+  width: 60%;
   border-radius: 2vw;
   margin-right: 1%;
 }
 
 .nsm_footer-area-dark .nsm_withtext-block {
-  width: 68%;
+  width: 38%;
   border-radius: 2vw;
   margin-right: 1%;
   padding: 2vw;
@@ -2801,6 +2863,18 @@ border:0px solid black;
   width:1.8vw;
 }
 
+
+.loginregister_page .form_card .form_close2{
+  position: absolute;
+  top: 2.5%;
+  right: 5%;
+  cursor: pointer;
+}
+
+.loginregister_page .form_card .form_close2 img{
+  width:1.8vw;
+}
+
 .loginregister_page .form_card form input[type="submit"]{
   padding: 1vw 2vw 1vw 2vw;
   border-radius: 2.5vw;
@@ -2827,14 +2901,18 @@ border:0px solid black;
 .loginregister_page .form_card form input[type="checkbox"]{
   width:max-content;
   accent-color: var(--red-secondary);
-  height: 0.9vw;
-  width: 0.9vw;
+  height: 15px;
+  width: 15px;
+  padding: 0;
+  margin-right: 10px;
+  margin-bottom: 0;
+  -webkit-appearance: checkbox;
 }
 
 .loginregister_page .form_card form label{
   color: var(--black-primary);
   font-family: var(--regular-font);
-  font-size: 0.8vw;
+  font-size: 12px;
 }
 
 .loginregister_page .tabs-nav{
@@ -2859,6 +2937,101 @@ border:0px solid black;
   margin-top: 0;
 }
 
+
+.calculatepopup .popup-title{
+  font-family: var(--medium-font);
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 2vw;
+    font-size: 1.1vw;
+    line-height: 2.1vw;
+    border-bottom: 1px solid var(--black-primary);
+    padding-bottom: 1.5vw;
+    margin-top: 2vw;
+}
+
+
+.calculatepopup table{
+  margin-bottom: 2vw;
+  font-size: 0.9vw;
+  font-family: var(--medium-font);
+  color: var(--black-primary);
+  width: 100%;
+}
+
+.calculatepopup .total-charge{
+  margin-bottom: 0vw;
+  border-top: 1px solid var(--black-primary);
+}
+
+
+
+.calculatepopup table .desc{
+  width: 75%;
+}
+
+.calculatepopup table .value{
+  text-align: right;
+}
+
+.calculatepopup table td{
+  padding: 0.7vw 0vw;
+}
+
+.calculatepopup table.total-charge td{
+  font-family: var(--bold-font);
+  color: var(--black-primary);
+  padding-top: 1.5vw;
+}
+
+
+@media (max-width:767px){
+  .calculate-btn .rd-btn {
+    color: var(--white-primary);
+    background: var(--red-primary);
+    padding: 5.25vw 7.5vw!important;
+    cursor: pointer;
+    font-size: 3vw;
+    border-radius: 8vw;
+}
+
+.loginregister_page .form_card .form_close2 img{
+  width: 4.8vw;
+}
+
+.calculatepopup .popup-title {
+  font-family: var(--medium-font);
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 5vw;
+  font-size: 4.2vw;
+  line-height: 5.2vw;
+  border-bottom: 1px solid var(--black-primary);
+  padding-bottom: 5.5vw;
+  margin-top: 5vw;
+}
+
+.calculatepopup .form_card .form_logo img {
+  width: 48vw!important;
+}
+
+.calculatepopup table {
+  margin-bottom: 5vw;
+  font-size: 3.2vw;
+  font-family: var(--medium-font);
+  color: var(--black-primary);
+  width: 100%;
+}
+
+.calculatepopup table td {
+  padding: 2.1vw 0vw;
+}
+
+.calculatepopup table.total-charge td{
+  padding-top: 3.5vw;
+}
+
+}
 
 
 /*---- login ---*/
@@ -3381,6 +3554,8 @@ margin-bottom: 1vw;
   background: #eeeeee;
 }
 
+
+
  .perspectives_card img{
   width:100%;
   height: 15.5vw;
@@ -3396,7 +3571,8 @@ margin-bottom: 1vw;
   text-align: left;
   margin-bottom: 0.5vw;
   padding: 1vw 1vw 0vw 1vw;
-  min-height: 4.2vw;
+/*  height: 4.2vw;*/
+  overflow: hidden;
 }
 
 .perspectives_card .job_desc{
@@ -3407,7 +3583,13 @@ margin-bottom: 1vw;
   text-align: left;
   margin-bottom: 1.5vw;
   padding: 0vw 1vw;
+  height: 3.5vw;
+  overflow-y: hidden;
 }
+
+
+
+
 
 .perspectives_card .seperator{
   height: 1.5px;
@@ -3508,6 +3690,193 @@ margin-bottom: 1vw;
   .perspectives-industry-intro.detailpage .white-btn{
     position:static;
   }
+}
+
+ .perspectives_card .action-btn .category{
+  height: 1.8vw;
+  overflow: hidden;
+}
+
+.perspectives_card .action-btn .postdate{
+  height: 1.8vw;
+  overflow: hidden;
+}
+
+.event-page .tabs-content .row{
+  align-items: flex-start;
+}
+
+@media (max-width:767px){
+  .event-page .perspectives_card .action-btn .category{
+    height:max-content;
+    overflow: visible;
+  }
+  
+  .event-page .perspectives_card .action-btn .postdate{
+    height: max-content;
+    overflow: visible;
+  } 
+}
+
+#members_listing .tabs-nav select{
+  width: 8.5vw;
+}
+
+#members_listing  .perspectives_card .action-btn {
+  padding: 0.8vw 1vw 1.5vw 1vw;
+}
+
+#members_listing .perspectives_card .perspectives_card_content{
+  border-radius: 1vw 1vw 1vw 1vw;
+  min-height: 9vw;
+}
+
+@media (max-width:767px){
+  #members_listing .perspectives_card .perspectives_card_content{
+    border-radius: 2vw 2vw 2vw 2vw;
+
+  } 
+}
+
+#members_listing .perspectives_card .job_title{
+  margin-bottom: 0vw;
+  padding: 1vw 1vw 1vw 1vw;
+  max-height: 5vw;
+  min-height: 2.5vw;
+  overflow-x: hidden;
+}
+
+#members_listing .perspectives_card .action-btn .category{
+  width: auto;
+  text-align: left;
+}
+
+#members_listing .perspectives_card .action-btn .category a{
+  font-family: var(--medium-font);
+}
+
+#members_listing .perspectives_card .action-btn .fee{
+  width: auto;
+  text-align: left;
+}
+
+#members_listing .perspectives_card .action-btn .fee img{
+  height: 0.8vw;
+    width: 1.8vw;
+    object-fit: contain;
+    border-radius: 0;
+    margin-left: 0.5vw;
+}
+
+#members_listing .tabs-nav ul{
+  position: relative;
+}
+
+#members_listing .tabs-nav ul input{
+  position: absolute;
+    right: 1vw;
+    top: 0.8vw;
+    background: transparent;
+    border-bottom: 1px solid var(--black-primary);
+    border-width: 0px 0px 1px 0px;
+    padding: 0.3vw 0.6vw;
+    font-family: var(--regular-font);
+    font-size: 0.9vw;
+    display: none;
+}
+
+#members_listing .tabs-nav ul input:focus {
+  border-bottom: 1px solid var(--black-primary);
+  outline: 0;
+}
+
+
+
+#members_listing .filter_search {
+  cursor: pointer;
+}
+
+
+
+@media (max-width:767px){
+  #members_listing .tabs-nav ul input {
+    position: absolute;
+    right: 5vw;
+    top: 8.8vw;
+    background: transparent;
+    border-bottom: 1px solid var(--black-primary);
+    border-width: 0px 0px 1px 0px;
+    padding: 0.3vw 0.6vw;
+    font-family: var(--regular-font);
+    font-size: 2.7vw;
+}
+}
+
+.cstm_pagination {
+  text-align: center;
+}
+
+.cstm_pagination ul{
+  padding: 0;
+  list-style-type: none;
+  display: inline-block;
+  margin-top: 2vw;
+}
+
+.cstm_pagination ul li{
+  display: inline-block;
+}
+
+.cstm_pagination ul li a{
+  background: var(--grey-primary);
+    min-width: 3vw;
+    display: block;
+    height: 2vw;
+    text-align: center;
+    font-size: 1vw;
+    line-height: 2.1vw;
+    text-decoration: none;
+    color: var(--black-primary);
+    padding:0vw 0.5vw;
+    border-radius: 0.3vw;
+    font-family: var(--medium-font);
+}
+
+.cstm_pagination ul li.disabled{
+  display: none;
+}
+
+.cstm_pagination ul li.active a{
+  background: var(--red-primary);
+  color: var(--white-primary);
+}
+
+.cstm_pagination ul li a:hover{
+  background: var(--red-secondary);
+  color: var(--white-primary);
+}
+
+@media (max-width:767px){
+  .cstm_pagination ul li a{
+    background: var(--grey-primary);
+      min-width: 5vw;
+      display: block;
+      height: 6.5vw;
+      text-align: center;
+      font-size: 3.5vw;
+      line-height: 6.5vw;
+      text-decoration: none;
+      color: var(--black-primary);
+      padding:0vw 4vw;
+      border-radius: 1.4vw;
+      font-family: var(--medium-font);
+  }
+}
+
+@media (min-width:768px){
+.nsm_main-logo .mobile_logo{
+display: none;
+}
 }
 
 
@@ -3692,7 +4061,7 @@ margin-bottom: 1vw;
     font-family: var(--regular-font);
     width: 98%;
     font-size: 4.2vw;
-    line-height: 5.4vw;
+    line-height: 5.8vw;
   }
 }
 
@@ -3783,6 +4152,14 @@ margin-bottom: 1vw;
 /*---- Perspectives page end ----*/
 
 
+#desktop_tab{
+  display: block;
+}
+
+#mobile_tab{
+  display: none;
+}
+
 .recent_newsletters-section {
   background: var(--white-primary);
   padding: 3vw 0vw 3vw 0vw;
@@ -3854,6 +4231,16 @@ margin-bottom: 1vw;
   padding: 0vw 1vw;
 }
 
+.recent_newsletters-section .newsletter_card .job_title{
+  height: 4vw;
+  overflow: hidden;
+}
+
+.recent_newsletters-section .newsletter_card .job_desc{
+  height: 3.5vw;
+  overflow-y: auto;
+}
+
 .newsletter_card .seperator{
   height: 1.5px;
   width: 100%;
@@ -3901,6 +4288,69 @@ margin-bottom: 1vw;
   color: var(--red-primary);
 }
 
+.reg_complete .nsm_context{
+  width: 90%;
+  padding-bottom: 1vw;
+}
+
+.reg_complete .btn-block{
+  margin-bottom: 3vw;
+}
+
+.reg_complete .btn-block a{
+  text-transform: capitalize;
+  margin-right: 1vw;
+}
+
+.reg_complete .nsm_context a{
+  color: var(--red-primary);
+  text-decoration: none;
+  font-family: var(--bold-font);
+}
+
+.reg_complete .nsm_context a:hover{
+  color: var(--red-secondary);
+}
+
+.reg_complete h4{
+  font-size: 1.6vw;
+  line-height: 2.2vw;
+  font-family: var(--bold-font);
+  color: var(--red-primary);
+  margin-bottom: 2vw;
+}
+
+@media (max-width:767px){
+
+  .reg_complete{
+    margin-bottom: 3vw;
+  }
+
+  .reg_complete .nsm_context{
+    width: 100%;
+  }
+
+  .reg_complete .btn-block{
+    margin-bottom: 6vw;
+  }
+
+  .reg_complete h4{
+    font-size: 5.2vw;
+    line-height: 5.8vw;
+    margin-bottom: 4vw;
+  }
+
+  .reg_complete .btn-block a {
+    text-transform: capitalize;
+    margin-right: 2vw;
+    font-size: 2.4vw;
+    line-height: 4.4vw;
+    height: 9vw;
+    padding: 2vw 4vw;
+    margin-bottom: 2vw;
+}
+}
+
 
 .key_finding-section#policypage{
   padding: 6vw 0vw 0vw 0vw;
@@ -3910,6 +4360,7 @@ margin-bottom: 1vw;
   .key_finding-section#policypage{
     padding: 9vw 0vw 0vw 0vw;
   }  
+  
 }
 
 .key_finding-section#policypage .container .key_finding {
@@ -3982,7 +4433,13 @@ margin-bottom: 1vw;
   display: none;
 }
 
+.secondary-header .desk_logo{
+  display: block;
+}
 
+.secondary-header .mobile_logo{
+  display: none;
+}
 
 
 /*------- mobile responsive code start --------*/
@@ -4049,6 +4506,12 @@ margin-bottom: 1vw;
   margin-bottom: 1vw;
 }
 
+.tabs-nav.stickyelement {
+  position: sticky;
+  background: var(--white-primary);
+  top: 16vw;
+}
+
 .tabs-nav p{
   color: var(--black-primary);
     font-family: var(--bold-font);
@@ -4083,6 +4546,13 @@ margin-bottom: 1vw;
     line-height: 2.6vw;
     color: var(--black-primary);
     margin-bottom: 1.5vw;
+}
+
+.mobile_tabitems_block .headtab_item {
+  display: none;
+}
+.mobile_tabitems_block .headtab_item.active {
+  display: block;
 }
 
 .contact-main-content .tabs-content .heading{
@@ -4165,7 +4635,7 @@ margin-bottom: 1vw;
   color: var(--black-primary);
   font-family: var(--regular-font);
   font-size: 4.2vw;
-  line-height: 5.2vw;
+  line-height: 5.8vw;
 }
 
 .perspectives-main-content{
@@ -4312,6 +4782,7 @@ margin-bottom: 1vw;
 }
 
 
+
 .newsletter_card img{
     width: 100%;
     height: 55.5vw;
@@ -4384,6 +4855,18 @@ margin-bottom: 1vw;
   font-size: 2.8vw;
 }
 
+
+.recent_newsletters-section .job_title {
+  height: 20vw;
+  min-height: 20vw;
+  overflow: hidden;
+}
+
+.recent_newsletters-section .job_desc {
+  height: 30vw;
+  min-height: 30vw;
+  overflow: hidden;
+}
 
 
 .tabs-content .content-block h5 {
@@ -4458,7 +4941,7 @@ margin-bottom: 1vw;
 }
 
 .market-industry-main-content .tabs-content {
-  border-top: 1px solid var(--black-primary);
+  border-top: 0px solid var(--black-primary);
   margin-top: 3vw;
   margin-bottom: 8vw;
   padding-top: 7vw;
@@ -4495,7 +4978,7 @@ margin-bottom: 1vw;
   margin-bottom: 8.5vw;
   font-family: var(--regular-font);
       border-top: 1px solid var(--white-primary);
-    padding-top: 15vw;
+    padding-top: 10vw;
 }
 
 
@@ -4508,6 +4991,7 @@ margin-bottom: 1vw;
   margin-bottom: 3.5vw;
   padding: 3vw 3vw 0vw 3vw;
   min-height: max-content;
+  height: max-content;
 }
 
 
@@ -4519,6 +5003,8 @@ margin-bottom: 1vw;
   text-align: left;
   margin-bottom: 4.5vw;
   padding: 0vw 3vw;
+  height: max-content;
+  overflow-y: visible;
 }
 
 
@@ -4533,11 +5019,13 @@ margin-bottom: 1vw;
   color: var(--black-primary);
   font-family: var(--regular-font);
   font-size: 3.2vw;
+  height: max-content;
 }
 
 .perspectives_card .action-btn .category{
   width:33.33%;
   text-align: center;
+  height: max-content;
 }
 
 .perspectives_card .action-btn .category a{
@@ -4783,6 +5271,8 @@ margin-bottom: 1vw;
   text-align: left;
   margin-bottom: 3.5vw;
   padding: 3vw 3vw 0vw 3vw;
+  height: max-content;
+  overflow: visible;
 }
 
 .career-main-content .tabs-content .career_card .job_desc{
@@ -4793,6 +5283,8 @@ margin-bottom: 1vw;
   text-align: left;
   margin-bottom: 4.5vw;
   padding: 0vw 3vw;
+  height: max-content;
+  overflow: visible;
 }
 
 
@@ -4801,6 +5293,7 @@ margin-bottom: 1vw;
   color: var(--black-primary);
   font-family: var(--regular-font);
   font-size: 3.2vw;
+  height: max-content;
 }
 
 .career_card .action-btn .apply{
@@ -4902,8 +5395,8 @@ form input[type="submit"] {
   color: var(--white-primary);
   text-transform: uppercase;
   background: var(--red-primary);
-  font-size: 3.6vw;
-  line-height: 4.8vw;
+  font-size: 14px;
+  line-height: 14px;
   text-align: center;
   font-family: var(--bold-font);
   text-decoration: none;
@@ -4935,10 +5428,10 @@ form input[type="submit"] {
   color: var(--black-primary);
   font-family: var(--regular-font);
   font-size: 3.6vw;
-  margin-bottom: 0.2vw;
+  margin-bottom: 0;
   position: absolute;
   left: 6.4vw;
-  top: 3vw;
+  top: 17px;
 }
 
 
@@ -4946,10 +5439,10 @@ form input[type="submit"] {
   color: var(--black-primary);
   font-family: var(--regular-font);
   font-size: 3.6vw;
-  margin-bottom: 0.2vw;
+  margin-bottom: 0;
   position: absolute;
   left: 6.4vw;
-  top: 3vw;
+  top: 17px;
 }
 
 
@@ -4957,10 +5450,11 @@ form input[type="submit"] {
 form input[type="file"] {
   background-image: url(../images/lucide_upload.svg);
   background-size: 6vw 6vw;
-  background-position: calc(100% - 15px) calc(100% - 10px);
+  background-position: calc(100% - 15px) calc(100% - 16px);
   background-repeat: no-repeat;
   color: transparent;
   cursor: pointer;
+  margin-bottom: 8px;
 }
 
 
@@ -5024,6 +5518,12 @@ form input[type="file"] {
 }
 
 
+
+.loginregister_page .form_card{
+  top: 48%;
+}
+
+
 .loginregister_page .form_card .form_logo img{
   width: 32vw;
 }
@@ -5046,12 +5546,15 @@ form input{
   border: 1px solid var(--black-primary);
   padding: 3vw 3.5vw;
   width: 100%;
-  margin-bottom: 3.5vw;
+  margin-bottom: 10px;
+  --webkit-appearance:none;
+  border-radius: 0;
+  color: var(--black-primary);
 }
 
 
 form input::placeholder{
-  color: var(--black-primary);
+  color: var(--black-primary)!important;
   font-family: var(--regular-font);
   font-size: 3.6vw;
   width: 60vw;
@@ -5061,8 +5564,11 @@ form input::placeholder{
 .loginregister_page .form_card form input[type="checkbox"] {
   width: max-content;
   accent-color: var(--red-secondary);
-  height: 2.7vw;
-  width: 2.7vw;
+  height: 15px;
+  width: 15px;
+  padding: 0.3rem;
+  float: left;
+  margin-right: 0.3rem;
 }
 
 form select {
@@ -5070,14 +5576,20 @@ form select {
   border: 1px solid var(--black-primary);
   padding: 3vw 3.5vw;
   width: 100%;
-  margin-bottom: 1.5vw;
+  margin-bottom: 3.5vw;
   color: var(--black-primary);
   font-family: var(--regular-font);
   font-size: 3.6vw;
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+
+form{
+  font-family: var(--regular-font)!important;
 }
 
 .loginregister_page .form_card form label{
-  font-size: 2.4vw;
+  font-size: 12px;
 }
 
 .loginregister_page .form_card form input[type="submit"] {
@@ -5103,6 +5615,7 @@ form select {
   margin-left: 3%;
   padding-top: 8vw;
   border-top: 1px solid var(--black-primary);
+  overflow-x: hidden;
 }
 
 .media_kit .section_title h5 {
@@ -5180,18 +5693,19 @@ form select {
   border: 0;
   color: var(--black-primary);
   font-family: var(--medium-font);
-  font-size: 2.8vw;
-  line-height: 3.70vw;
+  font-size: 11px;
+  line-height: 11px;
   text-decoration: none;
   text-transform: uppercase;
-  margin-right: 0.75vw;
-  margin-left: -0.3vw;
+  /* margin-right: 0.75vw; */
+  /* margin-left: -0.3vw; */
   background: url(../images/red_drop_arrow.svg) no-repeat !important;
-  background-size: 2.7vw !important;
-  background-position: calc(100% - 0%) 1.2vw !important;
+  background-size: 10px !important;
+  background-position: calc(100% - 0%) 2px !important;
   background-repeat: no-repeat !important;
-  width: 15vw;
-  margin-bottom: 3vw;
+  width: 60px;
+  margin-bottom: 12px;
+  padding-left: 0px;
 }
 
 
@@ -5203,6 +5717,8 @@ form select {
   text-align: left;
   margin-bottom: 3.5vw;
   padding: 3vw 3vw 0vw 3vw;
+  height: max-content;
+  overflow: visible;
 }
 
 
@@ -5214,6 +5730,7 @@ form select {
   text-align: left;
   margin-bottom: 4.5vw;
   padding: 0vw 3vw;
+  height: max-content;
 }
 
 .tabs-content .media_card {
@@ -5247,8 +5764,8 @@ form select {
     color: var(--white-primary);
     text-transform: uppercase;
     background: transparent;
-    font-size: 3vw;
-    line-height: 3.35vw;
+    font-size: 3.6vw;
+    line-height: 5.35vw;
     text-align: center;
     font-family: var(--bold-font);
     text-decoration: none;
@@ -5615,6 +6132,7 @@ form select {
   text-align: center;
   color: var(--white-primary);
   margin-bottom: 2.4vw;
+  font-family: var(--regular-font);
 }
 
 .nsm_spirit-nasscom ul{
@@ -5709,14 +6227,14 @@ form select {
 
 .page-intro .nsm_context{
   font-size: 4.2vw;
-  line-height: 5.2vw;
+  line-height: 5.8vw;
 }
 
 
 
 .about-intro .nsm_context {
   font-size:4.2vw;
-  line-height: 5.4vw;
+  line-height: 5.8vw;
   color: var(--black-primary);
   font-family: var(--regular-font);
 }
@@ -5734,8 +6252,8 @@ form select {
 }
 
 .nsm_pathcontext-block .desc {
-  font-size: 3vw;
-  line-height: 3.875vw;
+  font-size: 3.2vw;
+  line-height: 4.8vw;
   font-family: var(--regular-font);
   color: var(--white-primary);
   margin-bottom: 3.5vw;
@@ -5753,7 +6271,7 @@ form select {
 
 .nsm_footer-area-dark{
   margin-left: 0%;
-  padding: 20vw 0vw 20vw 0vw;
+  padding: 15vw 0vw 20vw 0vw;
 }
 
 .nsm_footer-area-dark .pb-5{
@@ -5769,6 +6287,12 @@ form select {
   font-family: var(--medium-font);
   color: var(--white-primary);
   margin-bottom: 5vw;
+}
+
+.nsm_footer-area-dark .nsm_withimage-block {
+ width: 90%;
+  border-radius: 2vw;
+  margin-right: 1%;
 }
 
 
@@ -5921,51 +6445,142 @@ font-size: 4.97vw;
   line-height: 10.35vw;
 }
 
-/* 
-.hamburger_icon .toggle_icon{
-  display: block;
-}
 
-.hamburger_icon.on .toggle_icon{
+
+#desktop_tab{
   display: none;
 }
 
+#mobile_tab{
+  display: block;
+  padding-top: 8vw;
+  margin-top: 2vw;
+  border-top: 1px solid var(--black-primary);
+}
 
-.hamburger_icon .close_icon{
+
+
+.mobile_tabitems_block{
+  width: 100%;
+  display: flex;
+  overflow-x: auto; 
+}
+
+.mobile_tabitems_block::-webkit-scrollbar {
   display: none;
 }
 
-.hamburger_icon.on .close_icon{
-  display: block;
-  position: absolute;
-  right: 3%;
-  z-index: 9999;
-} */
-
-
-
-
+.mobile_tabitems_block li.active a{
+  padding-bottom: 2.5vw;
+  font-family: var(--bold-font);
+  border-bottom:2px solid var(--red-primary);
 }
 
 
+.mobile_tabitems_block li a{
+  display: block;
+    color: var(--black-primary);
+    font-family: var(--medium-font);
+    font-size: 3.6vw;
+    line-height: 4.8vw;
+    text-decoration: none;
+    text-transform: uppercase;
+    margin-right: 2.75vw;
+    margin-bottom: 1.75vw;
+    width: max-content;
+}
+
+
+
+
+.mobilehead_tab{
+  border-bottom: 0px;
+  width: 100%;
+  overflow-x: auto;
+  display: flex;
+  flex-wrap: unset;
+}
+
+.mobilehead_tab::-webkit-scrollbar {
+  display: none;
+}
+
+.mobilehead_tab .nav-link{
+  border: 0;
+  padding:0;
+  color: var(--grey-secondary);
+  font-family: var(--medium-font);
+  font-size: 4.2vw;
+  line-height: 5.4vw;
+  text-transform: uppercase;
+  margin-right: 5vw;
+}
+
+.mobilehead_tab  .nav-link.active{
+  color: var(--black-primary);
+  font-family: var(--bold-font);
+}
+
+
+.mobilehead_tab li{
+  margin-bottom: 6vw;
+}
 
 .secondary-header .desk_logo{
-  display: block;
+  display: none;
 }
 
 .secondary-header .mobile_logo{
-  display: none;
+  display: block;
 }
 
-@media (max-width:767px){
-  .secondary-header .desk_logo{
-    display: none;
-  }
-  
-  .secondary-header .mobile_logo{
-    display: block;
-  } 
+#members_listing .perspectives_card .job_title{
+  margin-bottom: 0vw;
+  padding: 5vw 5vw 5vw 5vw;
+  min-height: auto;
+  font-size: 4.2vw;
+  line-height: 5.4vw;
+  min-height: max-content;
+  max-height: max-content;
 }
+
+#members_listing .perspectives_card .action-btn {
+  padding: 2.5vw 5vw 5vw 5vw;
+}
+
+#members_listing .perspectives_card .action-btn .category a{
+  font-size: 3.8vw;
+  line-height: 5vw;
+}
+
+#members_listing .perspectives_card .action-btn .fee img {
+  height: 2.4vw;
+  width: 4.32vw;
+  object-fit: contain;
+  border-radius: 0;
+  margin-left: 1.5vw;
+}
+
+#members_listing .tabs-nav select {
+  font-family: var(--medium-font);
+  font-size: 3.6vw;
+  line-height: 4.8vw;
+  width: 36vw;
+}
+
+#members_listing .tabs-nav select{
+
+}
+
+.recent_newsletters-section .newsletter_card .job_desc{
+  height: max-content;
+  overflow-y: auto;
+}
+
+}
+
+
+
 
 
 /*------- mobile responsive code end --------*/
@@ -6004,6 +6619,11 @@ font-size: 4.97vw;
 
 
 @media (max-width:767px){
+
+
+  section .container{
+    padding: 0vw 4vw;
+  }
 
   .section {
     /* position: relative; */
@@ -6167,13 +6787,15 @@ font-size: 4.97vw;
 
   .nsm_membership_slider_div .content-block .rd-btn{
     float: none;
-    padding: 5vw 6.75vw 5vw 6.75vw;
+    padding: 5vw 6.75vw 5vw 6.75vw!important;
     border-radius: 8.5vw;
     font-size: 3.6vw;
     line-height: 4.8vw;
     color: var(--white-primary);
     margin-bottom: 6vw;
 }
+
+
 
   .nsm_membership_slider_div .content-block .link-btn{
     font-size: 3.6vw;
@@ -6503,11 +7125,126 @@ font-size: 4.97vw;
     opacity: 1 !important;
   }
   
-
-
+ 
 
 
 }
 
 
+ul.pager li.pager__item a.button {
+  width: auto!important;
+  padding: 0.5vw 1vw 0.5vw 1vw!important;
+  color: var(--white-primary)!important;
+  text-transform: capitalize!important;
+  background: var(--red-primary)!important;
+  font-size: 0.9vw!important;
+  line-height: 1.35vw!important;
+  text-align: center!important;
+  font-family: var(--bold-font)!important;
+  text-decoration: none!important;
+  display: inline-block!important;
+  border: 0!important;
+  border-radius: 0.5vw!important;
+}
+
+
+ul.pager li.pager__item a.button:hover{
+  background: var(--red-secondary)!important;
+}
+
+.js-pager__items.pager{
+  padding: 0!important;
+  text-align: center!important;
+}
+
+@media (max-width:767px){
+  ul.pager li.pager__item a.button {
+    width: auto!important;
+    padding: 1.5vw 3vw 1.5vw 3vw!important;
+    color: var(--white-primary)!important;
+    text-transform: capitalize!important;
+    background: var(--red-primary)!important;
+    font-size: 2.7vw!important;
+    line-height: 3.35vw!important;
+    text-align: center!important;
+    font-family: var(--bold-font)!important;
+    text-decoration: none!important;
+    display: inline-block!important;
+    border: 0!important;
+    border-radius: 1.5vw!important;
+  } 
+}
+
 /*----- homepage mobile code end -----*/
+
+.nsm_membership_slider_div .content-block .rd-btn {
+  float: right;
+  color: var(--white-primary);
+  position: relative;
+  z-index: 99;
+}
+
+.nsm_membership_slider_div .content-block .rd-btn:hover{
+  color: var(--white-primary);
+  background: var(--red-primary);
+}
+
+.calculate-btn{
+  margin-bottom: 3vw;
+}
+
+.calculate-btn .rd-btn{
+  color: var(--white-primary);
+  background: var(--red-primary);
+  padding: 1.25vw 2.5vw;
+  cursor: pointer;
+}
+
+
+.calculate-btn .rd-btn:hover{
+  background: var(--red-secondary);
+  color: var(--white-primary);
+}
+
+
+
+::-webkit-scrollbar-track
+{
+	background-color:  #c0c0c0!important;
+}
+
+::-webkit-scrollbar
+{
+	width: 0.5vw!important;
+	background-color: var(--grey-primary)!important;
+}
+
+::-webkit-scrollbar-thumb
+{
+	background-color: var(--red-primary)!important;
+	border: 0px solid #555555!important;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: var(--black-primary);
+  opacity: 1;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: var(--black-primary);
+  opacity: 1;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: var(--black-primary);
+  opacity: 1;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: var(--black-primary);
+  opacity: 1;
+}
+.checkbox-container{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  margin-bottom: 20px;
+}

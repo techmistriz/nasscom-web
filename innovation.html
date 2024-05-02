@@ -19,7 +19,7 @@
             <div class="col-md-12 p-0">
                 <div class="nsm_main-logo">
                     <a href="index.html"><img src="assets/images/logo.svg" alt="" class="desk_logo"></a>
-                    <a href="index.html"><img src="assets/images/Nasscom_Logo_White.svg" alt="" class="mobile_logo"></a>
+                    <a href="index.html"><img src="assets/images/Nasscom_Logo.png" alt="" class="mobile_logo"></a>
                 </div>
             </div>
         </div>
@@ -245,9 +245,11 @@
                                             <input type="password" name="lg-password" placeholder="Password">
                                         </div>
             
-                                        <div class="col-md-12">
-                                            <input type="checkbox" id="logincheck" name="logincheck" value="Bike">
-                                            <label for="logincheck"> Remember me</label><br>
+                                       <div class="col-md-12">
+                                            <div class="checkbox-container">
+                                                <input type="checkbox" id="logincheck" name="logincheck" value="Bike">
+                                                <label for="logincheck"> Remember me</label><br>
+                                            </div>
                                         </div>
                         
                                         <div class="col-md-12">
@@ -447,6 +449,14 @@ function fixDiv() {
   }
 }
 
+
+$(window).scroll(function(){
+    if ($(this).scrollTop() > 80) {
+       $('.secondary-header').addClass('logoSmall');
+    } else {
+       $('.secondary-header').removeClass('logoSmall');
+    }
+});
 
 $(".tabs-nav").data("top", $(".tabs-nav").offset().top); // set original position on load
 $(window).scroll(fixDiv);

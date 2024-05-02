@@ -84,3 +84,6 @@ $(window).scroll(fixDiv);
 
 
 
+$(".filter_search").click(function(){
+  $("#searchfield").slideToggle();
+});
