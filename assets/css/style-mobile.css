@@ -201,7 +201,7 @@ header {
   /*  border: 1px solid green;*/
   position: absolute;
   width: 100%;
-  z-index: 2;
+  z-index: 99;
   top: -80px;
 }
 
@@ -460,8 +460,9 @@ header {
   width: 100%;
   background: var(--black-primary);
   overflow-y: scroll;
-  padding: 1vw 1vw;
+  padding: 1vw 1vw 11vw 1vw;
   margin-bottom: 1.5vw;
+  height: 100%;
 }
 
 .nsm_side-area-expand .cat.title_h6 {
@@ -1236,13 +1237,18 @@ header {
 
 .nsm_membership_slider_div .content-block .rd-btn {
   float: none;
-  padding: 4vw;
+  padding: 4vw 5.85vw;
   border-radius: 8.5vw;
   font-size: 3.6vw;
   line-height: 4.8vw;
   color: var(--white-primary);
   margin-bottom: 5vw;
 }
+
+.nsm_membership_slider_div .content-block .rd-btn:hover{
+  background: var(--red-primary);
+}
+
 
 .nsm_membership_slider_div .content-block .link-btn {
   font-size: 3.6vw;
@@ -2790,7 +2796,7 @@ select {
   top: 2vh;
   position: fixed;
   /* bottom: 20px; */
-  z-index: 9;
+  z-index: 99;
   width: 100%;
   /* border: 1px solid black; */
 }
