@@ -671,6 +671,7 @@ header {
   flex-wrap: no-wrap;
   overflow-x: auto;
   cursor: grab;
+  width: 80%;
 }
 
 .scrolling-wrapper::-webkit-scrollbar {

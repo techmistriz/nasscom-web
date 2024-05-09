@@ -2,6 +2,10 @@ var animationSectionNumber = 0;
 var GLOBLE_ANIMATION_DURATION = 0.7;
 var isAnimating = false;
 var ANIMATION_TIMEOUT_MS = 1000;
+var diffHeight = 0;
+var halfBottom = 400;
+var whatsNewBottomFormatted = `-${halfBottom}px`;
+var arrowHeight = 80;
 
 function isTrackPad(e) {
   const { deltaY } = e;
@@ -101,6 +105,16 @@ function swipedetect(el, callback) {
 }
 
 $(document).ready(function () {
+  var window_height = $(window).height();
+  var window_innerHeight = $(window).innerHeight();
+  var window_outerHeight = $(window).outerHeight();
+  var document_height = $(document).height();
+  var document_innerHeight = $(document).innerHeight();
+  var document_outerHeight = $(document).outerHeight();
+  diffHeight = document_height - window_height;
+  halfBottom = (document_innerHeight - diffHeight) / 2;
+  whatsNewBottomFormatted = `-${halfBottom}px`;
+
   var EXPAND_ICON = "./assets/images/expand_btn.svg";
   var COLLAPSE_ICON = "./assets/images/eva_collapse-fill.svg";
 
@@ -111,12 +125,33 @@ $(document).ready(function () {
     initAnimation("down");
   });
 
+  $(".nsm_whats_new_strip").css({
+    bottom: whatsNewBottomFormatted,
+  });
+
+  // $(".nsm_whats_new_strip").css({
+  //   height: `calc( 100vh + ${diffHeight/2}px)`,
+  // });
+
+  $(".nsm_mobile_arrow").css({
+    top: `${halfBottom - arrowHeight}px`,
+  });
+
   $(".expand_icon").click(function () {
     var bottom = $(".nsm_whats_new_strip").css("bottom");
     bottom = Math.abs(parseInt(bottom));
-    var height = $(window).height();
-    // console.log("bottom", bottom);
-    // console.log("window.height", $(window).height());
+    console.log(
+      "expand_icon document height,innerHeight,bottom,outerHeight==>",
+      {
+        bottom,
+        window_height,
+        window_innerHeight,
+        window_outerHeight,
+        document_height,
+        document_innerHeight,
+        document_outerHeight,
+      }
+    );
 
     var __duration = GLOBLE_ANIMATION_DURATION;
     // position logo
@@ -128,7 +163,7 @@ $(document).ready(function () {
           // bottom: "90%",
         },
         {
-          bottom: "-50%",
+          bottom: whatsNewBottomFormatted,
           duration: __duration,
         }
       );
@@ -138,6 +173,10 @@ $(document).ready(function () {
         COLLAPSE_ICON_HALF
       );
       $(".whats-new-scrolling-wrapper").css({ height: "unset" });
+      $(".nsm_whats_new_strip").css({
+        height: `calc( 100vh )`,
+      });
+      $(".scrolling-wrapper-title").hide();
     } else {
       gsap.fromTo(
         ".nsm_whats_new_strip",
@@ -145,7 +184,7 @@ $(document).ready(function () {
           // bottom: "90%",
         },
         {
-          bottom: "0%",
+          bottom: "0px",
           duration: __duration,
         }
       );
@@ -155,20 +194,37 @@ $(document).ready(function () {
         "src",
         COLLAPSE_ICON_HALF
       );
-      $(".whats-new-scrolling-wrapper").css({ height: "80vh" });
+      $(".whats-new-scrolling-wrapper").css({
+        height: `calc( 80vh - ${diffHeight}px)`,
+      });
+      $(".nsm_whats_new_strip").css({
+        height: `calc( 100vh )`,
+      });
+      $(".scrolling-wrapper-title").show();
     }
   });
 
   $(".halfexpand_icon").click(function () {
     var bottom = $(".nsm_whats_new_strip").css("bottom");
     bottom = Math.abs(parseInt(bottom));
-    var height = $(window).height();
-    console.log("bottom", Math.abs(parseInt(bottom)));
-    // console.log("window.height", $(window).height());
+
+    console.log(
+      "halfexpand_icon document height,innerHeight,bottom,outerHeight==>",
+      {
+        bottom,
+        window_height,
+        window_innerHeight,
+        window_outerHeight,
+        document_height,
+        document_innerHeight,
+        document_outerHeight,
+      }
+    );
 
     var __duration = GLOBLE_ANIMATION_DURATION;
+    var diffHeight = document_height - window_height;
 
-    // position logo
+    // When whats new section opened in full
     if (bottom == 0) {
       gsap.fromTo(
         ".nsm_whats_new_strip",
@@ -176,7 +232,7 @@ $(document).ready(function () {
           // bottom: "90%",
         },
         {
-          bottom: "-90%",
+          bottom: "-92%",
           duration: __duration,
         }
       );
@@ -187,6 +243,10 @@ $(document).ready(function () {
         EXPAND_ICON_HALF
       );
       $(".whats-new-scrolling-wrapper").css({ height: "unset" });
+      $(".nsm_whats_new_strip").css({
+        height: `calc( 100vh + ${diffHeight}px)`,
+      });
+      $(".scrolling-wrapper-title").hide();
     } else if (bottom > 200 && bottom < 500) {
       gsap.fromTo(
         ".nsm_whats_new_strip",
@@ -194,7 +254,7 @@ $(document).ready(function () {
           // bottom: "90%",
         },
         {
-          bottom: "-90%",
+          bottom: "-92%",
           duration: __duration,
         }
       );
@@ -205,6 +265,10 @@ $(document).ready(function () {
         EXPAND_ICON_HALF
       );
       $(".whats-new-scrolling-wrapper").css({ height: "unset" });
+      $(".nsm_whats_new_strip").css({
+        height: `calc( 100vh + ${diffHeight}px)`,
+      });
+      $(".scrolling-wrapper-title").hide();
     } else {
       gsap.fromTo(
         ".nsm_whats_new_strip",
@@ -212,7 +276,7 @@ $(document).ready(function () {
           // bottom: "90%",
         },
         {
-          bottom: "-50%",
+          bottom: whatsNewBottomFormatted,
           duration: __duration,
         }
       );
@@ -223,37 +287,21 @@ $(document).ready(function () {
         COLLAPSE_ICON_HALF
       );
       $(".whats-new-scrolling-wrapper").css({ height: "unset" });
+      $(".nsm_whats_new_strip").css({
+        height: `calc( 100vh )`,
+      });
+      $(".scrolling-wrapper-title").hide();
     }
   });
 
   var el = document.getElementById("body");
   swipedetect(el, function (swipedir) {
-    // swipedir contains either "none", "left", "right", "top", or "down"
     console.log("You just swiped " + swipedir);
     var top = $(".nsm_whats_new_strip").css("top");
     if (parseInt(top) > 500) {
       initAnimation(swipedir);
     }
   });
-
-  // var touchstart;
-  // $(document).bind("touchstart", function (e) {
-  //   touchstart = e.originalEvent.touches[0].clientY;
-  //   console.log("e.originalEvent", e.originalEvent);
-  // });
-
-  // $(document).bind("touchend", function (e) {
-  //   var touchend = e.originalEvent.changedTouches[0].clientY;
-  //   var top = $(".nsm_whats_new_strip").css("top");
-  //   console.log("touchstart touchend==>", { touchstart, touchend, top });
-  //   if (parseInt(top) > 500) {
-  //     if (touchstart > touchend + 5) {
-  //       initAnimation("down");
-  //     } else if (touchstart < touchend - 5) {
-  //       initAnimation("up");
-  //     }
-  //   }
-  // });
 
   $("#fullpage").bind("mousewheel wheel", function (event) {
     var top = $(".nsm_whats_new_strip").css("top");
@@ -381,10 +429,10 @@ function animateSection1() {
   gsap.fromTo(
     ".nsm_mobile_arrow",
     {
-      top: "40%",
+      top: `${halfBottom - arrowHeight}px`,
     },
     {
-      top: "75%",
+      top: `${(halfBottom - arrowHeight) * 2}px`,
       duration: 1,
     }
   );
@@ -410,9 +458,9 @@ function animateSection1() {
       top: "20%",
     },
     {
-      top: "-100%",
+      top: "-30%",
       // ease: "power3.out",
-      duration: 5,
+      duration: __duration,
     }
   );
 
@@ -450,10 +498,14 @@ function animateSection1() {
     },
     {
       opacity: 1,
-      bottom: "-90%",
+      bottom: "-92%",
       duration: __duration,
     }
   );
+
+  $(".nsm_whats_new_strip").css({
+    height: `calc( 100vh + ${diffHeight}px)`,
+  });
 
   setTimeout(() => {
     isAnimating = false;
@@ -848,6 +900,33 @@ function animateSectionReverse1() {
   var __duration = GLOBLE_ANIMATION_DURATION;
   isAnimating = true;
 
+  $(".nsm_whats_new_strip").css({
+    height: `calc( 100vh )`,
+  });
+  
+  gsap.fromTo(
+    ".nsm_whats_new_strip",
+    {
+      // bottom: "90%",
+    },
+    {
+      bottom: whatsNewBottomFormatted,
+      duration: __duration,
+    }
+  );
+
+  // position scroll button
+  gsap.fromTo(
+    ".nsm_mobile_arrow",
+    {
+      top: `${(halfBottom - arrowHeight) * 2}px`,
+    },
+    {
+      top: `${halfBottom - arrowHeight}px`,
+      duration: 1,
+    }
+  );
+
   // position logo
   gsap.fromTo(
     ".logo-div",
@@ -888,18 +967,6 @@ function animateSectionReverse1() {
     }
   );
 
-  // position scroll button
-  gsap.fromTo(
-    ".nsm_mobile_arrow",
-    {
-      top: "75%",
-    },
-    {
-      top: "40%",
-      duration: 1,
-    }
-  );
-
   // change mobile arrow icon color og to white
   gsap.fromTo(
     ".nsm_mobile_arrow img",
@@ -919,12 +986,12 @@ function animateSectionReverse1() {
   gsap.fromTo(
     ".driving-innovative-carousel",
     {
-      top: "-100%",
+      top: "-30%",
     },
     {
       top: "20%",
-      ease: "power3.out",
-      duration: 2,
+      // ease: "power3.out",
+      duration: __duration,
     }
   );
 
