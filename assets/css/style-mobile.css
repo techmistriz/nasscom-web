@@ -6219,3 +6219,22 @@ select {
 .scrolling-wrapper-title {
   display: none;
 }
+
+
+#orientation-container { display: none !important; height: 80vh; }
+@media only screen and (orientation:portrait){
+  #fullpage {  
+    display: block;
+  }
+  #orientation-container{
+    display: none !important;
+  }
+}
+@media only screen and (orientation:landscape){
+  #fullpage {  
+    display: none;
+  }
+  #orientation-container{
+    display: flex !important;
+  }
+}
