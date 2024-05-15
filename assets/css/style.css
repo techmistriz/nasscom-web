@@ -154,7 +154,7 @@ header {
 
 .title_h4 {
   font-family: var(--medium-font);
-  font-size: 2.4vw;
+  font-size: 2.1vw;
   line-height: 3.35vw;
   text-align: left;
 }
@@ -3092,13 +3092,14 @@ border:0px solid black;
   /* background: url("../images/Mesh-Gradient-Red.svg"); */
   background-image: linear-gradient(to right, #781a19, #9d1f1a);
   border-radius: 20px;
+  width: 40%;
+  height: 57vh;
 }
 .thought-leadership-div .thought-leadership-box {
   padding: 2.5vw;
-
   background-size: cover;
   height: 28vw;
-  width: 30vw;
+  width: 100%;
   margin: 0;
 }
 
