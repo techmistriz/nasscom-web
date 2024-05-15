@@ -22,10 +22,84 @@
     <link href="./assets/css/style-mobile.css?v=1.25" rel="stylesheet">
 </head>
 
+<style>
+
+    .orientation-popup{
+        background: var(--black-primary);
+        padding: 3vw 0px;
+        height: 100vh!important;
+        width: 100%;
+        position: fixed;
+        z-index: 9999;
+        top: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.9);
+        overflow-y: hidden;
+        transition: 0.5s;
+        display: none;
+    }
+
+    .orientation-popup .popup_card{
+        background: var(--white-primary);
+        width: 30vw;
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        padding: 3vw 2vw!important;
+    }
+
+
+    .orientation-popup .popup_card .popup_close {
+        position: absolute;
+        top: 2.5%;
+        right: 5%;
+        cursor: pointer;
+    }
+
+    .orientation-popup  .popup_card .popup_close img {
+        width: 1.8vw;
+    }
+
+    .orientation-popup .popup_card .popup_logo {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 1.2vw;
+    }
+
+    .orientation-popup .popup_card .popup_logo img {
+        width: 12vw;
+    }
+
+    .orientation-popup .popup_card .text-center{
+        background: transparent;
+        border: 1px solid var(--black-primary);
+        padding: 1vw 1.5vw;
+        width: 100%;
+        margin-bottom: 1.5vw;
+        border-radius: 0;
+        color: var(--black-primary);
+        height: max-content;
+        color: var(--black-primary) !important;
+        font-family: var(--regular-font);
+        font-size: 1.8vw;
+        margin-bottom: 0;
+    }
+
+
+
+</style>
+
 <body class="homepage" id="body" style="overflow:hidden;">
 
-    <div id="orientation-container" class="d-flex flex-wrap align-content-center">
-        <div class="d-flex align-items-center p-5">
+    <div id="orientation-container" class="d-flex flex-wrap align-content-center orientation-popup">
+        <div class="p-5 popup_card">
+            <!-- <div class="popup_close"><img src="assets/images/form_close.svg"></div> -->
+                <div class="popup_logo">
+                    <a href="/"><img src="assets/images/logo.svg"></a>
+                </div>
             <h3 class="text-center">We don't support Landscape Mode. Please rotate your device to Portrait Mode</h3>
         </div>
     </div>
