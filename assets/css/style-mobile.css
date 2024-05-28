@@ -1194,7 +1194,7 @@ header {
 
 .nsm_membership_slider_div .image-block img {
   border-radius: 0;
-  height: 65vw;
+  height: 55vw;
 }
 
 .nsm_membership_slider_div .image-block .image-tag {
@@ -6126,7 +6126,7 @@ select {
 
   .home-toggle {
     position: absolute;
-    top: 0.5vw;
+    top: -0.5vw;
     right: 3%;
     display: block;
   }

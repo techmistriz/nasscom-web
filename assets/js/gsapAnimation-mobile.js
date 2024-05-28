@@ -105,6 +105,17 @@ function swipedetect(el, callback) {
 }
 
 $(document).ready(function () {
+  var el = document.getElementById("body");
+  swipedetect(el, function (swipedir) {
+    var __top = $(".nsm_whats_new_strip").css("top");
+    console.log("You just swiped==>", { swipedir, __top });
+    if (parseInt(__top) > 0) {
+      initAnimation(swipedir);
+    }
+  });
+});
+
+$(document).ready(function () {
   var window_height = $(window).height();
   var window_innerHeight = $(window).innerHeight();
   var window_outerHeight = $(window).outerHeight();
@@ -294,15 +305,6 @@ $(document).ready(function () {
     }
   });
 
-  var el = document.getElementById("body");
-  swipedetect(el, function (swipedir) {
-    console.log("You just swiped " + swipedir);
-    var top = $(".nsm_whats_new_strip").css("top");
-    if (parseInt(top) > 500) {
-      initAnimation(swipedir);
-    }
-  });
-
   $("#fullpage").bind("mousewheel wheel", function (event) {
     var top = $(".nsm_whats_new_strip").css("top");
     const { deltaX, deltaY, wheelDelta, detail } = event.originalEvent;
@@ -370,14 +372,10 @@ function initAnimation(type = "down") {
   }
 }
 
-// *************************************************
-// *************************************************
-// *************************************************
-// ***********FORWARD/DOWNWORD ANIMATION************
-// *************************************************
-// *************************************************
-// *************************************************
-
+/**
+ * FORWARD/DOWNWORD ANIMATION
+ * @returns
+ */
 function animateSection1() {
   // check if aleady animating
   if (isAnimating) return false;
@@ -748,7 +746,7 @@ function animateSection5() {
   gsap.fromTo(
     ".economic-rejuvenation-div",
     {
-      top: "25%",
+      top: "15%",
     },
     {
       top: "-100%",
@@ -885,14 +883,10 @@ function animateSection7() {
   }, __duration * ANIMATION_TIMEOUT_MS);
 }
 
-// *************************************************
-// *************************************************
-// *************************************************
-// **************REVERSE ANIMATION******************
-// *************************************************
-// *************************************************
-// *************************************************
-
+/**
+ * REVERSE ANIMATION
+ * @returns
+ */
 function animateSectionReverse1() {
   // check if aleady animating
   if (isAnimating) return false;
@@ -903,7 +897,7 @@ function animateSectionReverse1() {
   $(".nsm_whats_new_strip").css({
     height: `calc( 100vh )`,
   });
-  
+
   gsap.fromTo(
     ".nsm_whats_new_strip",
     {
@@ -1252,7 +1246,7 @@ function animateSectionReverse5() {
       top: "-100%",
     },
     {
-      top: "25%",
+      top: "15%",
       duration: __duration,
     }
   );
