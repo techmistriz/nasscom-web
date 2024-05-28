@@ -19,14 +19,18 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- Custom css -->
-    <link href="./assets/css/style-tablet.css?v=1.25" rel="stylesheet">
+    <link href="./assets/css/style-tablet.css?v=1" rel="stylesheet">
 </head>
 
 <body class="homepage" id="body" style="overflow:hidden;">
 
-    <div id="orientation-container" class="d-flex flex-wrap align-content-center justify-content-center">
-        <div class="p-5">
-            <h3 class="text-center">We don't support Landscape Mode. Please rotate your device to Portrait Mode</h3>
+    <div id="orientation-container" class="d-flex flex-wrap align-content-center orientation-popup">
+        <div class="p-5 popup_card">
+            <!-- <div class="popup_close"><img src="assets/images/form_close.svg"></div> -->
+            <div class="popup_logo">
+                <a href="/"><img src="assets/images/logo.svg"></a>
+            </div>
+            <h3 class="text-center">Please rotate to portrait mode</h3>
         </div>
     </div>
 
@@ -259,14 +263,14 @@
                         </div>
                         <div class="content-block">
                             <div class="row">
-                                <div class="col-md-8">
+                                <div class="col-xl-8 text-center">
                                     <h4 class="title_h4">Nasscom<br /> Membership</h4>
                                     <div class="desc">Get visibility for your brand, access to exclusive reports and
                                         insights, community support and contribution to policy formulation process.
                                     </div>
                                 </div>
 
-                                <div class="col-md-4">
+                                <div class="col-xl-4 text-center">
                                     <a href="#" class="rd-btn">Become A Member</a>
                                     <a class="link-btn know-more-about-memeber" href="#">Know More</a>
                                 </div>
@@ -356,20 +360,22 @@
             </footer>
 
             <section class="nsm_whats_new_strip">
-                <div class="strip_box">
-                    <div class="title">What's New</div>
-                    <div class="expand_icon">
-                        <img src="./assets/images/expand_btn.svg">
-                        <!-- <img src="assets/images/collapse_btn.svg"> -->
-                    </div>
-                    <div class="halfexpand_icon">
-                        <img src="./assets/images/lucide_chevron-down.svg">
-                        <!-- <img src="assets/images/fullexpand_btn.svg"> -->
-                    </div>
+                <!-- <div class="container1"> -->
+                    <div class="strip_box">
+                        <div class="title">What's New</div>
+                        <div class="expand_icon">
+                            <img src="./assets/images/expand_btn.svg">
+                            <!-- <img src="assets/images/collapse_btn.svg"> -->
+                        </div>
+                        <div class="halfexpand_icon">
+                            <img src="./assets/images/lucide_chevron-down.svg">
+                            <!-- <img src="assets/images/fullexpand_btn.svg"> -->
+                        </div>
+                    <!-- </div> -->
                 </div>
 
                 <div class="nsm_side-area-expand">
-                    <div class="container">
+                    <div class="container1">
                         <div class="row">
                             <div class="col-md-12" style="padding:1vw 0vw;">
                                 <ul class="nsm_cat-menu">
@@ -541,7 +547,7 @@
         integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- Custom script -->
-    <script src="./assets/js/gsapAnimation-tablet.js?v=1.24"></script>
+    <script src="./assets/js/gsapAnimation-tablet.js?v=1"></script>
 
     <script>
 

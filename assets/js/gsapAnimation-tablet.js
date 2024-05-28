@@ -113,7 +113,7 @@ $(document).ready(function () {
   var document_outerHeight = $(document).outerHeight();
   diffHeight = document_height - window_height;
   halfBottom = (document_innerHeight - diffHeight) / 2;
-  whatsNewBottomFormatted = `-${halfBottom}px`;
+  whatsNewBottomFormatted = `-${halfBottom + 50}px`;
 
   var EXPAND_ICON = "./assets/images/expand_btn.svg";
   var COLLAPSE_ICON = "./assets/images/eva_collapse-fill.svg";
@@ -247,7 +247,7 @@ $(document).ready(function () {
         height: `calc( 100vh + ${diffHeight}px)`,
       });
       $(".scrolling-wrapper-title").hide();
-    } else if (bottom > 200 && bottom < 500) {
+    } else if (bottom > 200 && bottom < 800) {
       gsap.fromTo(
         ".nsm_whats_new_strip",
         {
@@ -432,7 +432,7 @@ function animateSection1() {
       top: `${halfBottom - arrowHeight}px`,
     },
     {
-      top: `${(halfBottom - arrowHeight) * 2}px`,
+      top: `${(halfBottom - arrowHeight) * 2 - 110}px`,
       duration: 1,
     }
   );
@@ -606,7 +606,7 @@ function animateSection3() {
     {
       scale: 0.7,
       top: "-13%",
-      xPercent: -35,
+      xPercent: -45,
       duration: __duration,
     }
   );
@@ -618,7 +618,7 @@ function animateSection3() {
       top: "65%",
     },
     {
-      left: "51%",
+      left: "61%",
       top: "61%",
       duration: __duration,
     }
@@ -903,7 +903,7 @@ function animateSectionReverse1() {
   $(".nsm_whats_new_strip").css({
     height: `calc( 100vh )`,
   });
-  
+
   gsap.fromTo(
     ".nsm_whats_new_strip",
     {
@@ -963,7 +963,7 @@ function animateSectionReverse1() {
       top: "0",
     },
     {
-      top: "-80",
+      top: "-120",
     }
   );
 
@@ -1126,7 +1126,7 @@ function animateSectionReverse3() {
   gsap.fromTo(
     ".dollar-icon-container",
     {
-      left: "51%",
+      left: "61%",
       top: "61%",
     },
     {
@@ -1189,7 +1189,7 @@ function animateSectionReverse4() {
       left: "35%",
       top: "0%",
     },
-    { left: "51%", top: "61%", duration: __duration }
+    { left: "61%", top: "61%", duration: __duration }
   );
 
   gsap.fromTo(
