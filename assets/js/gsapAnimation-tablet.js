@@ -748,7 +748,7 @@ function animateSection5() {
   gsap.fromTo(
     ".economic-rejuvenation-div",
     {
-      top: "25%",
+      top: "15%",
     },
     {
       top: "-100%",
@@ -1252,7 +1252,7 @@ function animateSectionReverse5() {
       top: "-100%",
     },
     {
-      top: "25%",
+      top: "15%",
       duration: __duration,
     }
   );
