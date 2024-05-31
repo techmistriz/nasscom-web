@@ -76,7 +76,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div id="mycontainer">
-                    <div class="tabs-nav">
+                    <div class="tabs-nav" id="desktop_tab">
                       <ul>
                         <div class="row">
                             <div class="col-md-4">
@@ -101,6 +101,46 @@
                         </div>
                       </ul>
                     </div>
+
+                    <!--- This tab section is for mobile-->
+                    <div class="tabs-nav" id="mobile_tab">
+                        <ul class="nav nav-tabs mobilehead_tab" id="myTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                              <button class="nav-link active" id="leaders-tab" data-bs-toggle="tab" data-bs-target="#leaders" type="button" role="tab" aria-controls="leaders" aria-selected="true">leaders</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                              <button class="nav-link" id="councils-tab" data-bs-toggle="tab" data-bs-target="#councils" type="button" role="tab" aria-controls="councils" aria-selected="false">councils</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="regions-tab" data-bs-toggle="tab" data-bs-target="#regions" type="button" role="tab" aria-controls="regions" aria-selected="false">indian regions</button>
+                            </li>
+                          </ul>
+                          <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="leaders" role="tabpanel" aria-labelledby="leaders-tab">
+                                <div class="mobile_tabitems_block">
+                                    <li class="active"><a href="#tab1">Core</a></li>
+                                    <li><a href="#tab2">Initiatives</a></li>
+                                    <li><a href="#tab3">Regional</a></li>
+                                    <li><a href="#tab4">Former</a></li>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="councils" role="tabpanel" aria-labelledby="councils-tab">
+                                <div class="mobile_tabitems_block">
+                                    <li><a href="#tab5">Past Chairpersons</a></li>
+                                    <li><a href="#tab6">executive</a></li>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="regions" role="tabpanel" aria-labelledby="regions-tab">
+                                <div class="mobile_tabitems_block">
+                                    <li><a href="#tab7">north</a></li>
+                                    <li><a href="#tab8">east</a></li>
+                                    <li><a href="#tab9">west</a></li>
+                                    <li><a href="#tab10">south</a></li>
+                                </div>
+                            </div>
+                          </div>
+                    </div>
+                    <!--- This tab section is for mobile-->
                   
                     <section class="tabs-content">
                         <div class="tab-item" id="tab1">
