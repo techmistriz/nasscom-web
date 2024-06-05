@@ -75,6 +75,7 @@ $(window).scroll(fixDiv);
           slidesToScroll: 1,
           infinite: true,
           autoplay: true,
+          dots:true,
           autoplaySpeed: 6000,
         }
       }]

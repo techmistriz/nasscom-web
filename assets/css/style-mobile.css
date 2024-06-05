@@ -6126,7 +6126,7 @@ select {
 
   .home-toggle {
     position: absolute;
-    top: -0.5vw;
+    top: -0.8vw;
     right: 3%;
     display: block;
   }
@@ -6237,4 +6237,70 @@ select {
   #orientation-container{
     display: flex !important;
   }
+}
+
+
+
+
+
+/*--- for landscape mode ---*/
+
+.orientation-popup {
+  background: var(--black-primary);
+  padding: 20px 0px;
+  height: 100% !important;
+  width: 100%;
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  overflow-y: hidden;
+  transition: 0.5s;
+  display: none;
+}
+
+.orientation-popup .popup_card {
+  background: var(--white-primary);
+  width: 65%;
+  height: max-content;
+  margin: 0 auto;
+  padding: 30px 30px !important;
+}
+
+
+.orientation-popup .popup_card .popup_close {
+  position: absolute;
+  top: 2.5%;
+  right: 5%;
+  cursor: pointer;
+}
+
+.orientation-popup .popup_card .popup_close img {
+  width: 1.8vw;
+}
+
+.orientation-popup .popup_card .popup_logo {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 2.2vw;
+}
+
+.orientation-popup .popup_card .popup_logo img {
+  width: 180px;
+}
+
+.orientation-popup .popup_card .text-center {
+  background: transparent;
+  border: 0px solid var(--black-primary);
+  padding: 0vw 0vw;
+  width: 100%;
+  margin-bottom: 1.5vw;
+  border-radius: 0;
+  color: var(--black-primary);
+  height: max-content;
+  color: var(--black-primary) !important;
+  font-family: var(--regular-font);
+  font-size: 26px;
+  margin-bottom: 0;
 }

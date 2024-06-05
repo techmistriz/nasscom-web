@@ -395,7 +395,7 @@ function animateSection1() {
     },
     {
       top: "0%",
-      left: "-22%",
+      left: "-26%",
       // textAlign:"left",
       duration: __duration,
     }
