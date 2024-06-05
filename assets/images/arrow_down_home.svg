@@ -1,0 +1,11 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30">
+	<title>mobile_down_arrow_red-svg</title>
+	<defs>
+		<image  width="30" height="30" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAMAAAAM7l6QAAAAAXNSR0IB2cksfwAAAXRQTFRFAAAAeHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4ASp+ywAAAHx0Uk5TAAYfNQU7i9L/0Ik2OL/+58zougOO/a1VC1eyAhDBmyAhn7wPxvBER/G+nSYn9JRKS0PTjJDN7g0OPZaHkQHtNDnm4RqzuDBMq7C1t0nPMR3zBPgZ60GagIWV5QcKRdeI+j/8JO+B8rsMkr2PcBYYcezgysDL3UB5yXQUEg5+HhAAAAGySURBVHicddPrK8NRGAfw57u1hXihFXLJvEDuhtzHyLUlkWmFFi8Vf4D3St5SFFKu8YaQyL3RXELJpRGmiCxF8WYuc7bxs83Z8+o5z+ec87uc54CcAgBZRR/OFSGT2PBn0ps7++KdSMom4NNC5PPy6cwyvJIfW/XA8iDg1UIi/zuBQ2GmANwIz5HjnoJx+cMy/9swnDu/I0XDFPH45ODYK7n4hFwjHhdRR3ZOMkqDzsk9kq8sMYeMQwJP4/b/KVHaccIeY8VZInY4nPl1pDCAsg9StzhKlHqStgkldjM2uKzazlqDSJq9ylWiAkMOxJLcZQ9crM9D6YZqwQOXr4UjyVg474HVK0XI3/F69sAVSyWoXCzDFFerMK+GMnBOYeCyZpZ9GNXOVE5wWTtdNQ52ItUY5Wj9nUEzDJKpJ7nLdRPWdD07UIlYa1r/p40YYz8b9nnpkQNuGp850tDn6JYQkbleb3TRKNWQ7lT/24p+1+Rb0ytgRsogNS3+tiJrRu0Aedehyz5oBXpdGtm2m7qHqNk2QjdRCzodZeES1YW+91vsmbQZHVZyYxZtjssnaf8rfQORL3S8IeVlDgAAAABJRU5ErkJggg=="/>
+		<image  width="14" height="14" id="img2" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAMAAAAolt3jAAAAAXNSR0IB2cksfwAAAFpQTFRFAAAAeHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4G3gu6AAAAB50Uk5TABjg5wH/KuqSkygp/JSWJ0v6RYuP+EBC9vVBPmNeAw7/3gAAAHJJREFUeJxjZAADRob/UBoMmBgZ/yBxWRl+M5DOZQMa8gfMZWH9x8zIzfiT4zOYy/ednZmRQYDxC8t3IJfvO8//D0C9Qv+/8H1i4P8o8Pcd2Cgh5g9AUoDxFdRkcca3DCKMz+AWSb1mEHuKZK8M42MwDQCBDyEoANRE+gAAAABJRU5ErkJggg=="/>
+	</defs>
+	<style>
+	</style>
+	<use id="Layer" href="#img1" x="0" y="0"/>
+	<use id="Layer" href="#img2" x="8" y="8"/>
+</svg>

@@ -7520,3 +7520,22 @@ ul.pager li.pager__item a.button:hover{
 
 
 }
+
+
+.navigation-arrow{
+  position: absolute;
+  right: 2%;
+  z-index: 99;
+  display: flex;
+  bottom: 3%;
+}
+
+.navigation-arrow .navigate-down{
+  margin: 0 2%;
+  cursor: pointer;
+}
+
+.navigation-arrow .navigate-up{
+  margin: 0 2%;
+  cursor: pointer;
+}
