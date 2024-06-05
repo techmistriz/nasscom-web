@@ -9,18 +9,17 @@ function isTrackPad(e) {
     ANIMATION_TIMEOUT_MS = 1000;
     return false;
   }
-  ANIMATION_TIMEOUT_MS = 3000;
+  ANIMATION_TIMEOUT_MS = 2000;
   return true;
 }
 
 function detectTrackPad(e) {
   var isTrackpad = false;
   if (e.wheelDeltaY) {
-    if (e.wheelDeltaY === (e.deltaY * -3)) {
+    if (e.wheelDeltaY === e.deltaY * -3) {
       isTrackpad = true;
     }
-  }
-  else if (e.deltaMode === 0) {
+  } else if (e.deltaMode === 0) {
     isTrackpad = true;
   }
   console.log(isTrackpad ? "Trackpad detected" : "Mousewheel detected");
@@ -32,30 +31,34 @@ function detectTrackPad2(e) {
     if (Math.abs(e.wheelDeltaY) !== 120) {
       isTrackpad = true;
     }
-  }
-  else if (e.deltaMode === 0) {
+  } else if (e.deltaMode === 0) {
     isTrackpad = true;
   }
   console.log(isTrackpad ? "Trackpad detected" : "Mousewheel detected");
 }
 
 $(document).ready(function () {
-
   $("#fullpage").bind("mousewheel wheel touchmove", function (event) {
-    if ((!$(".nsm_side-area").hasClass("nsm_side-area-full"))) {
+    if (!$(".nsm_side-area").hasClass("nsm_side-area-full")) {
+      const { deltaX, deltaY, wheelDelta, detail } = event.originalEvent;
+      const __isTrackPad = isTrackPad(event.originalEvent);
 
-        const { deltaX, deltaY, wheelDelta, detail} = event.originalEvent;
-        const __isTrackPad = isTrackPad(event.originalEvent);
-
-        console.log("event.originalEvent", { deltaX, deltaY, wheelDelta, detail, __isTrackPad, isAnimating, ANIMATION_TIMEOUT_MS});
+      console.log("event.originalEvent", {
+        deltaX,
+        deltaY,
+        wheelDelta,
+        detail,
+        __isTrackPad,
+        isAnimating,
+        ANIMATION_TIMEOUT_MS,
+      });
 
       // check if aleady animating
       if (isAnimating) return false;
 
       if (
         event.originalEvent.deltaX === 0 &&
-        (event.originalEvent.wheelDelta > 0 ||
-        event.originalEvent.detail < 0)
+        (event.originalEvent.wheelDelta > 0 || event.originalEvent.detail < 0)
       ) {
         console.log("scrolling up !");
         if (animationSectionNumber == 1) {
@@ -71,10 +74,7 @@ $(document).ready(function () {
         } else if (animationSectionNumber == 6) {
           animateSectionReverse6();
         }
-      } else if (
-        event.originalEvent.deltaX === 0
-      ) { 
-
+      } else if (event.originalEvent.deltaX === 0) {
         console.log("scrolling down !");
         if (animationSectionNumber == 0) {
           animateSection1();
@@ -92,7 +92,63 @@ $(document).ready(function () {
       }
     }
   });
+
+  $(document).bind("keydown", function (event) {
+
+    ANIMATION_TIMEOUT_MS = 1000;
+    var key = event.keyCode;
+    switch (key) {
+      case 37:
+        // alert("left");
+        break;
+      case 38:
+        initAnimation("up");
+        break;
+      case 39:
+        // alert("right");
+        break;
+      case 40:
+        initAnimation("down");
+        break;
+    }
+  });
 });
+
+function initAnimation(type = "down") {
+  if (type == "down") {
+    if (animationSectionNumber == 0) {
+      animateSection1();
+    } else if (animationSectionNumber == 1) {
+      animateSection2();
+    } else if (animationSectionNumber == 2) {
+      animateSection3();
+    } else if (animationSectionNumber == 3) {
+      animateSection4();
+    } else if (animationSectionNumber == 4) {
+      animateSection5();
+    } else if (animationSectionNumber == 5) {
+      animateSection6();
+    } else if (animationSectionNumber == 6) {
+      animateSection7();
+    }
+  } else if (type == "up") {
+    if (animationSectionNumber == 1) {
+      animateSectionReverse1();
+    } else if (animationSectionNumber == 2) {
+      animateSectionReverse2();
+    } else if (animationSectionNumber == 3) {
+      animateSectionReverse3();
+    } else if (animationSectionNumber == 4) {
+      animateSectionReverse4();
+    } else if (animationSectionNumber == 5) {
+      animateSectionReverse5();
+    } else if (animationSectionNumber == 6) {
+      animateSectionReverse6();
+    } else if (animationSectionNumber == 7) {
+      animateSectionReverse7();
+    }
+  }
+}
 
 // *************************************************
 // *************************************************
