@@ -1215,11 +1215,26 @@ header {
   width: 100%;
   position: relative;
   margin-top: 5%;
+  border-radius: 1.5vw!important;
 }
 
 .animate-cstm {
   margin: 0;
   position: absolute;
+}
+
+.nsm_membership_slider_div .carousel{
+  border-radius: 1.5vw!important;
+  overflow: hidden!important;
+}
+
+.nsm_membership_slider_div  .carousel-inner{
+  border-radius: 1.5vw!important;
+  overflow: hidden!important;
+}
+
+.nsm_membership_slider_div .carousel-item{
+  border-radius: 1.5vw!important;
 }
 
 .nsm_membership_slider_div .image-block img {
@@ -1257,7 +1272,7 @@ header {
 }
 
 .nsm_membership_slider_div .content-block .desc {
-  font-size: 1.5vw;
+  font-size: 1.2vw;
   line-height: 1.875vw;
   color: var(--red-primary);
   font-family: var(--regular-font);
@@ -2828,10 +2843,29 @@ border:0px solid black;
   pointer-events: none;
 }
 
-.nsm_block_footer {
+.footer_slider{
+height: 22vw;
+}
+
+.footer_slider .nsm_block_footer {
   flex: 0 0 auto;
   /* Centering text only */
   display: flex;
+  height: 22vw;
+}
+
+.footer_slider  .nsm_withtext-block{
+  margin-right: 0.5%;
+  width: 340px!important;
+}
+
+.footer_slider  .nsm_withimage-block{
+  margin-right: 0.5%;
+  width: 480px!important;
+}
+
+.footer_slider  .nsm_withimage-block img{
+  object-fit: cover;
 }
 
 .widget-reddark {
@@ -3323,7 +3357,9 @@ border:0px solid black;
 }
 
 
-
+#membership_page{
+  z-index: 0;
+}
 
 .nsm_membership_review{
   background: linear-gradient(45deg,  #000000a6,  #000000a6) ,url("../images/membership_page_gif.gif");
@@ -7404,6 +7440,78 @@ ul.pager li.pager__item a.button:hover{
 
 
 
+#policypage #v1 .item-block .block-title{
+  height: max-content;
+  border-bottom: 0;
+  margin-bottom: 0;
+  align-items: flex-start;
+}
+
+#policypage #v1 .item-block .title-btn-hr{
+  margin-top:0;
+}
+
+
+#policypage #v2 .item-block .block-title {
+  height: 3.6vw;
+  border-bottom: 0;
+  margin-bottom: 0;
+  align-items: flex-start;
+  overflow: hidden;
+}
+
+
+#policypage div.click-here {
+  margin-top: 50px;
+}
+
+#policypage div.click-here a.btn-primary {
+  width: auto;
+  padding: 1vw 1.75vw 1vw 1.75vw;
+  border-radius: 2.5vw;
+  color: var(--white-primary);
+  text-transform: uppercase;
+  background: var(--red-primary);
+  font-size: 0.9vw;
+  line-height: 1.35vw;
+  text-align: center;
+  font-family: var(--bold-font);
+  text-decoration: none;
+  text-decoration: none;
+  display: inline-block;
+  height: max-content;
+  border: 0;
+}
+
+
+@media (max-width:767px){
+
+  #policypage #v2 .item-block .block-title {
+    height: 10vw;
+    border-bottom: 0;
+    margin-bottom: 0;
+    align-items: flex-start;
+    overflow: hidden;
+  }
+
+  #policypage div.click-here a.btn-primary{
+    width: auto;
+    padding: 3vw 3.75vw 3vw 3.75vw;
+    border-radius: 5.5vw;
+    color: var(--white-primary);
+    text-transform: uppercase;
+    background: var(--red-primary);
+    font-size: 3.2vw;
+    line-height: 1.35vw;
+    text-align: center;
+    font-family: var(--bold-font);
+    text-decoration: none;
+    text-decoration: none;
+    display: inline-block;
+    height: max-content;
+    border: 0;
+  }
+}
 
 
 
@@ -7531,11 +7639,14 @@ ul.pager li.pager__item a.button:hover{
 }
 
 .navigation-arrow .navigate-down{
-  margin: 0 2%;
+  /* margin: 0 2%; */
   cursor: pointer;
 }
 
 .navigation-arrow .navigate-up{
-  margin: 0 2%;
+  /* margin: 0 2%; */
   cursor: pointer;
+  display: none;
 }
+
+
