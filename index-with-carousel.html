@@ -1139,7 +1139,7 @@ slidesToScroll: 1,
 autoplay: true,
 dots:false,
 infinite:true,
-autoplaySpeed: 5000,
+autoplaySpeed: 3000,
 centerMode:false,
 nextArrow: false,
 prevArrow: false,
@@ -1159,7 +1159,7 @@ slidesToShow: 2,
 slidesToScroll: 1,
 infinite: true,
 autoplay: true,
-autoplaySpeed: 6000,
+autoplaySpeed: 3000,
 }
 },  {
 breakpoint: 480,
@@ -1168,7 +1168,7 @@ slidesToShow: 1,
 slidesToScroll: 1,
 infinite: true,
 autoplay: true,
-autoplaySpeed: 6000,
+autoplaySpeed: 3000,
 }
 }]
 });
@@ -1177,20 +1177,20 @@ autoplaySpeed: 6000,
 
 
 // Slick Scroll
-jQuery(function () {
-const slider = jQuery(".footer_slider");
-slider;
+// jQuery(function () {
+// const slider = jQuery(".footer_slider");
+// slider;
 
-slider.on("wheel", function (e) {
-e.preventDefault();
+// slider.on("wheel", function (e) {
+// e.preventDefault();
 
-if (e.originalEvent.deltaY > 0) {
-jQuery(this).slick("slickNext");
-} else {
-jQuery(this).slick("slickPrev");
-}
-});
-});
+// if (e.originalEvent.deltaY > 0) {
+// jQuery(this).slick("slickNext");
+// } else {
+// jQuery(this).slick("slickPrev");
+// }
+// });
+// });
 </script>
 
 
